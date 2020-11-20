@@ -1,2 +1,8 @@
 <h1>Tops#index</h1>
 <p>Find me in app/views/tops/index.html.erb</p>
+
+<p>
+  <%= link_to @post.video_url.to_s do %>
+  <%= video_tag(@post.video.to_s) %>
+  <% end %>
+</p>

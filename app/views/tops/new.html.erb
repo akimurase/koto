@@ -1,2 +1,7 @@
 <h1>Tops#new</h1>
 <p>Find me in app/views/tops/new.html.erb</p>
+
+<div class="field">
+    <%= form.label :video %>
+    <%= form.file_field :video, :accept => 'video/*' %>
+</div>
