@@ -9,3 +9,14 @@
   <%= link_to "ログイン", new_client_session_path %>
 <% end %>
 
+<br>
+  <%# <%= image_tag @tops.image, class: '#' %> 
+
+<%# eachにしないと表示させれない %>
+<% @tops.each do |top| %>
+  <%= top.title %>
+  <%# #ボタンを押して再生したいときは　":controls => true" が必要 %>
+  <%# <%= video_tag(top.video_top.to_s, :controls => true) %> 
+  <%# オプションは（）内に書く！ %>
+  <%= video_tag(top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %>
+<% end %>

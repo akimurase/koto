@@ -9,7 +9,6 @@ class TopsController < ApplicationController
 
   def create
     @top = Top.new(tops_params)
-    binding.pry
     @top.save!
   end
 
