@@ -1,4 +1,11 @@
 <h1>Tops#index</h1>
 <p>Find me in app/views/tops/index.html.erb</p>
 
+<% if client_signed_in? %>
+  <%= current_client.email %>
+  <%= link_to "新規ページを作成する", new_top_path %>
+<% else %>
+  <%= link_to "新規登録する", new_client_registration_path %>
+  <%= link_to "ログイン", new_client_session_path %>
+<% end %>
 

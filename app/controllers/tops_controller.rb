@@ -9,7 +9,8 @@ class TopsController < ApplicationController
 
   def create
     @top = Top.new(tops_params)
-    @top.save
+    binding.pry
+    @top.save!
   end
 
   def edit
@@ -24,6 +25,6 @@ class TopsController < ApplicationController
   private
 
   def tops_params
-    params.require(:top).permit(:video_top, :image, :title, :client_id)
+    params.require(:top).permit(:video_top, :image, :title, :client_id).merge(client_id: current_client.id)
   end
 end
