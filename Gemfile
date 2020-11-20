@@ -58,5 +58,6 @@ gem 'devise'
 gem 'active_hash'
 gem 'simple_calendar', '~> 2.0'
 gem "carrierwave"
+gem 'mini_magick'
 gem 'cocoon'
 gem 'jquery-rails'
