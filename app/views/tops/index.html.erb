@@ -11,11 +11,16 @@
 <% end %>
 
 <br>
-  <%# <%= image_tag @tops.image, class: '#' %> 
 
-<%# eachにしないと表示させれない %>
+<%# 画像表示 %>
+  <% @items.each do |item| %>
+  <%= image_tag item.image, class: "#", :size => "260x180"%>
+  <% end %>
+<br>
+
+<%# 動画表示 %>
+<%# eachにしないと表示させれない @topsにfind_byでデータをとってきてみては？ %>
 <% @tops.each do |top| %>
-  <%= top.title %>
   <%# #ボタンを押して再生したいときは　":controls => true" が必要 %>
   <%# <%= video_tag(top.video_top.to_s, :controls => true) %> 
   <%# オプションは（）内に書く！ %>

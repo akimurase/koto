@@ -1,6 +1,7 @@
 class TopsController < ApplicationController
   def index
     @tops = Top.all
+    @items = Top.all.order('created_at DESC')
   end
 
   def new
