@@ -1,2 +1,23 @@
 <h1>Products#new</h1>
 <p>Find me in app/views/products/new.html.erb</p>
+
+<%= form_with model: @product, local: true do |f| %>
+
+<div class="">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+<div class="">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="">
+  <%= f.label :text %>
+  <%= f.text_area :text %>
+</div>
+
+<%= f.submit "作成する", class:"#" %>
+<%= link_to "戻る", root_path, class:"#" %>
+<% end %>

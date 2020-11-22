@@ -3,17 +3,17 @@
 
 <%= form_with model: @top, local: true do |f| %>
 
-<div class="field">
+<div class="">
   <%= f.label :video %>
   <%= f.file_field :video_top, :accept => 'video/*' %>
 </div>
 
-<div class="field">
+<div class="">
   <%= f.label :image_rogo %>
   <%= f.file_field :image %>
 </div>
 
-<div class="field">
+<div class="">
   <%= f.label :title %>
   <%= f.text_field :title %>
 </div>
