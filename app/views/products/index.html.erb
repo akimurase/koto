@@ -2,7 +2,9 @@
 <p>Find me in app/views/products/index.html.erb</p>
 
 <div class="#">
-  <%= @products.each do |product|  %>
-    
+  <% @products.each do |product|  %>
+    <%= product.name %>
+    <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
+    <%= product.text %>
   <% end %>
 </div>
