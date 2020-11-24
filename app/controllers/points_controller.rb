@@ -1,16 +1,12 @@
 class PointsController < ApplicationController
-  before_action :set_product, only: [:show, :create]
-
   def index
   end
 
   def new
-    # @product = Product.find(params[:product_id])
     @point = Point.new
   end
 
   def create
-    # @product = Product.find(params[:product_id])
     @point = Point.new(points_params)
     @point.save!
   end
@@ -28,10 +24,6 @@ class PointsController < ApplicationController
 
   def points_params
     params.permit(:image, :title, :text, :product_id)
-  end
-
-  def set_product
-    @product = Product.find(params[:product_id])
   end
 
 end
