@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    # @product = Product.find_by(params[:id])
   end
 
   def new
@@ -9,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @products = Product.all
+    @products = Product.find(params[:id])
   end
 
   def create

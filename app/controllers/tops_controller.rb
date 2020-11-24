@@ -1,7 +1,7 @@
 class TopsController < ApplicationController
   def index
-    @tops = Top.all
-    @items = Top.all.order('created_at DESC')
+    # @top = Top.find(params[:top_id])
+    @tops = Top.all.order('created_at DESC')
     @products = Product.all #レンダーで_product.htmlを表示させる為の定義
   end
 
