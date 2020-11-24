@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
+  # before_action :set_item, only: [:]
+
   def index
     @products = Product.all
+    @product = Product.find(params[:product_id])
   end
 
   def new
@@ -8,7 +11,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @products = Product.find(params[:id])
+    @product = Product.find(params[:id]) #プロダクトを特定するためfind(params[:id])が必要
+    @points = Point.all #レンダーさせる為の定義
   end
 
   def create
