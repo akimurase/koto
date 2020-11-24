@@ -3,10 +3,12 @@
 
 <div class="#">
   <% @products.each do |product|  %>
-    <%= product.name %>
-    <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
-    <%= product.text %>
+    <%= link_to product_path(product.id) do %>
+      <%= product.name %>
+      <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
+      <%= product.text %>
+    <% end %>
   <% end %>
 </div>
 
-<%= link_to "商品ページの画像作成する", new_product_path %>
+<%= link_to "商品ページを作成する", new_product_path %>

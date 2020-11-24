@@ -18,6 +18,26 @@
   <%= f.text_area :text %>
 </div>
 
+<%# showで表示 %>
+<div class="#">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div class="#">
+  <%= f.label :text2 %>
+  <%= f.text_field :text2 %>
+</div>
+
+<div class="#">
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+</div>
+
+<div class="#">
+  <%= f.label :unit %>
+  <%= f.text_field :unit %>
+
 <%= f.submit "作成する", class:"#" %>
 <%= link_to "戻る", root_path, class:"#" %>
 <% end %>

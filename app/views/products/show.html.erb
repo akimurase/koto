@@ -1,0 +1,16 @@
+<h3>商品の詳細ページ</h3>
+
+<div class="#">
+  <% @products.each do |product|  %>
+    <%= product.name %>
+    <%= product.title %>
+    <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
+    <%= product.text2 %>
+  <% end %>
+</div>
+
+<%# render points %>
+<%# render itierarys %>
+
+
+<%= link_to "戻る", root_path, class:"#" %>
