@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :tops
   resources :products do
     resources :points
+    resources :itinerarys
   end
 end

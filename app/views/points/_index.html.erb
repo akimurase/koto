@@ -6,7 +6,9 @@
     <%= point.title %>
     <%= point.text %>
     <%= image_tag point.image, class: "#", :size => "260x180" if point.image.attached?  %>
+    <br>
     <% end %>
+
 </div>
 
 <%= link_to "アピールポイントを作成する", new_product_point_path(@product.id), class:"#" %>
