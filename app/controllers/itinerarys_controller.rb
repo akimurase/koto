@@ -3,9 +3,12 @@ class ItinerarysController < ApplicationController
   end
 
   def new
+    @itinerary = Itinerary.new
   end
 
   def create
+    @itinerary = Itinerary.new(itinerarys_params)
+    @itinerary.save!
   end
 
   def edit
@@ -15,5 +18,11 @@ class ItinerarysController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def itinerarys_params
+    params.permit(:image, :time, :title, :text, :product_id)
   end
 end

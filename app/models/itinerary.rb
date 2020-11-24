@@ -1,5 +1,5 @@
 class Itinerary < ApplicationRecord
-  belongs_to :product, option: tour
+  belongs_to :products, optional: true
   # Active Storage用アソシエーション
   has_one_attached :image
 end

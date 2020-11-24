@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id]) #プロダクトを特定するためfind(params[:id])が必要
     @points = Point.all #レンダーさせる為の定義
+    @itinerarys = Itinerary.all #レンダーさせる為の定義
   end
 
   def create

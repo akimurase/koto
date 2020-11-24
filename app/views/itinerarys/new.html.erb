@@ -1,2 +1,28 @@
 <h1>Itinerarys#new</h1>
 <p>Find me in app/views/itinerarys/new.html.erb</p>
+
+<%= form_with url:product_itinerarys_path, local: true do |f| %>
+
+<div class="#">
+  <%= f.label :time %>
+  <%= f.text_field :time %>
+</div>
+
+<div class="#">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div class="">
+  <%= f.label :text %>
+  <%= f.text_area :text %>
+</div>
+
+<div class="">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+<%= f.submit "作成する", class:"#" %>
+<%= link_to "戻る", root_path, class:"#" %>
+<% end %>
