@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :products do
     resources :points
     resources :itinerarys
-    resources :events
+    resources :events do
+      collection do
+        post :confirm
+      end
+    end
   end
 end
