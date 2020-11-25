@@ -1,2 +1,14 @@
 <h1>確認画面</h1>
 
+  <div class="">
+    <p>参加人数: <%= @event.num.name %></p>
+    <p>ご希望日: <%= @event.start_time %></p>
+  </div>
+
+<%= form_with(model: @event, url:product_events_path, local: true) do |f| %>
+  <%= f.hidden_field :num_id %>
+  <%= f.hidden_field :start_time %>
+
+  <%= f.submit "予約する" %>
+  <%= f.submit "戻る", name: :back %>
+<% end %>

@@ -14,11 +14,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if params[:back]
-      render :new
-    else pay_event && @event.save!
-      redirect_to @event
-    end
+    @event.save!
+    # if params[:back]
+    #   render :new
+    # else pay_event && @event.save!
+      # redirect_to @event
+    # end
   end
 
   def show
@@ -37,6 +38,6 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.require(:event).permit(:num_id, :start_time, :plan_id).merge(user_id: current_user.id)  #,:token
+    params.require(:event).permit(:num_id,)#:start_time#.merge(user_id: current_user.id)  #,:token
   end
 end

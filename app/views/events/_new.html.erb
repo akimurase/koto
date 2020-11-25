@@ -1,11 +1,17 @@
 <h1>Events#new</h1>
 <p>Find me in app/views/events/new.html.erb</p>
 
-<%= form_with(model: @event, url:confirm_product_events_path, local: true) do |f| %>
+<%= form_with(model: @event, url:confirm_product_events_path(@product.id), local: true) do |f| %>
+
 
   <div class="number">
     <%= f.label :num, '参加人数' %>
     <%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %>  
+  </div>
+
+  <div class="plan_day">
+    <%= f.label :start_time, 'ご希望日' %>
+    <%= f.date_select :start_time %>
   </div>
 
   <div class="submit">

@@ -1,2 +1,9 @@
-<h1>Events#create</h1>
-<p>Find me in app/views/events/create.html.erb</p>
+<h1>ご予約完了しました。</h1>
+
+<p>参加人数: <%= @event.num.name %></p>
+<p>ご希望日: <%= @event.start_time %></p>
+
+
+<div>
+  <%= link_to "Topへ戻る", root_path %>
+</div>
