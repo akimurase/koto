@@ -13,7 +13,12 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id]) #プロダクトを特定するためfind(params[:id])が必要
     @points = Point.all #レンダーさせる為の定義
+
+    # @product = Product.new #coccun用の記述
+    # @itinerarys = @product.itinerarys.build #coccun用の記述
+
     @itinerarys = Itinerary.all #レンダーさせる為の定義
+
   end
 
   def create
@@ -35,6 +40,8 @@ class ProductsController < ApplicationController
   private
 
   def products_params
-    params.require(:product).permit(:image, :name, :text, :title, :text2, :price, :unit).merge(client_id: current_client.id)
+    params.require(:product).permit(:image, :name, :text, :title, :text2, :price, :unit,
+    itinerarys_attributes:[:id, :image, :time, :title, :text, :product_id, :_destroy])
+    .merge(client_id: current_client.id)
   end
 end

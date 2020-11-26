@@ -1,0 +1,26 @@
+<div class="nested-fields">
+
+<div class="#">
+  <%= f.label :time %>
+  <%= f.text_field :time %>
+</div>
+
+<div class="#">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div class="">
+  <%= f.label :text %>
+  <%= f.text_area :text %>
+</div>
+
+<div class="">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+<%= link_to_remove_association "削除", f %>
+
+</div>
+

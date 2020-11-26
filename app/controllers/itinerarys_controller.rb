@@ -22,7 +22,9 @@ class ItinerarysController < ApplicationController
 
   private
 
-  def itinerarys_params
-    params.permit(:image, :time, :title, :text, :product_id)
-  end
+  # def itinerarys_params
+  #   params.permit(itineary_attributes:[:image, :time, :title, :text, :product_id, :_destroy])
+  # end
 end
+
+# rails g controller schedules index new create show edit update destroy 

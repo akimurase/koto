@@ -1,19 +1,38 @@
 <h3>商品の詳細ページ</h3>
 
 <div class="#">
-    <%= @product.name %>
-    <%= @product.title %>
-    <%= image_tag @product.image, class: "#", :size => "260x180" if @product.image.attached?  %>
-    <%= @product.text2 %>
+  <%= @product.name %>
+  <%= @product.title %>
+  <%= image_tag @product.image, class: "#", :size => "260x180" if @product.image.attached?  %>
+  <%= @product.text2 %>
 </div>
 
 <div class="">
 <%= render partial: "points/index" %>
 </div>
 
+<%# ここから旅程作成(coccun) %>
 <div class="">
-<%= render partial: "itinerarys/index" %>
+
+<%= form_with(model: @product, local: true) do |f| %>
+    <%= f.label :p_name %>
+    <%= f.text_field :p_name %>
+    <div class="parents">
+        <%= f.fields_for :itinerarys do |i| %>
+            <%= render "itinerarys_fields", f: i %>
+        <% end %>
+        <div class="links">
+            <%= link_to_add_association "子供を追加", f, :itinerarys %>
+        </div>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
+
+  <%# <%= render 'form', path: products_path, method: :post, product: @product %> %>
 </div>
+<%# /ここから旅程作成(coccun) %>
 
 <div class="">
 <%= render partial: "events/new" %>
