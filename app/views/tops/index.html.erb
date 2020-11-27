@@ -1,14 +1,30 @@
 <h1>Tops#index</h1>
 <p>Find me in app/views/tops/index.html.erb</p>
 
+<%# 業者用 %>
+<div>
+<h3>業者様</h3>
+  <% if client_signed_in? %>
+    <%= current_client.email %>
+    <%= link_to "新規ページを作成する", new_top_path %>
+    <%= link_to "管理画面", events_path %>
+  <% else %>
+    <%= link_to "新規登録する", new_client_registration_path %>
+    <%= link_to "ログイン", new_client_session_path %>
+  <% end %>
+</div>
 
-<% if client_signed_in? %>
-  <%= current_client.email %>
-  <%= link_to "新規ページを作成する", new_top_path %>
-<% else %>
-  <%= link_to "新規登録する", new_client_registration_path %>
-  <%= link_to "ログイン", new_client_session_path %>
-<% end %>
+<%# ユーザー用 %>
+<div>
+<h3>ユーザー</h3>
+  <% if user_signed_in? %>
+    <%= current_user.email %>
+    <%# <%= link_to "",  %> %>
+  <% else %>
+    <%= link_to "新規登録する", new_user_registration_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+  <% end %>
+</div>
 
 <br>
 

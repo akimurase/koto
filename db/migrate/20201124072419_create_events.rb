@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.datetime  :start_time
       t.integer   :num_id
       t.integer   :user_id
-      t.integer   :plan_id
+      t.integer   :product_id
 
       t.timestamps
     end
