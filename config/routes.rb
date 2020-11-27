@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   #   registrations: 'users/registrations'
   # }
   root to: 'tops#index'
-  # get "events/index"
-  resources :events
+  resources :events #管理画面用
 
   resources :tops
   resources :products do

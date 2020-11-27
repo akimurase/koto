@@ -9,11 +9,9 @@
   <ul class="event-list">
     <% events.each do |event| %>
     <li class="list">
-      <%# <%= link_to edit_product_event_path(event.id, @product.id) do %> %>
-        <%# <%= event.plan.call %> %>
-        <%# <%= event.name %> %>
+      <%= link_to edit_event_path(event.id) do %>
         <%= event.num.name %>
-      <%# <% end %> %>
+      <% end %>
     </li>
   </ul>
       
