@@ -27,26 +27,29 @@
   <% end %>
 </div>
 
-<%# ユーザー用 %>
-
-
 <br>
 
+<%# 一枚表示はfind_by(params[:id]) 複数枚はallデータを取得 %>
 <%# 画像表示 %>
-  <% @tops.each do |top| %>
-  <%= image_tag top.image, class: "#", :size => "260x180"%>
-  <% end %>
-<br>
-  <%# <%= image_tag top.image, class: "#", :size => "260x180"%>
-<br>
+<div>
+  <%= image_tag @top.image, class: "#", :size => "260x180"%>
+<%# 複数枚表示 %>
+  <%# @tops.each do |top| %>
+    <%#= image_tag top.image, class: "#", :size => "260x180"%>
+  <%# end %>
+</div>
 
-<%# 動画表示 %>
-<%# eachにしないと表示させれない @topsにfind_byでデータをとってきてみては？ %>
-<% @tops.each do |top| %>
-  <%= video_tag(top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %>
-<% end %>
+<h3><%= @top.title %></h3>
 
-<%# <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
+<%# 動画表示一枚%>
+<div>
+  <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
+<%# 複数枚表示 %>
+  <%# @tops.each do |top| %>
+    <%#= video_tag(top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
+  <%# end %>
+</div>
+
 
 <br>
 
