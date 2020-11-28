@@ -11,4 +11,6 @@
   <% end %>
 </div>
 
+<% if client_signed_in? %>
 <%= link_to "商品ページを作成する", new_product_path %>
+<% end %>

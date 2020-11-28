@@ -10,4 +10,6 @@
     <% end %>
 </div>
 
+<% if client_signed_in? %>
 <%= link_to "アピールポイントを作成する", new_product_point_path(@product.id), class:"#" %>
+<% end %>
