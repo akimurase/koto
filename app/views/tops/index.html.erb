@@ -3,28 +3,32 @@
 
 <%# 業者用 %>
 <div>
-<h3>業者様</h3>
   <% if client_signed_in? %>
-    <%= current_client.email %>
-    <%= link_to "新規ページを作成する", new_top_path %>
-    <%= link_to "管理画面", events_path %>
+    <h3>業者様</h3>
+      <%= current_client.email %>
+        <% if @top == nil? %>
+          <%= link_to "新規top画面を作成する", new_top_path %>
+        <% else %>
+          <%= link_to "top画面を編集する", edit_top_path(@top.id) %>
+        <% end %>
+      <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class: "#" %>
+      <%= link_to "管理画面", events_path %>
+  <% elsif user_signed_in? %>
+    <h3>ユーザー</h3>
+      <%= current_user.email %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "#" %>
   <% else %>
-    <%= link_to "新規登録する", new_client_registration_path %>
-    <%= link_to "ログイン", new_client_session_path %>
+    <h3>業者様</h3>
+      <%= link_to "新規登録する", new_client_registration_path %>
+      <%= link_to "ログイン", new_client_session_path %>
+    <h3>ユーザー</h3>
+      <%= link_to "新規登録する", new_user_registration_path %>
+      <%= link_to "ログイン", new_user_session_path %>
   <% end %>
 </div>
 
 <%# ユーザー用 %>
-<div>
-<h3>ユーザー</h3>
-  <% if user_signed_in? %>
-    <%= current_user.email %>
-    <%# <%= link_to "",  %> %>
-  <% else %>
-    <%= link_to "新規登録する", new_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
-  <% end %>
-</div>
+
 
 <br>
 
@@ -33,7 +37,7 @@
   <%= image_tag top.image, class: "#", :size => "260x180"%>
   <% end %>
 <br>
-  <%# <%= image_tag top.image, class: "#", :size => "260x180"%> %>
+  <%# <%= image_tag top.image, class: "#", :size => "260x180"%>
 <br>
 
 <%# 動画表示 %>
