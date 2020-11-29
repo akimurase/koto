@@ -1,3 +1,34 @@
+<% if @top == nil %>
+  <%= link_to "新規top画面を作成する", new_top_path %>
+<% else %>
+  <%= link_to "top画面を編集する", edit_top_path(@top.id) %>
+  <%= button_to "動画を削除する（削除させない方がいいのでは？）", top_path(@top.id), method: :delete %>
+<% end %>
 
-<%= link_to "top画面を編集する", edit_top_path(@top.id) %>
-<%= button_to "削除する", top_path(@top.id), method: :delete %>
+
+
+<%# top %>
+<div class="" >
+  <div class="" >
+    <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
+    <div class="" >
+      <div class="" >
+        <%= image_tag @top.image, class: "#", :size => "260x180"%>
+      </div>
+      <h3><%= @top.title %></h3>
+    </div>
+  </div>
+</div>
+
+<%# product %>
+<%= link_to "商品ページを追加する", new_product_path %>
+<div class="#">
+  <% @products.each do |product|  %>
+    <%= link_to  product_path(product.id) do %>
+      <%= product.name %>
+      <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
+      <%= product.text %>
+    <% end %>
+        <%#= link_to "「〇〇」の商品の編集ページへ行く", edit_product_path(@product.id) %>
+  <% end %>
+</div>
