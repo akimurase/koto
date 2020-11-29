@@ -1,2 +1,42 @@
 <h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+
+<%= form_with model: @product, local: true do |f| %>
+
+<div class="">
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+<div class="">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="">
+  <%= f.label :text %>
+  <%= f.text_area :text %>
+</div>
+
+<%# showで表示 %>
+<div class="#">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div class="#">
+  <%= f.label :text2 %>
+  <%= f.text_field :text2 %>
+</div>
+
+<div class="#">
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+</div>
+
+<div class="#">
+  <%= f.label :unit %>
+  <%= f.text_field :unit %>
+
+<%= f.submit "編集する", class:"#" %>
+<%= link_to "戻る", product_path, class:"#" %>
+<% end %>

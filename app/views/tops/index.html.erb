@@ -6,10 +6,12 @@
   <% if client_signed_in? %>
     <h3>業者様</h3>
       <%= current_client.email %>
-        <% if @top == nil? %>
+        <% if @top == nil %>
           <%= link_to "新規top画面を作成する", new_top_path %>
         <% else %>
-          <%= link_to "top画面を編集する", edit_top_path(@top.id) %>
+        <%= link_to "管理者編集画面に行く", top_path(@top.id) %>
+          <%#= link_to "top画面を編集する", edit_top_path(@top.id) %>
+          <%#= button_to "削除する", top_path(@top.id), method: :delete %>
         <% end %>
       <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class: "#" %>
       <%= link_to "管理画面", events_path %>
@@ -29,28 +31,38 @@
 
 <br>
 
+<% if @top == nil %>
+  <p>HTML直打ちのダミー動画</p>
+<% else %>
 <%# 一枚表示はfind_by(params[:id]) 複数枚はallデータを取得 %>
-<%# 画像表示 %>
-<div>
-  <%= image_tag @top.image, class: "#", :size => "260x180"%>
-<%# 複数枚表示 %>
-  <%# @tops.each do |top| %>
-    <%#= image_tag top.image, class: "#", :size => "260x180"%>
-  <%# end %>
+<div class="a" >
+  <%# 動画表示一枚%>
+  <div class="b" >
+    <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
+    <div class="c" >
+      <%# 画像表示 %>
+      <div class="d" >
+        <%= image_tag @top.image, class: "#", :size => "260x180"%>
+      </div>
+      <h3><%= @top.title %></h3>
+    </div>
+  </div>
 </div>
-
-<h3><%= @top.title %></h3>
-
-<%# 動画表示一枚%>
-<div>
-  <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
-<%# 複数枚表示 %>
-  <%# @tops.each do |top| %>
-    <%#= video_tag(top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
-  <%# end %>
-</div>
+<% end %>
 
 
 <br>
 
+<div class="i" >
 <%= render partial: "products/index" %>
+</div>
+
+
+
+<%# 画像と動画の複数枚表示 %>
+<%# @tops.each do |top| %>
+  <%#= video_tag(top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
+<%# end %>
+<%# @tops.each do |top| %>
+  <%#= image_tag top.image, class: "#", :size => "260x180"%>
+<%# end %>

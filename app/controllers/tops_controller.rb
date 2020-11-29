@@ -8,6 +8,10 @@ class TopsController < ApplicationController
     @top = Top.new
   end
 
+  def show
+    @top = Top.find_by(params[:id])
+  end
+
   def create
     @top = Top.new(tops_params)
     @top.save!
@@ -24,7 +28,8 @@ class TopsController < ApplicationController
   end
 
   def destroy
-    @top.destroy
+    @top = Top.find(params[:id])
+    @top.destroy!
   end
 
   private
