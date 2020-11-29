@@ -3,5 +3,6 @@
 
 <h3>作成できました</h3>
 <%# さらに作成するから入ってidが引き継げられるか検討が必要 %>
-<%# <%= link_to "旅程を作成する", new_product_itinerary_path, class:"#" %> %>
-<%= link_to "戻る", root_path, class:"#" %>
+<%= link_to "さらに旅程を作成する", new_product_itinerary_path, class:"#" %>
+<%= link_to "商品詳細ページに戻る", product_path(@product.id), class:"#" %>
+<%= link_to "topに戻る", root_path, class:"#" %>

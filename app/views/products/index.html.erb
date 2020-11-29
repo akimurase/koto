@@ -8,16 +8,6 @@
   <%= @product.text2 %>
 </div>
 
-<h3>旅程</h3>
-<div class="#">
-    <% @itinerarys.each do |itinerary|  %>
-    <%= itinerary.time %>
-    <%= itinerary.title %>
-    <%= itinerary.text %>
-    <%= image_tag itinerary.image, class: "#", :size => "260x180" if itinerary.image.attached?  %>
-    <br>
-    <% end %>
-</div>
 
 <h3>おすすめポイント</h3>
 <div class="">
@@ -30,8 +20,17 @@
     <% end %>
 </div>
 
+<h3>旅程</h3>
+<div class="#">
+    <% @itinerarys.each do |itinerary|  %>
+    <%= itinerary.time %>
+    <%= itinerary.title %>
+    <%= itinerary.text %>
+    <%= image_tag itinerary.image, class: "#", :size => "260x180" if itinerary.image.attached?  %>
+    <br>
+    <% end %>
+</div>
 
-<h3>ツアーの流れ</h3>
 
 <h3>申し込みフォーム</h3>
 <div class="">
