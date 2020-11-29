@@ -8,7 +8,7 @@
         <% if @top == nil %>
           <%= link_to "新規top画面を作成する", new_top_path %>
         <% else %>
-        <%= link_to "管理者画面に行く", top_path(@top.id) %>
+        <%= link_to "管理者画面に行く", edit_top_path(@top.id) %>
         <% end %>
       <%= link_to "予約管理画面", events_path %>
       <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class: "#" %>

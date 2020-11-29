@@ -8,9 +8,9 @@ class TopsController < ApplicationController
     @top = Top.new
   end
 
-  def show#編集用showページ
-    @top = Top.find_by(params[:id]) #トップ動画
-    @products = Product.all #プロダクト画像
+  def show
+    # @top = Top.find_by(params[:id]) 
+    # @products = Product.all #プロダクト画像
     # @product = Product.find(params[:id]) #もしtop/showでプロダクトの編集をす場合は、idを特定するためfind(params[:id])が必要
   end
 
@@ -20,13 +20,15 @@ class TopsController < ApplicationController
   end
 
   def edit
-    @top = Top.find_by(params[:id])
+    @top = Top.find_by(params[:id]) #データ取得（トップ動画再生と編集データ取得）
+    @products = Product.all #プロダクト画像
 
   end
 
   def update
     top = Top.find(params[:id])
     top.update(tops_params)
+    redirect_to edit_top_path
   end
 
   def destroy
