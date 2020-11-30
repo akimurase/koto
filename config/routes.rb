@@ -17,9 +17,6 @@ Rails.application.routes.draw do
 
   resources :tops
   resources :products do
-    # collection do
-    #   get: 
-    # end
     resources :points
     resources :itinerarys
     resources :events do
