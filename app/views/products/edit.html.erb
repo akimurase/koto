@@ -89,31 +89,70 @@
     <% end %>
 </div>
 
-
-<%= form_with url:product_points_path(@product.id), local: true do |f| %>
-
-<div class="#">
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-</div>
-
+<%# 追加 %>
 <div class="">
-  <%= f.label :text %>
-  <%= f.text_area :text %>
-</div>
+  <%= form_with url:product_points_path(@product.id), local: true do |f| %>
 
-<div class="">
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-</div>
+  <div class="#">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
 
-<%= f.submit "追加する", class:"#" %>
-<% end %>
+  <div class="">
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </div>
+
+  <div class="">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit "追加する", class:"#" %>
+  <% end %>
+</div>
 <%# /ここまでポイント %>
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 <%# ここから旅程作成 表題もクライアントが作れる用にする %>
 <h3>旅程</h3>
+<div class="">
+  <div class="#">
+    <% @itinerarys.each do |itinerary|  %>
+        <%= itinerary.time %>
+        <%= itinerary.title %>
+        <%= itinerary.text %>
+        <%= image_tag itinerary.image, class: "#", :size => "260x180" if itinerary.image.attached?  %>
+            <%# 編集用のフォーム %>
+          <%= form_with model: @itinerary, url:product_itinerary_path(@product, itinerary.id), method: :PATCH, local: true do |f| %>
+            <div class="#">
+              <%= f.label :time %>
+              <%= f.text_field :time %>
+            </div>
+
+            <div class="#">
+              <%= f.label :title %>
+              <%= f.text_field :title %>
+            </div>
+
+            <div class="">
+              <%= f.label :text %>
+              <%= f.text_area :text %>
+            </div>
+
+            <div class="">
+              <%= f.label :image %>
+              <%= f.file_field :image %>
+            </div>
+
+            <%= f.submit "編集する", class:"#" %>
+            <% end %>
+          <%= button_to "削除する", product_itinerary_path(@product, itinerary.id), method: :delete %>
+        <br>
+    <% end %>
+</div>
+
+<%# 追加 %>
 <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
 
   <div class="">
@@ -141,7 +180,7 @@
 <%# /ここまで旅程作成  %>
 
 
-
+-----------------------------------------------------
 <%# <h2>coccun作成中</h2> %>
 <div class="">
 <%= form_with(model: @product, local: true) do |f| %>
