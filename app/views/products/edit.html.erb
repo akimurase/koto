@@ -153,72 +153,63 @@
 </div>
 
 <%# 追加 %>
-<%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
+<div>
+  <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
 
-  <div class="">
-  <%= f.label :time %>
-  <%= f.text_field :time %>
-  </div>
+    <div class="">
+    <%= f.label :time %>
+    <%= f.text_field :time %>
+    </div>
 
-  <div class="">
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  </div>
+    <div class="">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    </div>
 
-  <div class="">
-  <%= f.label :text %>
-  <%= f.text_area :text %>
-  </div>
+    <div class="">
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+    </div>
 
-  <div class="">
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-  </div>
+    <div class="">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    </div>
 
-<%= f.submit "作成する", class:"#" %>
-<% end %>
+  <%= f.submit "作成する", class:"#" %>
+  <% end %>
+</div>
 <%# /ここまで旅程作成  %>
 
 
 -----------------------------------------------------
-<%# <h2>coccun作成中</h2> %>
-<div class="">
-<%= form_with(model: @product, local: true) do |f| %>
-    <%#= f.label :p_name %>
-    <%#= f.text_field :p_name %>
-    <div class="parents">
-        <%= f.fields_for :itinerarys do |i| %>
-            <%#= render "itinerarys_fields", f: i %>
-        <% end %>
-        <div class="links">
-            <%#= link_to_add_association "子供を追加", f, :itinerarys %>
-        </div>
-    </div>
-    <div class="actions">
-        <%#= f.submit %>
-    </div>
-<% end %>
 
 
 
 <%# 申し込みフォーム %>
 <h3>申し込みフォーム</h3>
 <div class="">
-<%= form_with(model: @event, url:confirm_product_events_path(@product), local: true) do |f| %>
-  <div class="number">
-    <%= f.label :num, '参加人数' %>
-    <%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %>  
+  <%# 料金 %>
+  <div>
+    <p>料金<%= @product.price %></p>
   </div>
+  <%# /料金 %>
+  <%= form_with(model: @event, url:confirm_product_events_path(@product), local: true) do |f| %>
+    <div class="number">
+      <%= f.label :num, '参加人数' %>
+      <%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %>  <%= @product.unit %>
+    </div>
 
-  <div class="plan_day">
-    <%= f.label :start_time, 'ご希望日' %>
-    <%= f.date_select :start_time %>
-  </div>
+    <div class="plan_day">
+      <%= f.label :start_time, 'ご希望日' %>
+      <%= f.date_select :start_time %>
+    </div>
 
-  <div class="submit">
-    <%= f.submit "確認画面へ", class:"#" %>
+    <div class="submit">
+      <%= f.submit "確認画面へ", class:"#" %>
+    </div>
+    <% end %>
   </div>
-  <% end %></div>
 
 
 <%= link_to "戻る", root_path, class:"#" %>
