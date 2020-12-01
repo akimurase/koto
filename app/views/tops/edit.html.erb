@@ -47,13 +47,11 @@
 <%= link_to "商品ページを追加する", new_product_path %>
 <div class="#">
   <% @products.each do |product|  %>
-    <%= link_to  edit_product_path do %>
-    <%#= link_to product_path(product.id) do %>
+    <%= link_to  edit_product_path(product.id) do %>
       <%= product.name %>
       <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
       <%= product.text %>
     <% end %>
-        <%#= link_to "「〇〇」の商品の編集ページへ行く", edit_product_path(@product.id) %>
   <% end %>
 </div>
 

@@ -17,6 +17,7 @@ class TopsController < ApplicationController
   def create
     @top = Top.new(tops_params)
     @top.save!
+    # @tops = Top.find_by(params[:id])
   end
 
   def edit
