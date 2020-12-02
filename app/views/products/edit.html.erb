@@ -60,8 +60,6 @@
   <div class="#">
     <% @points.each do |point|  %>
         <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
-        product<%= point.product_id %>
-        point<%= point.id %>
         <%= point.title %>
         <%= point.text %>
         <%= image_tag point.image, class: "#", :size => "260x180" if point.image.attached?  %>

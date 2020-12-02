@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.integer   :num_id
       t.integer   :user_id
       t.integer   :product_id
+      t.integer   :client_id
 
       t.timestamps
     end

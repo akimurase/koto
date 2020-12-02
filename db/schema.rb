@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
     t.integer "num_id"
     t.integer "user_id"
     t.integer "product_id"
+    t.integer "client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

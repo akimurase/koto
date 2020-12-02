@@ -1,22 +1,23 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    # @events = Event.all
   end
 
   def new
-    # @event = Event.new
+    @event = Event.new(event_params)
     # @product = Product.find(params[:product_id])
   end
 
   def confirm
     @event = Event.new(event_params)
-    render :_new if @event.invalid?
+    binding.pry
+    # render : if @event.invalid?
   end
 
   def create
-    @event = Event.new(event_params)
+    event = Event.new(event_params)
     binding.pry
-    @event.save!
+    event.save!
     # if params[:back]
     #   render :new
     # else pay_event && @event.save!
@@ -45,6 +46,6 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.require(:event).permit(:num_id, :start_time).merge(user_id: current_user.id)  #,:token
+    params.require(:event).permit(:num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
   end
 end

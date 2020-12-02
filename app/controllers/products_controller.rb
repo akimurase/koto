@@ -3,19 +3,22 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @product = Product.find_by(params[:id])
+    @product = Product.find(params[:format]) #現在のidを取得する為params[:format]を使用
     @points = Point.all #ポイントをproducts/indexに表示させる為に定義
     @itinerarys = Itinerary.all #旅程をproducts/indexに表示させる定義
-
+    @event = Event.new
   end
 
   def new
     @product = Product.new
+    binding.pry
   end
 
   def create
     product = Product.new(products_params)
     product.save!
+    binding.pry
+
   end
 
   def show

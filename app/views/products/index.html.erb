@@ -1,54 +1,33 @@
 <h1>Products#index</h1>
 <h3>商品の詳細ページ</h3>
 
-<div class="#">
-  <%= @product.name %>
-  <%= @product.title %>
-  <%= image_tag @product.image, class: "#", :size => "260x180" if @product.image.attached?  %>
-  <%= @product.text2 %>
-</div>
+<%# 管理者画面のビューを整えたあとコピーする%>
 
 
-<h3>おすすめポイント</h3>
-<div class="">
-  <div class="#">
-    <% @points.each do |point|  %>
-    <%= point.title %>
-    <%= point.text %>
-    <%= image_tag point.image, class: "#", :size => "260x180" if point.image.attached?  %>
-    <br>
-    <% end %>
-</div>
-
-<h3>旅程</h3>
-<div class="#">
-    <% @itinerarys.each do |itinerary|  %>
-    <%= itinerary.time %>
-    <%= itinerary.title %>
-    <%= itinerary.text %>
-    <%= image_tag itinerary.image, class: "#", :size => "260x180" if itinerary.image.attached?  %>
-    <br>
-    <% end %>
-</div>
-
-
+<%# 申し込みフォーム %>
 <h3>申し込みフォーム</h3>
 <div class="">
-<%= form_with(model: @event, url:confirm_product_events_path(@product), local: true) do |f| %>
-  <div class="number">
-    <%= f.label :num, '参加人数' %>
-    <%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %>  
+  <%# 料金 %>
+  <div>
+    <p>料金<%= @product.price %></p>
   </div>
+  <%# /料金 %>
+  <%= form_with url:new_product_event_path(@product.id), local: true do |f| %>
+    <div class="number">
+      <%= f.label :num, '参加人数' %>
+      <%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %>  <%= @product.unit %>
+    </div>
 
-  <div class="plan_day">
-    <%= f.label :start_time, 'ご希望日' %>
-    <%= f.date_select :start_time %>
+    <div class="plan_day">
+      <%= f.label :start_time, 'ご希望日' %>
+      <%= f.date_select :start_time %>
+    </div>
+
+    <div class="submit">
+      <%= f.submit "確認画面へ", class:"#" %>
+    </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="submit">
-    <%= f.submit "確認画面へ", class:"#" %>
-  </div>
-  <% end %></div>
-
-
-<%= link_to "topに戻る", root_path, class:"#" %>
+<%= link_to "戻る", root_path, class:"#" %>
