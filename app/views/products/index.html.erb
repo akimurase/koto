@@ -2,15 +2,14 @@
 <h1>Products#index</h1>
 <h3>商品の詳細ページ</h3>
 
-<%#= @product.price %>
 
-<%# <h3>申し込みフォーム</h3> %>
+<h3>申し込みフォーム</h3>
 
 <div class="#">
   <div class="#">
     <P>一人あたりの値段</P>
       <div class="#" >
-        <p>¥<span id="one_price">10,000</span></p>
+        <p>¥<span id="one_price"><%= @product.price %></span></p>
       </div>
     <P>合計金額</P>  
       <div class="#" id="total_price">
@@ -35,10 +34,11 @@
         <%= f.label :start_time, 'ご希望日' %>
         <%= f.date_select :start_time %>
       </div>
-
-      <div class="submit">
-        <%= f.submit "確認画面へ", class:"#" %>
-      </div>
+      <%# unless client_signed_in? %>
+        <div class="submit">
+          <%= f.submit "確認画面へ", class:"#" %>
+        </div>
+      <%# end %>
     <% end %>
   </div>
 </div>

@@ -4,13 +4,13 @@ class DeviseCreateClients < ActiveRecord::Migration[6.0]
   def change
     create_table :clients do |t|
       ## Database authenticatable
-      t.string :company_name 
-      t.string :c_kana
-      t.string :supervisor
-      t.string :s_kana
+      t.string :company_name,       null: false
+      t.string :c_kana,             null: false
+      t.string :supervisor,         null: false
+      t.string :s_kana,             null: false
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.string :tel
+      t.string :tel,                null: false
 
       ## Recoverable
       t.string   :reset_password_token

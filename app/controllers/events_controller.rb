@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    # @events = Event.all
+    @events = Event.all
   end
 
   def new
@@ -22,7 +22,6 @@ class EventsController < ApplicationController
     # else pay_event && @event.save!
       # redirect_to @event
     # end
-    binding.pry
   end
 
   def show
