@@ -22,6 +22,7 @@ class EventsController < ApplicationController
     # else pay_event && @event.save!
       # redirect_to @event
     # end
+    binding.pry
   end
 
   def show

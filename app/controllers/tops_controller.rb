@@ -12,6 +12,7 @@ class TopsController < ApplicationController
     # @top = Top.find_by(params[:id]) 
     # @products = Product.all #プロダクト画像
     # @product = Product.find(params[:id]) #もしtop/showでプロダクトの編集をす場合は、idを特定するためfind(params[:id])が必要
+    @event = Event.all
   end
 
   def create

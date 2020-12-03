@@ -1,3 +1,5 @@
+<h1>Events#nwe</h1>
+
 <h1>確認画面</h1>
 
   <div class="">
@@ -6,11 +8,31 @@
     <p>合計金額: <%= @event.price %></p>
   </div>
 
-<%= form_with  url:product_events_path, local: true do |f| %>
+<%= form_with  url:product_events_path, id: 'charge-form', local: true do |f| %>
 <%#= form_with  url:product_events_path(@event), local: true do |f| %>
   <%= f.hidden_field :num_id, value:@event.num.name %>
   <%= f.hidden_field :start_time, value:@event.start_time %>
   <%= f.hidden_field :price, value:@event.price %>
+
+  <%# 決済機能 %>
+  <h1>お支払い</h1>
+
+  <div class='form-wrap'>
+    <%= f.label :number,  "カード番号" %>
+    <%= f.text_field :number, class:"number", placeholder:"カード番号(半角英数字)", maxlength:"16" %>
+  </div>
+  <div class='form-wrap'>
+    <p>有効期限</p>
+    <div class='input-expiration-date-wrap'>
+      <%= f.text_field :exp_month, class:"exp_month", placeholder:"例)3" %>
+      <p>月</p>
+      <%= f.text_field :exp_year, class:"exp_year", placeholder:"例)24" %>
+      <p>年</p>
+    </div>
+  <div class='form-wrap'>
+    <%= f.label :cvc ,"ＣＶＣ" %>
+    <%= f.text_field :cvc, class:"cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"3" %>
+  </div>
 
   <%= f.submit "予約する" %>
   <%= f.submit "戻る", name: :back %>
