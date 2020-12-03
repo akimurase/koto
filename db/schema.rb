@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "start_time"
+    t.string "price"
     t.integer "num_id"
+    t.datetime "start_time"
     t.integer "user_id"
     t.integer "product_id"
     t.integer "client_id"

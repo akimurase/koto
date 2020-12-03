@@ -10,19 +10,19 @@ class EventsController < ApplicationController
 
   def confirm
     @event = Event.new(event_params)
-    binding.pry
+    # binding.pry
     # render : if @event.invalid?
   end
 
   def create
     event = Event.new(event_params)
-    binding.pry
     event.save!
     # if params[:back]
     #   render :new
     # else pay_event && @event.save!
       # redirect_to @event
     # end
+    binding.pry
   end
 
   def show
@@ -46,6 +46,7 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.require(:event).permit(:num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+    # params.require(:event).permit(:price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+    params.permit(:price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
   end
 end

@@ -16,6 +16,7 @@
     <h3>ユーザー</h3>
       <%= current_user.email %>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "#" %>
+      <%#= link_to '予約状況を見る', event_path, class: "#" %>
   <% else %>
     <h3>業者様</h3>
       <%= link_to "新規登録する", new_client_registration_path %>

@@ -1,31 +1,44 @@
+<%# 管理者画面のビューを整えたあとコピーする%>
 <h1>Products#index</h1>
 <h3>商品の詳細ページ</h3>
 
-<%# 管理者画面のビューを整えたあとコピーする%>
+<%#= @product.price %>
 
+<%# <h3>申し込みフォーム</h3> %>
 
-<%# 申し込みフォーム %>
-<h3>申し込みフォーム</h3>
-<div class="">
-  <%# 料金 %>
-  <div>
-    <p>料金<%= @product.price %></p>
+<div class="#">
+  <div class="#">
+    <P>一人あたりの値段</P>
+      <div class="#" >
+        <p>¥<span id="one_price">10,000</span></p>
+      </div>
+    <P>合計金額</P>  
+      <div class="#" id="total_price">
+        <p>¥0</p>
+      </div>
   </div>
-  <%# /料金 %>
-  <%= form_with url:new_product_event_path(@product.id), local: true do |f| %>
-    <div class="number">
-      <%= f.label :num, '参加人数' %>
-      <%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %>  <%= @product.unit %>
-    </div>
 
-    <div class="plan_day">
-      <%= f.label :start_time, 'ご希望日' %>
-      <%= f.date_select :start_time %>
-    </div>
+  <div class="#">
+    <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
 
-    <div class="submit">
-      <%= f.submit "確認画面へ", class:"#" %>
-    </div>
+      <div>
+        <%= f.hidden_field :price, id: "f_price"  %>
+      </div>
+
+      <div class="#">
+        <%= f.label :num, '参加人数' %>
+          <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
+        <%= f.select(:num_id, num_options, {}, {class:"#", data:{select:0}, id:"num" }) %>
+      </div>
+
+      <div class="plan_day">
+        <%= f.label :start_time, 'ご希望日' %>
+        <%= f.date_select :start_time %>
+      </div>
+
+      <div class="submit">
+        <%= f.submit "確認画面へ", class:"#" %>
+      </div>
     <% end %>
   </div>
 </div>
