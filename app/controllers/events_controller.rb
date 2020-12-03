@@ -10,13 +10,12 @@ class EventsController < ApplicationController
 
   def confirm
     @event = Event.new(event_params)
-    binding.pry
+    # binding.pry
     # render : if @event.invalid?
   end
 
   def create
     event = Event.new(event_params)
-    binding.pry
     event.save!
     # if params[:back]
     #   render :new

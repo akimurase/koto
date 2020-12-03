@@ -1,0 +1,17 @@
+<h1>確認画面</h1>
+
+  <div class="">
+    <p>参加人数: <%= @event.num.name %></p>
+    <p>ご希望日: <%= @event.start_time %></p>
+    <p>合計金額: <%= @event.price %></p>
+  </div>
+
+<%= form_with  url:product_events_path, local: true do |f| %>
+<%#= form_with  url:product_events_path(@event), local: true do |f| %>
+  <%= f.hidden_field :num_id, value:@event.num.name %>
+  <%= f.hidden_field :start_time, value:@event.start_time %>
+  <%= f.hidden_field :price, value:@event.price %>
+
+  <%= f.submit "予約する" %>
+  <%= f.submit "戻る", name: :back %>
+<% end %>
