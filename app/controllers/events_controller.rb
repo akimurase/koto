@@ -42,6 +42,11 @@ class EventsController < ApplicationController
     event.destroy
   end
 
+  def search_words
+    # @events = Event.search(params[:keyword])
+    @users = User.search(params[:keyword])
+  end
+
   private
   
   def event_params

@@ -10,6 +10,15 @@ class Event < ApplicationRecord
   # 後でバリデーション設定する :start_time,
   validates :num_id, presence: true
 
+  # <ワード検索時の処理>
+  def self.search(search)
+    if search != ""
+      Event.where('price LIKE(?)', "%#{search}%")
+    else
+      Event.all
+    end
+  end
+
   #決済機能 (後で詳しく設定する)
   # attr_accessor :token
 

@@ -13,16 +13,16 @@ Rails.application.routes.draw do
   }
 
   root to: 'tops#index'
-  resources :events #管理画面用
+  resources :events do #管理画面用
+    collection do
+      get 'search_words'
+    end
+  end 
 
   resources :tops
   resources :products do
     resources :points
     resources :itinerarys
-    resources :events do
-      collection do
-        post :confirm
-      end
-    end
+    resources :events 
   end
 end

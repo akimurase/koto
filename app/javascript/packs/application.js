@@ -11,7 +11,6 @@ require("../price")
 require("../card")
 // require('jquery')
 // require('jquery_ujs')
-
 // import "cocoon" 
 
 
