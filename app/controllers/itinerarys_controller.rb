@@ -9,7 +9,6 @@ class ItinerarysController < ApplicationController
   def create
     @itinerary = Itinerary.new(itinerarys_params)
     @itinerary.save!
-    binding.pry
     product_id = Product.find(params[:product_id]) #帰る先のプロダクトidをfind(params[:product_id])で取得
     redirect_to edit_product_path(product_id) #どのプロダクトに帰るかidを指定
   end

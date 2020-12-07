@@ -20,7 +20,7 @@ class Event < ApplicationRecord
   end
 
   #決済機能 (後で詳しく設定する)
-  # attr_accessor :token
+  attr_accessor :token
 
 
 
