@@ -61,8 +61,6 @@ gem "carrierwave"
 gem 'mini_magick'
 gem 'ransack'
 # gem 'payjp'
-
-
 # gem 'cocoon'
 # gem 'jquery-rails'
 
