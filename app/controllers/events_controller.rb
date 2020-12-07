@@ -63,7 +63,7 @@ class EventsController < ApplicationController
   end
 
   def search_event
-    # @e = Event.ransack(params[:q])
+    @e = Event.ransack(params[:q])
   end
 
   def set_event_column #重複をなくす
