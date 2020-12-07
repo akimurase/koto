@@ -5,7 +5,10 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new(event_params)
-    # @product = Product.find(params[:product_id])
+    @user = User.find(current_user.id)
+    # @user = User.all
+    @product = Product.find(params[:product_id])
+    # binding.pry
   end
 
   def confirm
@@ -30,6 +33,8 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    # @user = User.where()
+    # @product = Product.all
   end
   
   def update
@@ -51,6 +56,6 @@ class EventsController < ApplicationController
   
   def event_params
     # params.require(:event).permit(:price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
-    params.permit(:price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+    params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
   end
 end
