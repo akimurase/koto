@@ -59,10 +59,9 @@ gem 'active_hash'
 gem 'simple_calendar', '~> 2.0'
 gem "carrierwave"
 gem 'mini_magick'
-gem 'ransack'
-# gem 'payjp'
-
-
+gem 'ransack', '~>2.3.2'
+# gem 'ransack'
+gem 'payjp'
 # gem 'cocoon'
 # gem 'jquery-rails'
 

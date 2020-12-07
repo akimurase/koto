@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get 'search_words'
     end
   end 
+  get 'events/search' 
 
   resources :tops
   resources :products do
