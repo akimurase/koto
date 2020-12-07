@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
 
-  before_action :search_event, only: [:index, :search]
+  before_action :search_event, only: [:index, :search, :show]
   
   def index
+    # @e = Event.ransack(params[:q])
     @events = Event.all
     set_event_column
   end
@@ -32,7 +33,9 @@ class EventsController < ApplicationController
   end
 
   def show
+    # @e = Event.ransack(params[:q])
     @event = Event.find_by(id: params[:id])
+    @results = @e.result#.includes(:event)
   end
 
   def edit
@@ -57,6 +60,7 @@ class EventsController < ApplicationController
   end
 
   def search
+    # @e = Event.ransack(params[:q])
     @results = @e.result#.includes(:event)
   end
 
