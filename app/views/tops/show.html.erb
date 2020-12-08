@@ -1,2 +1,35 @@
 <h1>tops#show</h1>
 
+<div class='' >
+  <% if client_signed_in? %>
+    <h3>業者様</h3>
+      <%= current_client.email %>
+        <% if @top == nil %>
+          <%= link_to "新規top画面を作成する", new_top_path %>
+        <% else %>
+        <%= link_to "管理者画面に行く", edit_top_path(@top.id) %>
+        <% end %>
+      <%= link_to "予約管理画面", events_path %>
+      <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class: "#" %>
+  <% elsif user_signed_in? %>
+    <h3>ユーザー</h3>
+      <%= current_user.email %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "#" %>
+      <%#= link_to '予約状況を見る', event_path, class: "#" %>
+  <% else %>
+    <h3>業者様</h3>
+      <%= link_to "新規登録する", new_client_registration_path %>
+      <%= link_to "ログイン", new_client_session_path %>
+    <h3>ユーザー</h3>
+      <%= link_to "新規登録する", new_user_registration_path %>
+      <%= link_to "ログイン", new_user_session_path %>
+  <% end %>
+</div>
+
+<%# 画像と動画の複数枚表示 %>
+<%# @tops.each do |top| %>
+  <%#= video_tag(top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
+<%# end %>
+<%# @tops.each do |top| %>
+  <%#= image_tag top.image, class: "#", :size => "260x180"%>
+<%# end %>

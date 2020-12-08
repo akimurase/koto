@@ -1,73 +1,136 @@
 <h1>Tops#index</h1>
 
-<%# 業者用 %>
-<div>
-  <% if client_signed_in? %>
-    <h3>業者様</h3>
-      <%= current_client.email %>
-        <% if @top == nil %>
-          <%= link_to "新規top画面を作成する", new_top_path %>
-        <% else %>
-        <%= link_to "管理者画面に行く", edit_top_path(@top.id) %>
+
+<div class=""></div>
+
+<div class="main">
+
+  <div class="ヘッダー">
+    <div class="ハンバーガー" >
+      <%# ユーザー %>
+      <div class='ユーザー' >
+        <% if user_signed_in? %>
+          <div class="">
+            <div class="">
+            <%= current_user.name %>
+            </div>
+            <div class="">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "#" %>
+            </div>
+            <div class="">
+            <%#= link_to '予約状況を見る', event_path, class: "#" %>
+            </div>
+          </div>
+          <% else %>
+          <h3>ユーザー</h3>
+          <div class="">
+            <div class="">
+              <%= link_to "新規登録する", new_user_registration_path %>
+            </div>
+            <div class="">
+              <%= link_to "ログイン", new_user_session_path %>
+            </div>
+          </div>
         <% end %>
-      <%= link_to "予約管理画面", events_path %>
-      <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class: "#" %>
-  <% elsif user_signed_in? %>
-    <h3>ユーザー</h3>
-      <%= current_user.email %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "#" %>
-      <%#= link_to '予約状況を見る', event_path, class: "#" %>
-  <% else %>
-    <h3>業者様</h3>
-      <%= link_to "新規登録する", new_client_registration_path %>
-      <%= link_to "ログイン", new_client_session_path %>
-    <h3>ユーザー</h3>
-      <%= link_to "新規登録する", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-  <% end %>
-</div>
-
-<br>
-
-<% if @top == nil %>
-  <p>HTML直打ちのダミー</p>
-
-<% else %>
-<%# 一枚表示はfind_by(params[:id]) 複数枚はallデータを取得 %>
-<div class="" >
-  <%# 動画表示一枚%>
-  <div class="" >
-    <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
-    <div class="" >
-      <%# 画像表示 %>
-      <div class="" >
-        <%= image_tag @top.image, class: "#", :size => "260x180"%>
       </div>
-      <h3><%= @top.title %></h3>
+
+      <%# プロダクト %>
+      <div class="プロダクト">
+        <div class="">
+          <% @products.each do |product|  %>
+            <%= link_to products_path(product.id) do %>
+            <%= product.name %>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
-<% end %>
 
-<%# 商品 %>
-<br>
-<div class="#">
-  <% @products.each do |product|  %>
-    <%= link_to products_path(product.id) do %>
-      <%= product.name %>
-      <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
-      <%= product.text %>
-    <% end %>
+<%# 動画 %>
+<div class="トップ動画全体">
+  <% if @top == nil %>
+    <p>HTML直打ちのダミー動画</p>
+  <% else %>
+    <%# 一枚表示はfind_by(params[:id]) 複数枚はallデータを取得 %>
+    <div class="トップ動画" >
+      <%# 動画表示%>
+      <div class="動画" >
+        <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
+        <div class="" >
+          <div class="ロゴ表示" >
+            <%= image_tag @top.image, class: "#", :size => "260x180"%>
+          </div>
+          <div class="タイトル" >
+            <h3><%= @top.title %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
+  <%# 商品 %>
+  <div class="プロダクト">
+    <% @products.each do |product|  %>
+      <%= link_to products_path(product.id) do %>
+        <div class="">
+          <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
+        </div>
+        <div class="">
+          <%= product.name %>
+        </div>
+        <div class="">
+          <%= product.text %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
 
+  <div class="フッター">
+    <%#業者用 %>
+    <div class='' >
+      <% if client_signed_in? %>
+        <div class="">
+          <h3>管理者</h3>
+            <%= current_client.company_name %>
+            <div class="">
+              <% if @top == nil %>
+                <div class="">
+                  <%= link_to "新規top画面を作成する", new_top_path %>
+                </div>
+              <% else %>
+                <div class="">
+                  <%= link_to "管理者画面に行く", edit_top_path(@top.id) %>
+                </div>
+              <% end %>
+            </div>
+            <div class="">
+              <div class="">
+                <%= link_to "予約管理画面", events_path %>
+              </div>
+              <div class="">
+                <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class: "#" %>
+              </div>
+            </div>
+            <% else %>
+          <h3>管理者</h3>
+            <div class="">
+              <div class="">
+                <%= link_to "新規登録する", new_client_registration_path %>
+              </div>
+              <div class="">
+                <%= link_to "ログイン", new_client_session_path %>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<%# 画像と動画の複数枚表示 %>
-<%# @tops.each do |top| %>
-  <%#= video_tag(top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
-<%# end %>
-<%# @tops.each do |top| %>
-  <%#= image_tag top.image, class: "#", :size => "260x180"%>
-<%# end %>
+
+</div>
+
+
