@@ -1,26 +1,51 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+<%# <div class="background_img_devise" style="background-image: url(<%= @top.title);> </div> %>
+<%# <div class="background_img_devise" style="background-image: url('');"> </div>%>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<%# ここ背景は画像にしたい %>
+<div class="background_client" > 
+
+  <div class="devise_kid container p-3 mb-2 bg-white text-dark">
+    <div class=" ">
+      <div class="devise_inside">
+        <h2 class="m-3">ログイン</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <p class="devise_title"><%= f.label :メール %></p>
+            <ul class="login_ul">
+              <li class="m-3 "><p class="text-danger">必須</p></li>
+              <li class="m-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"devise_form" %></li>
+            </ul>
+          </div>
+
+          <div class="field">
+            <p class="devise_title"><%= f.label :パスワード %></p>
+            <ul class="login_ul">
+              <li class="m-3 "><p class="text-danger">必須</p></li>
+              <li class="m-3"><%= f.password_field :password, autocomplete: "current-password", class:"devise_form" %></li>
+            </ul>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "👉  ログイン >", class:"btn btn-danger w-75 p-2 shadow rounded " placeholder:"例）kototabi@koto.com"%>
+          </div>
+            <p>パスワードをお忘れの方
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <%= link_to "こちら", new_password_path(resource_name) %><br />
+            <% end %>
+            </p>
+        <% end %>
+
+        <hr class="m-4" width="95%" >
+
+        <p>アカウントがない方</p>
+        <p>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "新規登録（無料）", new_registration_path(resource_name), class:"btn btn-light w-50 p-2 border" %><br />
+        <% end %>
+        </p>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "clients/shared/links" %>
+</div>

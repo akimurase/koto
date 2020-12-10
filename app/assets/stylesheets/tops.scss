@@ -1,3 +1,89 @@
-// Place all the styles related to the tops controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// all
+label{
+  margin:0;
+}
+
+li {
+  list-style:  none;
+}
+
+
+
+// devise
+.login_ul{
+  display: flex;
+}
+
+.background_client{
+  background-color:rgb(230, 230, 230);
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative;	 */
+}
+
+.devise_kid{
+  /* position: absolute; */
+}
+
+.devise_form{
+  width:350px;
+  height:35px;
+}
+
+.devise_title{
+  margin:0;
+}
+
+.login_ul{
+  /* margin-top:0; */
+}
+
+
+
+
+
+
+
+
+// tops
+
+
+.main_container {
+}
+
+.top_video_main {
+}
+
+.top_img_ul {
+margin: 0px;
+padding: 0px;
+display: flex;
+}
+
+
+.main{
+  color: white;
+}
+
+.parent{
+  width :360px;
+  height: 360px;
+  background-color: pink;
+  margin: 40px;
+}
+
+.child{
+  width :200px;
+  height: 200px;
+  background-color: skyblue;
+}
+
+
+
+.q {
+  background-image: url(@top.video_top.to_s);
+  background-color: aquamarine;
+  height: 100px;
+}
