@@ -1,6 +1,7 @@
 class TopsController < ApplicationController
   def index
     @top = Top.find_by(params[:id])
+    # binding.pry
     @products = Product.all #top/indexでproductのデータを表示させる為。元々レンダーで_product.htmlを表示させる為の定義だった。
   end
 

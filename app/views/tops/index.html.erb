@@ -3,7 +3,7 @@
 
 <div class=""></div>
 
-<div class="main">
+<div class="main_container">
 
   <div class="ヘッダー">
     <div class="ハンバーガー" >
@@ -49,44 +49,48 @@
   </div>
 
 <%# 動画 %>
-<div class="トップ動画全体">
+<div class="top_video_content" >
   <% if @top == nil %>
     <p>HTML直打ちのダミー動画</p>
   <% else %>
     <%# 一枚表示はfind_by(params[:id]) 複数枚はallデータを取得 %>
-    <div class="トップ動画" >
+    <div class="top_video_container" >
       <%# 動画表示%>
-      <div class="動画" >
-        <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
-        <div class="" >
-          <div class="ロゴ表示" >
-            <%= image_tag @top.image, class: "#", :size => "260x180"%>
-          </div>
-          <div class="タイトル" >
-            <h3><%= @top.title %></h3>
-          </div>
+      <div class="top_video" >
+        <%= video_tag(@top.video_top,:loop => true, :autoplay => true, :muted => true) %> 
+        <div class="top_hero" >
+          <%= image_tag @top.image, class: "top_logo", :size => "260x180"%>
+          <h3 class="top_title"><%= @top.title %></h3>
         </div>
       </div>
     </div>
   <% end %>
 </div>
 
+
+
   <%# 商品 %>
-  <div class="プロダクト">
-    <% @products.each do |product|  %>
-      <%= link_to products_path(product.id) do %>
-        <div class="">
-          <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
-        </div>
-        <div class="">
-          <%= product.name %>
-        </div>
-        <div class="">
-          <%= product.text %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <%# <div class="row"> %>
+    <div class="top_img" >
+      <ul class="top_img_ul row">
+        <% @products.each do |product| %>
+          <li class="top_img_li">
+            <%= link_to products_path(product.id) do %>
+              <div class="">
+                <%= image_tag product.image, :size => "260x180" if product.image.attached?  %>
+                <p class="">
+                  <%= product.name %>
+                </p>
+                <p class="">
+                  <%= product.text %>
+              </div>
+              </p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <%# </div> %>
 
 
   <div class="フッター">
@@ -130,7 +134,68 @@
     </div>
   </div>
 
-
 </div>
 
 
+
+
+
+
+
+
+<hr>
+
+    <div class="main">
+      <div class="parent">
+        <%= @products.name %>
+        <div class="child">
+          <%= @products.name %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="products_contents" >
+      <ul class="products_items_ul">
+        <% @products.each do |product| %>
+          <li class="products_items_li">
+            <%= link_to products_path(product.id) do %>
+              <div class="products_hero" >
+                <%= image_tag product.image, :size => "260x180" if product.image.attached?  %>
+                <%#= image_tag product.image.variant(resize: '500x500'), if product.image.attached? %>
+
+              <div class="" style="background-image: url(<%= rails_blob_path(product.image) %>); background-color: aquamarine; height: 50px;"></div>
+                <div class="">
+                    <h4><%= product.name %></h4>
+                    <%= product.text %>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+<style>
+.img{
+  width: 100vw;
+  background-image: image-url('IMG_1500.jpg');
+  background-color: gray;
+  height: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.video{
+  width:100vh;
+}
+
+</style>
+<div class="img"></div>
+
+
+<div class="" style="background-image: url(<%= rails_blob_path(@top.image) %>); background-color: aquamarine; height: 125px;"></div>
+<div class="" style="background-image: url(<%= @top.video_top.to_s  %>); background-color: gray; height: 50px;"></div>
+
+<%= video_tag @top.video_top, :loop => true, :autoplay => true, :muted => true, :size => "260x180", class:"video" %> 

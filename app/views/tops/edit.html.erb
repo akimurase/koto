@@ -31,28 +31,41 @@
 
 
 <%# top %>
-<div class="" >
-  <div class="" >
-    <%= video_tag(@top.video_top.to_s,:loop => true, :autoplay => true, :muted => true) %> 
-    <div class="" >
-      <div class="" >
-        <%= image_tag @top.image, class: "#", :size => "260x180"%>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div  >
+        <%= video_tag @top.video_top, class:"top_video", :loop => true, :autoplay => true, :muted => true %> 
+        <div class="top_hero" >
+          <%= image_tag @top.image, class: "top_logo" %>
+          <h3 class="top_title"><%= @top.title %></h3>
+        </div>
       </div>
-      <h3><%= @top.title %></h3>
     </div>
   </div>
 </div>
 
-<%# product %>
-<%= link_to "商品ページを追加する", new_product_path %>
-<div class="#">
-  <% @products.each do |product|  %>
-    <%= link_to  edit_product_path(product.id) do %>
-      <%= product.name %>
-      <%= image_tag product.image, class: "#", :size => "260x180" if product.image.attached?  %>
-      <%= product.text %>
-    <% end %>
-  <% end %>
+
+
+
+
+  <%# 商品 %>
+<div class="container-fluid">
+    <div class="row row-cols-3">
+      <% @products.each do |product| %>
+        <div class="products_hero col">
+          <%= link_to edit_product_path(product.id) do %>
+            <%= image_tag product.image,  class:"products_img" if product.image.attached?  %>
+            <div class="products_info">
+              <p class="products_name"><%= product.name %></p>
+              <p class="products_text"><%= product.text %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 </div>
 
+
+<%= link_to "商品ページを追加する", new_product_path %>
 <%=link_to 'もどる', root_path, class:"back-btn" %>

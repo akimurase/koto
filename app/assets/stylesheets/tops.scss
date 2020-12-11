@@ -10,9 +10,6 @@ li {
 
 
 // devise
-.login_ul{
-  display: flex;
-}
 
 .background_client{
   background-color:rgb(230, 230, 230);
@@ -25,6 +22,10 @@ li {
 
 .devise_kid{
   /* position: absolute; */
+}
+
+.login_ul{
+  display: flex;
 }
 
 .devise_form{
@@ -41,49 +42,59 @@ li {
 }
 
 
-
-
-
-
-
-
 // tops
-
-
-.main_container {
+.col {
+  padding: 0;
 }
 
-.top_video_main {
+.top_video {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.top_img_ul {
-margin: 0px;
-padding: 0px;
-display: flex;
+.top_hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
-
-.main{
-  color: white;
+.top_title {
+  text-align: center;
+  color: aliceblue;
 }
 
-.parent{
-  width :360px;
-  height: 360px;
-  background-color: pink;
-  margin: 40px;
+// products
+.products_hero {
+  position: relative;
 }
 
-.child{
-  width :200px;
-  height: 200px;
-  background-color: skyblue;
+.products_items {
 }
 
+.products_info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
 
+.products_name {
+  text-align: center;
+  color: aliceblue;
+}
 
-.q {
-  background-image: url(@top.video_top.to_s);
-  background-color: aquamarine;
-  height: 100px;
+.products_text {
+  text-align: center;
+  color: aliceblue;
+}
+
+.products_img {
+  width: 100%;
+  height: 100%;
 }
