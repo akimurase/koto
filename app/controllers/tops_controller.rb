@@ -1,7 +1,6 @@
 class TopsController < ApplicationController
   def index
-    @top = Top.find_by(params[:id])
-    # binding.pry
+    @top = Top.find(current_client.id)
     @products = Product.all #top/indexでproductのデータを表示させる為。元々レンダーで_product.htmlを表示させる為の定義だった。
   end
 
@@ -23,7 +22,7 @@ class TopsController < ApplicationController
   end
 
   def edit
-    @top = Top.find_by(params[:id]) #データ取得（トップ動画再生と編集データ取得）
+    @top = Top.find(params[:id]) #データ取得（トップ動画再生と編集データ取得）
     @products = Product.all #プロダクト画像
 
   end

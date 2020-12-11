@@ -46,11 +46,13 @@
 <%#= link_to "「〇〇」の商品ページを編集する", edit_product_path(@product.id) %>
 <%= button_to "「〇〇」の商品ページを削除する", product_path(@product.id), method: :delete %>
 
-<div class="#">
-  <%= @product.name %>
-  <%= @product.title %>
+<div class="">
+    <div>
+      <%= @product.name %>
+      <%= @product.title %>
+      <%= @product.text2 %>
+    </div>
   <%= image_tag @product.image, class: "#", :size => "260x180" if @product.image.attached?  %>
-  <%= @product.text2 %>
 </div>
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
