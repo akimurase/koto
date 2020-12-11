@@ -67,7 +67,28 @@ li {
   color: aliceblue;
 }
 
+
+
+// 中間
+.section {
+  text-align: center;
+  display: block;
+}
+
+span {
+}
+
+small {
+  display: block;
+  margin-top: 5px;
+}
+
+
 // products
+.products-container {
+  margin-top: -2.9px;
+}
+
 .products_hero {
   position: relative;
 }
