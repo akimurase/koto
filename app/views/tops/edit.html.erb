@@ -88,7 +88,7 @@
       <% @products.each do |product| %>
         <div class="products_hero col">
           <%= link_to edit_product_path(product.id) do %>
-            <%= image_tag product.image,  class:"products_img" if product.image.attached?  %>
+            <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
             <div class="products_info">
               <p class="products_name"><%= product.name %></p>
               <p class="products_text"><%= product.text %></p>

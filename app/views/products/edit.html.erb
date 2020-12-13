@@ -1,5 +1,205 @@
 <h1>Products#edit</h1>
 
+
+<div class="products-wrap">
+  <div class="products-wrap-main">
+    <%# ここから見出し %>
+    <div class="products-heading">
+      <h1>【<%= @product.name %>】</h1>
+      <p><%= @product.title %></p>
+      <p><%= @product.text2 %></p>
+    </div>
+    <%# ここまで見出し %>
+
+    <div class="products-show-container">
+      <div class="products-show-container-main">
+        <div class="">
+          <%= image_tag @product.image, class:"products_show_img" if @product.image.attached?  %>
+        </div>
+        <%# ここからポイント%>
+        <div class="point-container">
+        
+        <%# ポイントの追加 %>
+        <h3>ポイントの追加</h3>
+          <div class="">
+            <%= form_with url:product_points_path(@product.id), local: true do |f| %>
+            <div class="#">
+              <%= f.label :title %>
+              <%= f.text_field :title %>
+            </div>
+            <div class="">
+              <%= f.label :text %>
+              <%= f.text_area :text %>
+            </div>
+            <div class="">
+              <%= f.label :image %>
+              <%= f.file_field :image %>
+            </div>
+            <%= f.submit "追加する", class:"#" %>
+            <% end %>
+          </div>
+        <%# /ここまでポイント %>
+
+          <h3>おすすめポイント</h3>
+            <div class="point-content">
+              <% @points.each do |point|  %>
+                <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
+                  <%# 編集用のフォーム %>
+                  <%= form_with model: @point, url:product_point_path(@product, point.id), method: :PATCH, local: true do |f| %>
+                    <div class="point-item">
+                      <div class="point-item-info">
+                        <div class="#">
+                          <%= f.text_field :title, value:point.title, class:"point-item-title" %>
+                        </div>
+                        <div class="">
+                          <%= f.text_area :text, value:point.text, class:"point-item-text" %>
+                        </div>
+                      </div>
+                      <div class="point-item-img">
+                        <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
+                        <p class="m-3"><%= f.file_field :image %></p>
+                      </div>
+                    </div>
+                    <div class="">
+                      <%= f.submit "編集する", class:"#" %>
+                    </div>
+                    <div class="">
+                      <%= button_to "削除する", product_point_path(@product, point.id), method: :delete %>
+                    </div>
+                    <hr>
+                  <% end %>
+              <% end %>
+            </div>
+        </div>
+
+
+        <%# ここから旅程作成 表題もクライアントが作れる用にする %>
+        <h3>旅程</h3>
+        <div class="">
+            <% @itinerarys.each do |itinerary|  %>
+                <%= itinerary.time %>
+                <%= itinerary.title %>
+                <%= itinerary.text %>
+                <%= image_tag itinerary.image, class: "#", :size => "260x180" if itinerary.image.attached?  %>
+                  <%# 編集用のフォーム %>
+                  <h4>旅程編集</h4>
+                  <%= form_with model: @itinerary, url:product_itinerary_path(@product, itinerary.id), method: :PATCH, local: true do |f| %>
+                    <div class="#">
+                      <%= f.label :time %>
+                      <%= f.text_field :time %>
+                    </div>
+
+                    <div class="#">
+                      <%= f.label :title %>
+                      <%= f.text_field :title %>
+                    </div>
+
+                    <div class="">
+                      <%= f.label :text %>
+                      <%= f.text_area :text %>
+                    </div>
+
+                    <div class="">
+                      <%= f.label :image %>
+                      <%= f.file_field :image %>
+                    </div>
+
+                    <%= f.submit "編集する", class:"#" %>
+                    <% end %>
+                  <%= button_to "削除する", product_itinerary_path(@product, itinerary.id), method: :delete %>
+                <br>
+            <% end %>
+        </div>
+
+        <%# 旅程追加 %>
+        <h3>旅程追加 </h3>
+        <div>
+          <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
+
+            <div class="">
+            <%= f.label :time %>
+            <%= f.text_field :time %>
+            </div>
+
+            <div class="">
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+            </div>
+
+            <div class="">
+            <%= f.label :text %>
+            <%= f.text_area :text %>
+            </div>
+
+            <div class="">
+            <%= f.label :image %>
+            <%= f.file_field :image %>
+            </div>
+
+          <%= f.submit "作成する", class:"#" %>
+          <% end %>
+        </div>
+        <%# /ここまで旅程作成  %>
+      </div><%# products-show-container-main %>
+
+      <%# 申し込みフォーム %>
+      <div class="form-contents">
+        <div class=form-item>
+          <h3>申し込みフォーム</h3>
+          <div class="#">
+            <P>合計金額</P>  
+              <div class="#" id="total_price">
+                <p>¥0</p>
+              </div>
+            <P>一人あたりの値段</P>
+              <div class="#" >
+                <p>¥<span id="one_price"><%= @product.price %></span></p>
+              </div>
+          </div>
+
+          <div class="#">
+            <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
+
+              <div>
+                <%= f.hidden_field :price, id: "f_price"  %>
+              </div>
+
+              <div class="#">
+                <%= f.label :num, '参加人数' %>
+                  <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
+                <%= f.select(:num_id, num_options, {}, {class:"#", data:{select:0}, id:"num" }) %>
+              </div>
+
+              <div class="plan_day">
+                <%= f.label :start_time, 'ご希望日' %>
+                <%= f.date_select :start_time %>
+              </div>
+              <%# unless client_signed_in? %>
+                <div class="submit">
+                  <%= f.submit "確認画面へ", class:"#" %>
+                </div>
+              <%# end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div><%# products_show_container"%>
+  </div>
+</div>
+
+
+
+-----------------------------------------------------
+<div class="products_show_container container-fluid">
+  <div class="row">
+    <div class="col-8">col-8
+    </div><%# col-8" %>
+    <div class="col-4">col-4
+    </div><%# col-4 %>
+  </div><%#row%>
+</div>
+
+
 <h3>商品の詳細編集</h3>
 <%= form_with model: @product, local: true do |f| %>
 
@@ -37,6 +237,7 @@
 <div class="#">
   <%= f.label :unit %>
   <%= f.text_field :unit %>
+</div>
 
 <%= f.submit "編集する", class:"#" %>
 <% end %>
@@ -47,189 +248,7 @@
 <%= button_to "「〇〇」の商品ページを削除する", product_path(@product.id), method: :delete %>
 
 <div class="">
-    <div>
-      <%= @product.name %>
-      <%= @product.title %>
-      <%= @product.text2 %>
-    </div>
-  <%= image_tag @product.image, class: "#", :size => "260x180" if @product.image.attached?  %>
-</div>
-
-ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-<%# ここからポイント%>
-<h3>おすすめポイント</h3>
-<div class="">
-  <div class="#">
-    <% @points.each do |point|  %>
-        <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
-        <%= point.title %>
-        <%= point.text %>
-        <%= image_tag point.image, class: "#", :size => "260x180" if point.image.attached?  %>
-            <%# 編集用のフォーム %>
-          <%= form_with model: @point, url:product_point_path(@product, point.id), method: :PATCH, local: true do |f| %>
-            <div class="#">
-              <%= f.label :title %>
-              <%= f.text_field :title %>
-            </div>
-
-            <div class="">
-              <%= f.label :text %>
-              <%= f.text_area :text %>
-            </div>
-
-            <div class="">
-              <%= f.label :image %>
-              <%= f.file_field :image %>
-            </div>
-
-            <%= f.submit "編集する", class:"#" %>
-            <% end %>
-          <%= button_to "削除する", product_point_path(@product, point.id), method: :delete %>
-        <br>
-    <% end %>
-</div>
-
-<%# 追加 %>
-<div class="">
-  <%= form_with url:product_points_path(@product.id), local: true do |f| %>
-
-  <div class="#">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="">
-    <%= f.label :text %>
-    <%= f.text_area :text %>
-  </div>
-
-  <div class="">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-
-  <%= f.submit "追加する", class:"#" %>
-  <% end %>
-</div>
-<%# /ここまでポイント %>
-
-ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-<%# ここから旅程作成 表題もクライアントが作れる用にする %>
-<h3>旅程</h3>
-<div class="">
-  <div class="#">
-    <% @itinerarys.each do |itinerary|  %>
-        <%= itinerary.time %>
-        <%= itinerary.title %>
-        <%= itinerary.text %>
-        <%= image_tag itinerary.image, class: "#", :size => "260x180" if itinerary.image.attached?  %>
-            <%# 編集用のフォーム %>
-          <%= form_with model: @itinerary, url:product_itinerary_path(@product, itinerary.id), method: :PATCH, local: true do |f| %>
-            <div class="#">
-              <%= f.label :time %>
-              <%= f.text_field :time %>
-            </div>
-
-            <div class="#">
-              <%= f.label :title %>
-              <%= f.text_field :title %>
-            </div>
-
-            <div class="">
-              <%= f.label :text %>
-              <%= f.text_area :text %>
-            </div>
-
-            <div class="">
-              <%= f.label :image %>
-              <%= f.file_field :image %>
-            </div>
-
-            <%= f.submit "編集する", class:"#" %>
-            <% end %>
-          <%= button_to "削除する", product_itinerary_path(@product, itinerary.id), method: :delete %>
-        <br>
-    <% end %>
-</div>
-
-<%# 追加 %>
-<div>
-  <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
-
-    <div class="">
-    <%= f.label :time %>
-    <%= f.text_field :time %>
-    </div>
-
-    <div class="">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    </div>
-
-    <div class="">
-    <%= f.label :text %>
-    <%= f.text_area :text %>
-    </div>
-
-    <div class="">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-    </div>
-
-  <%= f.submit "作成する", class:"#" %>
-  <% end %>
-</div>
-<%# /ここまで旅程作成  %>
-
-
------------------------------------------------------
-
-
-
-<%# 申し込みフォーム %>
-<h3>申し込みフォーム</h3>
-
-<div class="#">
-  <div class="#">
-    <P>一人あたりの値段</P>
-      <div class="#" >
-        <p>¥<span id="one_price"><%= @product.price %></span></p>
-      </div>
-    <P>合計金額</P>  
-      <div class="#" id="total_price">
-        <p>¥0</p>
-      </div>
-  </div>
-
-  <div class="#">
-    <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
-
-      <div>
-        <%= f.hidden_field :price, id: "f_price"  %>
-      </div>
-
-      <div class="#">
-        <%= f.label :num, '参加人数' %>
-          <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
-        <%= f.select(:num_id, num_options, {}, {class:"#", data:{select:0}, id:"num" }) %>
-      </div>
-
-      <div class="plan_day">
-        <%= f.label :start_time, 'ご希望日' %>
-        <%= f.date_select :start_time %>
-      </div>
-      <%# unless client_signed_in? %>
-        <div class="submit">
-          <%= f.submit "確認画面へ", class:"#" %>
-        </div>
-      <%# end %>
-    <% end %>
-  </div>
-</div>
-
 <%= link_to "戻る", root_path, class:"#" %>
+</div>
 
-
-
-
-
+---------------------------------------------------------
