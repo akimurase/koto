@@ -1,3 +1,19 @@
-// Place all the styles related to the events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// event
+.form-contents {
+  margin-left: 60px;
+  float: left;
+}
+
+.form-item {
+  position: fixed;
+  top: 300px;
+  left: auto;
+  right: 170px;
+  width: 350px;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px;
+  border: 0.1px solid;
+}
+
