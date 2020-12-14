@@ -17,7 +17,7 @@ const price = function () {
       // 計算する
       const total = (displayPriceOneInteger*dataNum);
       // 正規表現でカンマ区切りにする
-      const totalComma = total.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY'});
+      const totalComma = total.toLocaleString('ja-JP');
       // 表示する
       totalPrice.innerHTML = totalComma;
       // ----<フォームに入力>

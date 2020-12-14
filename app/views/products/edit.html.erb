@@ -52,8 +52,6 @@
         </div>
 
 
-
-
         <%# ここから旅程作成 表題もクライアントが作れる用にする %>
         <h3>旅程</h3>
         <div class="itinerary_content">
@@ -90,38 +88,42 @@
       <%# 申し込みフォーム %>
       <div class="form-contents">
         <div class=form-item>
-          <h3>申し込みフォーム</h3>
-          <div class="#">
-            <P>合計金額</P>  
-              <div class="#" id="total_price">
-                <p>¥0</p>
+          <div class="form-price">
+            <div class="form-price-total">
+              <div class="form-price-one-inside">
+                <P>合計金額</P>  
+                <h4>¥<span id="total_price">0</span></h4>
               </div>
-            <P>一人あたりの値段</P>
-              <div class="#" >
-                <p>¥<span id="one_price"><%= @product.price %></span></p>
+            </div>
+            <div class="form-price-one">
+              <div class="form-price-one-inside">
+                <h5>¥<span id="one_price"><%= @product.price %></span>/<span><%= @product.unit %></span></span></h5>
               </div>
+            </div>
           </div>
 
-          <div class="#">
-            <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
-
-              <div>
-                <%= f.hidden_field :price, id: "f_price"  %>
-              </div>
-
-              <div class="#">
-                <%= f.label :num, '参加人数' %>
+          <div class="form-input">
+            <%= form_with url:edit_product_path(@product.id), method: :get, local: true do |f| %>
+              <%= f.hidden_field :price, id: "f_price"  %>
+              <div class="form-num">
+                <div class="form-num-title-box">
+                  <p><span><%= @product.unit %></span><%= f.label :num, '数' %></p>
+                </div>
+                <div class="form-num-select-box">
                   <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
-                <%= f.select(:num_id, num_options, {}, {class:"#", data:{select:0}, id:"num" }) %>
+                  <%= f.select(:num_id, num_options, {}, {class:"form-num-select", data:{select:0}, id:"num" }) %>
+                </div>
               </div>
 
-              <div class="plan_day">
-                <%= f.label :start_time, 'ご希望日' %>
-                <%= f.date_select :start_time %>
+              <div class="form-day">
+                <div class="form-plan-title">
+                  <p><%= f.label :start_time, 'ご希望日' %></p>
+                </div>
+                  <%= f.date_select :start_time %>
               </div>
               <%# unless client_signed_in? %>
-                <div class="submit">
-                  <%= f.submit "確認画面へ", class:"#" %>
+                <div class="form-submit-box">
+                  <%= f.submit "予約へ進む >", class:"form-submit shadow-lg rounded-pill border-danger" %>
                 </div>
               <%# end %>
             <% end %>
@@ -144,94 +146,88 @@
       <h3>編集画面</h3>
         <%# ここから商品 %>
         <h3>商品追加</h3>
-        <div class="product-editor">
-          <%= form_with model: @product, local: true do |f| %>
-            <div class="product-editor-imag-box">
-              <p class ="editor-title"><%= f.label :image %></p>
-              <%= f.file_field :image %>
-            </div>
-            <div class="product-editor-name-box">
-              <p class ="editor-title"><%= f.label :name %></p>
-              <%= f.text_field :name %>
-            </div>
-            <div class="product-editor-text-box">
-              <p class ="editor-title"><%= f.label :text %></p>
-              <%= f.text_area :text %>
-            </div>
-            <%# ここ以下はshowで表示 %>
-            <div class="product-editor-title-box">
-              <p class ="editor-title"><%= f.label :title %></p>
-              <%= f.text_field :title %>
-            </div>
-            <div class="product-editor-text2-box">
-              <p class ="editor-title"><%= f.label :text2 %></p>
-              <%= f.text_field :text2 %>
-            </div>
-            <div class="product-editor-price-box">
-              <p class ="editor-title"><%= f.label :price %></p>
-              <%= f.text_field :price %>
-            </div>
-            <div class="product-editor-unit-box">
-              <p class ="editor-title"><%= f.label :unit %></p>
-              <%= f.text_field :unit %>
-            </div>
-            <%# ここまで %>
-          <%= f.submit "編集する", class:"#" %>
-          <% end %>
-        </div>
+          <div class="product-editor">
+            <%= form_with model: @product, local: true do |f| %>
+              <div class="product-editor-imag-box">
+                <p class ="editor-title"><%= f.label :image %></p>
+                <%= f.file_field :image %>
+              </div>
+              <div class="product-editor-name-box">
+                <p class ="editor-title"><%= f.label :name %></p>
+                <%= f.text_field :name %>
+              </div>
+              <div class="product-editor-text-box">
+                <p class ="editor-title"><%= f.label :text %></p>
+                <%= f.text_area :text %>
+              </div>
+              <%# ここ以下はshowで表示 %>
+              <div class="product-editor-title-box">
+                <p class ="editor-title"><%= f.label :title %></p>
+                <%= f.text_field :title %>
+              </div>
+              <div class="product-editor-text2-box">
+                <p class ="editor-title"><%= f.label :text2 %></p>
+                <%= f.text_field :text2 %>
+              </div>
+              <div class="product-editor-price-box">
+                <p class ="editor-title"><%= f.label :price %></p>
+                <%= f.text_field :price %>
+              </div>
+              <div class="product-editor-unit-box">
+                <p class ="editor-title"><%= f.label :unit %></p>
+                <%= f.text_field :unit %>
+              </div>
+              <%# ここまで %>
+            <%= f.submit "編集する", class:"#" %>
+            <% end %>
+          </div>
         <%# ここまで商品の編集 %>
 
         <%# ポイントの追加 %>
-        <div class="point-editor">
-          <h3>ポイントの追加</h3>
+        <h3>ポイントの追加</h3>
+          <div class="point-editor">
             <%= form_with url:product_points_path(@product.id), local: true do |f| %>
-              <div class="#">
-                <%= f.label :title %>
+              <div class="point-editor-tilte-box">
+              <p class ="editor-title"><%= f.label :title %></p>
                 <%= f.text_field :title %>
               </div>
-              <div class="">
-                <%= f.label :text %>
+              <div class="point-editor-text-box">
+                <p class ="editor-title"><%= f.label :text %></p>
                 <%= f.text_area :text %>
               </div>
-              <div class="">
-                <%= f.label :image %>
+              <div class="point-editor-image-box">
+              <p class ="editor-title"><%= f.label :image %></p>
                 <%= f.file_field :image %>
               </div>
             <%= f.submit "追加する", class:"#" %>
             <% end %>
-        </div>
+          </div>
         <%# /ここまでポイント %>
-
 
         <%# 旅程追加 %>
         <h3>旅程追加 </h3>
-        <div>
-        <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
-
-          <div class="">
-          <%= f.label :time %>
-          <%= f.text_field :time %>
+          <div class="itinerary-editor">
+            <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
+              <div class="itinerary-editor-time-box">
+                <p class ="editor-time"><%= f.label :time %></p>
+                <%= f.text_field :time %>
+              </div>
+              <div class="itinerary-editor-title-box">
+                <p class ="editor-time"><%= f.label :title %></p>
+                <%= f.text_field :title %>
+              </div>
+              <div class="itinerary-editor-text-box">
+                <p class ="editor-time"><%= f.label :text %></p>
+                <%= f.text_area :text %>
+              </div>
+              <div class="itinerary-editor-image-box">
+                <p class ="editor-time"><%= f.label :image %></p>
+                <%= f.file_field :image %>
+              </div>
+            <%= f.submit "作成する", class:"#" %>
+            <% end %>
           </div>
 
-          <div class="">
-          <%= f.label :title %>
-          <%= f.text_field :title %>
-          </div>
-
-          <div class="">
-          <%= f.label :text %>
-          <%= f.text_area :text %>
-          </div>
-
-          <div class="">
-          <%= f.label :image %>
-          <%= f.file_field :image %>
-          </div>
-
-        <%= f.submit "作成する", class:"#" %>
-        <% end %>
-    
-    
         <div class="">
           <%# ここにタイトルを引っ張りたい %>
           <%#= link_to "「〇〇」の商品ページを編集する", edit_product_path(@product.id) %>

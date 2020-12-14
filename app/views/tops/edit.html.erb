@@ -1,38 +1,5 @@
 <h1>Tops#edit</h1>
 
-<% if @top == nil %>
-  <%= link_to "新規top画面を作成する", new_top_path %>
-<% else %>
-  <%#= link_to "top画面を編集する", edit_top_path(@top.id) %>
-  <%= form_with model: @top, local: true do |f| %>
-
-<div class="">
-  <%= f.label :video %>
-  <%= f.file_field :video_top, :accept => 'video/*' %>
-</div>
-
-<div class="">
-  <%= f.label :image_rogo %>
-  <%= f.file_field :image %>
-</div>
-
-<div class="">
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-</div>
-
-  <div class="#">
-    <%= f.submit "編集する" ,class:"#" %>
-  </div>
-<% end %>
-  <%= button_to "動画を削除する（削除させない方がいいのでは？）", top_path(@top.id), method: :delete %>
-<% end %>
-
-<%= link_to "商品ページを追加する", new_product_path %>
-
-
-
-
 <%# top %>
 <div class="container-fluid">
   <div class="row">
@@ -81,7 +48,6 @@
 </div>
 
 
-
   <%# 商品 %>
 <div class="products-container container-fluid">
     <div class="row row-cols-3">
@@ -98,6 +64,40 @@
       <% end %>
     </div>
 </div>
+
+
+  <h3>トップ画面編集</h3>
+<div class="top-editor-wrap">
+  <% if @top == nil %>
+    <div class="top-new">
+      <%= link_to "新規top画面を作成する", new_top_path %>
+    </div>
+      <% else %>
+    <div class="top-editor">
+      <%#= link_to "top画面を編集する", edit_top_path(@top.id) %>
+      <%= form_with model: @top, local: true do |f| %>
+        <div class="top-editor-video-box">
+          <p class="editor-title"><%= f.label :video %></p>
+          <%= f.file_field :video_top, :accept => 'video/*' %>
+        </div>
+        <div class="top-editor-logo-box">
+          <%#カラム名直すrogo->logo%><p class="editor-title"><%= f.label :image_logo %></p>
+          <%= f.file_field :image %>
+        </div>
+        <div class="top-editor-title-box">
+          <p class="editor-title"><%= f.label :title %></p>
+          <%= f.text_field :title %>
+        </div>
+        <div class="top-editor-submit-box">
+          <%= f.submit "編集する" ,class:"top-editor-submit" %>
+        </div>
+      <% end %>
+    <%= button_to "動画を削除する（削除させない方がいいのでは？）", top_path(@top.id), method: :delete %>
+    <%= link_to "商品ページを追加する", new_product_path %>
+    </div>
+  <% end %>
+</div>
+
 
 
 <%=link_to 'もどる', root_path, class:"back-btn" %>
