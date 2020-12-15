@@ -22,10 +22,6 @@ p {
   /* position: relative;	 */
 }
 
-.devise_kid{
-  /* position: absolute; */
-}
-
 .login_ul{
   display: flex;
 }
@@ -39,9 +35,8 @@ p {
   margin:0;
 }
 
-.login_ul{
-  /* margin-top:0; */
-}
+// .login_ul{
+// }
 
 
 // tops
@@ -82,12 +77,15 @@ p {
   height: 80px;
   // border-left: solid 0.1px #e6e6e6;
   // border-right: solid 0.1px #e6e6e6;
-
 }
 
 .img {
   width: 60px;
   height: 80px;
+}
+
+.section-name {
+  font-family: 'Crimson Text', serif;
 }
 
 small {
@@ -105,8 +103,8 @@ small {
   position: relative;
 }
 
-.products_items {
-}
+// .products_items {
+// }
 
 .products_info {
   position: absolute;
