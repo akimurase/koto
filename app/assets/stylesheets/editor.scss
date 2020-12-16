@@ -1,0 +1,71 @@
+/*ボタン*/
+.editor_btn {
+  position: fixed;
+  top: 30px;
+  margin: 15px;
+  cursor: pointer;
+  z-index: 50;
+}
+
+.section_btn {
+  // position: fixed;
+  width: 60px;
+  margin-left: 15px;
+  cursor: pointer;
+  z-index: 50;
+}
+
+
+/*サイドバー*/
+.editor-side {
+  position: fixed;
+  background-color: #fffaf0e0;
+  z-index: 30;
+  width: 350px;
+  height: 100vh;
+  top: 0;
+  padding-top: 130px;
+}
+
+
+// top-editor
+.top-editor-wrap {
+  margin: 10px 10px 10px 0px;
+}
+
+.top-editor {
+  margin: 20px;
+}
+
+.top-editor-submit-box {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.add-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+
+// product
+.product-editor {
+  margin: 20px;
+}
+
+.editor-title {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+// point
+.point-editor {
+  margin: 20px;
+}
+
+// itinerary
+.itinerary-editor {
+  margin: 20px;
+}
