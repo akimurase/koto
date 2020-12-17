@@ -1,5 +1,5 @@
 <div class="top">
- <!-----------------メニュー------------------->
+ <!--------メニュー--------->
   <div class="menu-wrap">
     <div id="app1">
       <!--メニューのボタン-->
@@ -20,13 +20,13 @@
                 <%#= link_to '予約状況を見る', event_path, class: "#" %>
               </div>
               <% else %>
-              <div class="">
-                <div class="">
+              <div class="user-sain-login">
+                <p>
                   <%= link_to "新規登録する", new_user_registration_path %>
-                </div>
-                <div class="">
+                </p>
+                <p>
                   <%= link_to "ログイン", new_user_session_path %>
-                </div>
+                </p>
               </div>
             <% end %>
           </div>

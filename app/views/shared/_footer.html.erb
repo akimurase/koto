@@ -1,0 +1,73 @@
+  <div class="footer">
+    <div class='client-wrap' >
+      <% if client_signed_in? %>
+        <div class="client-admin-if-login-box">
+          <div class="company-info">
+            <ul>
+              <li>会社名<span>:</span><%= current_client.company_name %></li>
+              <li>所在<span>:</span><%#= current_client.company_ %></li>
+              <li>e-mail<span>:</span><%= current_client.email %></li>
+              <li>TEL<span>:</span><%#= current_client.company_ %></li>
+            </ul>
+          </div>
+          <!--画像の有無--->
+          <div class="client-menu">
+            <ul>
+              <li>
+                <p>Admin</p>
+              </li>
+              <% if @top == nil %>
+                <li>
+                  <%= link_to "新規top画面を作成する", new_top_path, class:"client-menu-li" %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "管理者画面に行く", edit_top_path(@top.id), class:"client-menu-li" %>
+                </li>
+                <li>
+                  <%= link_to "予約管理画面", events_path, class:"client-menu-li" %>
+                </li>
+              <% end %>
+              <li>
+                <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class:"client-menu-li" %>
+              </li>
+            </ul>
+          </div>
+        </div><!---client-admin-if-login-box--->
+      <% else %>
+
+
+        <div class="client-no-account-box">
+          <div class="company-info">
+            <ul>
+              <li>会社名<span>:</span>KOTOTABI</li>
+              <li>所在<span>:</span>京都府京都市上京区京都御苑</li>
+              <li>E-mail<span>:</span>kototabi@xxx.com</li>
+              <li>TEL<span>:</span>090-1234-5678</li>
+            </ul>
+          </div>
+          <div class="client-admin-no-account">
+            <ul>
+              <div id="app3">
+                <li>
+                  <div class="admin-button-box" v-on:click='ActiveBtn=!ActiveBtn'>
+                    <p>Admin</p>
+                  </div>
+                </li>
+                  <transition name="editor-side">
+                    <div v-show="ActiveBtn">
+                      <li><%= link_to "新規登録する", new_client_registration_path, class:"client-about-sign-up" %></li>
+                      <li><%= link_to "ログイン", new_client_session_path, class:"client-about-sign-up" %></li>
+                    </div>
+                  </transition>
+              </div><!--app3-->
+            </ul>
+          </div><!--client-admin-noaccount"-->
+        </div><!--client-no-account-box-->
+      <% end %>
+
+      <div class="footer-logo-box">
+        <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
+      </div>
+    </div><!--client-wrap-->
+  </div><!--footer-->
