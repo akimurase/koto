@@ -2,7 +2,7 @@
 
 <div class="products-wrap">
   <div class="products-wrap-main">
-    <%# ここから見出し %>
+    <!-----見出し----->
     <div class="products-top">
       <%= form_with model: @product, local: true do |f| %>
         <div class="product-editor-name-box">
@@ -30,11 +30,10 @@
         <%= f.submit "編集する", class:"product-edit-button" %>
       <% end %>
     </div>
-    <%# ここまで見出し %>
 
     <div class="products-show-container">
       <div class="products-show-container-main">
-        <%# ここからポイント%>
+        <!-----ポイント----->
         <div class="point-container">
           <h3>おすすめポイント</h3>
             <div class="point-content">
@@ -69,8 +68,9 @@
         </div>
 
         <%# ここから旅程作成 表題もクライアントが作れる用にする %>
-        <h3>旅程</h3>
+        <!-----旅程----->
         <div class="itinerary_content">
+          <h3>旅程</h3>
             <% @itinerarys.each do |itinerary|  %>
               <%# 編集用のフォーム %>
               <%= form_with model: @itinerary, url:product_itinerary_path(@product, itinerary.id), method: :PATCH, local: true do |f| %>
@@ -98,12 +98,10 @@
               <hr>
             <% end %>
         </div>
-        <%# /ここまで旅程  %>
       </div><%# products-show-container-main %>
-
-
     </div><%# products_show_container"%>
-    <%# ------------申し込みフォーム --------------- %>
+
+    <!-----予約フォーム----->
     <div class="form-contents">
       <div class=form-item>
         <div class="form-price">
@@ -216,49 +214,3 @@
       </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-  <div class="product-editor">
-    <h3>商品編集</h3>
-      <%= form_with model: @product, local: true do |f| %>
-        <div class="product-editor-imag-box">
-          <p class ="editor-title"><%= f.label :image %></p>
-          <%= f.file_field :image %>
-        </div>
-        <div class="product-editor-name-box">
-          <p class ="editor-title"><%= f.label :name %></p>
-          <%= f.text_field :name %>
-        </div>
-        <div class="product-editor-text-box">
-          <p class ="editor-title"><%= f.label :text %></p>
-          <%= f.text_area :text %>
-        </div>
-        <%# ここ以下はshowで表示 %>
-        <div class="product-editor-title-box">
-          <p class ="editor-title"><%= f.label :title %></p>
-          <%= f.text_field :title %>
-        </div>
-        <div class="product-editor-text2-box">
-          <p class ="editor-title"><%= f.label :text2 %></p>
-          <%= f.text_field :text2 %>
-        </div>
-        <div class="product-editor-price-box">
-          <p class ="editor-title"><%= f.label :price %></p>
-          <%= f.text_field :price %>
-        </div>
-        <div class="product-editor-unit-box">
-          <p class ="editor-title"><%= f.label :unit %></p>
-          <%= f.text_field :unit %>
-        </div>
-        <%# ここまで %>
-      <%= f.submit "編集する", class:"#" %>
-      <% end %>
-  </div>
-  <%# ここまで商品の編集 %>

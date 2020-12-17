@@ -1,76 +1,77 @@
 <%# Tops#edit %>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <%= video_tag @top.video_top, class:"top_video", :loop => true, :autoplay => true, :muted => true %> 
-      <div class="top_hero" >
-        <%= image_tag @top.image, class: "top_logo" %>
-        <h3 class="top_title"><%= @top.title %></h3>
+<div class="top-edit-wrap">
+<!-----動画------>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <%= video_tag @top.video_top, class:"top_video", :loop => true, :autoplay => true, :muted => true %> 
+        <div class="top_hero" >
+          <%= image_tag @top.image, class: "top_logo" %>
+          <h3 class="top_title"><%= @top.title %></h3>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-------区切り------>
-<div id="app1">
-  <div class="section">
-    <div class="section_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-      <img src="/assets/section-logo.png" alt="editor_logo" class="img">
-    </div>
-    <transition name="editor-side">
-      <div v-show="ActiveBtn">
-        <div class="container mt-5 mb-5">
-          <div class="row">
-            <div class="col-2">
-              <img src="/assets/logo.png" class="img">
-            </div>
-            <div class="col-2">
-              <img src="/assets/logo (1).png" class="img">
-            </div>
-            <div class="col-2">
-              <img src="/assets/logo (5).png" class="img">
-            </div>
-            <div class="col-2">
-              <img src="/assets/logo (2).png" class="img">
-            </div>
-            <div class="col-2">
-              <img src="/assets/logo (3).png" class="img">
-            </div>
-            <div class="col-2">
-              <img src="/assets/logo ().png" class="img">
-            </div>
-          </div>
-        </div>
-        <div class="container mb-5">
-          <div class="row">
-            <h2 class="section col-12">
-            <span class="section-name mb-5 border-bottom">products</span>
-            <small>プラン</small>
-            </h2>
-          </div>
-        </div>
+<!-----区切り------>
+  <div id="app1">
+    <div class="section">
+      <div class="section_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+        <img src="/assets/section-logo.png" alt="editor_logo" class="img">
       </div>
-    </transition>
+      <transition name="editor-side">
+        <div v-show="ActiveBtn">
+          <div class="container mt-5 mb-5">
+            <div class="row">
+              <div class="col-2">
+                <img src="/assets/logo.png" class="img">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo (1).png" class="img">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo (5).png" class="img">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo (2).png" class="img">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo (3).png" class="img">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo ().png" class="img">
+              </div>
+            </div>
+          </div>
+          <div class="container mb-5">
+            <div class="row">
+              <h2 class="section col-12">
+              <span class="section-name mb-5 border-bottom">products</span>
+              <small>プラン</small>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </div>
+<!------商品------>
+  <div class="products-container container-fluid">
+      <div class="row row-cols-3">
+        <% @products.each do |product| %>
+          <div class="products_hero col">
+            <%= link_to edit_product_path(product.id) do %>
+              <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
+              <div class="products_info">
+                <p class="products_name"><%= product.name %></p>
+                <p class="products_text"><%= product.title %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
   </div>
 </div>
-<!-------商品------>
-<div class="products-container container-fluid">
-    <div class="row row-cols-3">
-      <% @products.each do |product| %>
-        <div class="products_hero col">
-          <%= link_to edit_product_path(product.id) do %>
-            <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
-            <div class="products_info">
-              <p class="products_name"><%= product.name %></p>
-              <p class="products_text"><%= product.text %></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-</div>
-
 <!-------ここからエディター------->
 <div class="top-editor-wrap">
   <div id="app2">
@@ -113,6 +114,5 @@
     </transition>
   </div><%#app1%>
 </div>
-
 
 <%=link_to 'topへもどる', root_path, class:"back-btn" %>
