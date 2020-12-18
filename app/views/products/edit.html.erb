@@ -1,7 +1,7 @@
 <%# <h1>Products#edit</h1> %>
 
 <div class="products-wrap">
-  <div class="products-wrap-main">
+  <div class="products-main">
     <!-----見出し----->
     <div class="products-top">
       <%= form_with model: @product, local: true do |f| %>
@@ -31,6 +31,7 @@
       <% end %>
     </div>
 
+    <!-----商品の詳細----->
     <div class="products-show-container">
       <div class="products-show-container-main">
         <!-----ポイント----->
@@ -164,53 +165,51 @@
               <h3>ポイントの追加</h3>
                 <%= form_with url:product_points_path(@product.id), local: true do |f| %>
                   <div class="point-editor-tilte-box">
-                  <p class ="editor-title"><%= f.label :title %></p>
+                  <p class ="editor-title"><%= f.label :タイトル %></p>
                     <%= f.text_field :title %>
                   </div>
                   <div class="point-editor-text-box">
-                    <p class ="editor-title"><%= f.label :text %></p>
+                    <p class ="editor-title"><%= f.label :テキスト %></p>
                     <%= f.text_area :text %>
                   </div>
                   <div class="point-editor-image-box">
-                  <p class ="editor-title"><%= f.label :image %></p>
-                    <%= f.file_field :image %>
-                  </div>
-                <%= f.submit "追加する", class:"#" %>
-                <% end %>
-            </div>
-            <%# /ここまでポイント %>
-            <%# 旅程追加 %>
-            <div class="itinerary-editor">
-              <h3>旅程追加 </h3>
-                <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
-                  <div class="itinerary-editor-time-box">
-                    <p class ="editor-time"><%= f.label :time %></p>
-                    <%= f.text_field :time %>
-                  </div>
-                  <div class="itinerary-editor-title-box">
-                    <p class ="editor-time"><%= f.label :title %></p>
-                    <%= f.text_field :title %>
-                  </div>
-                  <div class="itinerary-editor-text-box">
-                    <p class ="editor-time"><%= f.label :text %></p>
-                    <%= f.text_area :text %>
-                  </div>
-                  <div class="itinerary-editor-image-box">
-                    <p class ="editor-time"><%= f.label :image %></p>
+                  <p class ="editor-title"><%= f.label :画像 %></p>
                     <%= f.file_field :image %>
                   </div>
                 <%= f.submit "作成する", class:"#" %>
                 <% end %>
             </div>
+            <div class="itinerary-editor">
+              <h3>旅程追加 </h3>
+                <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
+                  <div class="itinerary-editor-time-box">
+                    <p class ="editor-time"><%= f.label :時間 %></p>
+                    <%= f.text_field :time %>
+                  </div>
+                  <div class="itinerary-editor-title-box">
+                    <p class ="editor-time"><%= f.label :タイトル %></p>
+                    <%= f.text_field :title %>
+                  </div>
+                  <div class="itinerary-editor-text-box">
+                    <p class ="editor-time"><%= f.label :テキスト %></p>
+                    <%= f.text_area :text %>
+                  </div>
+                  <div class="itinerary-editor-image-box">
+                    <p class ="editor-time"><%= f.label :画像 %></p>
+                    <%= f.file_field :image %>
+                  </div>
+                <%= f.submit "作成する", class:"#" %>
+                <% end %>
+            </div>
+            <div class="delete-box">
+              <%# ここにタイトルを引っ張りたい %>
+              <%#= link_to "「〇〇」の商品ページを編集する", edit_product_path(@product.id) %>
+              <%= button_to "この商品ページを削除する", product_path(@product.id), method: :delete %>
+              <%= link_to "戻る", root_path, class:"#" %>
+            </div>
           </div>
         </div>
       </transition><%#editor-side%>
 
-      <div class="delete-box">
-        <%# ここにタイトルを引っ張りたい %>
-        <%#= link_to "「〇〇」の商品ページを編集する", edit_product_path(@product.id) %>
-        <%= button_to "「〇〇」の商品ページを削除する", product_path(@product.id), method: :delete %>
-        <%= link_to "戻る", root_path, class:"#" %>
-      </div>
     </div>
 </div>

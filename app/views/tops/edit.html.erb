@@ -17,29 +17,29 @@
   <div id="app1">
     <div class="section">
       <div class="section_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-        <img src="/assets/section-logo.png" alt="editor_logo" class="img">
+        <img src="/assets/section-logo.png" alt="editor_logo" >
       </div>
       <transition name="editor-side">
         <div v-show="ActiveBtn">
           <div class="container mt-5 mb-5">
             <div class="row">
               <div class="col-2">
-                <img src="/assets/logo.png" class="img">
+                <img src="/assets/logo.png">
               </div>
               <div class="col-2">
-                <img src="/assets/logo (1).png" class="img">
+                <img src="/assets/logo (1).png">
               </div>
               <div class="col-2">
-                <img src="/assets/logo (5).png" class="img">
+                <img src="/assets/logo (5).png">
               </div>
               <div class="col-2">
-                <img src="/assets/logo (2).png" class="img">
+                <img src="/assets/logo (2).png">
               </div>
               <div class="col-2">
-                <img src="/assets/logo (3).png" class="img">
+                <img src="/assets/logo (3).png">
               </div>
               <div class="col-2">
-                <img src="/assets/logo ().png" class="img">
+                <img src="/assets/logo ().png">
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@
   <div id="app2">
     <!--メニューのボタン-->
     <div class="editor_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-      <img src="/assets/editor_logo.png" alt="editor_logo" class="img">
+      <img src="/assets/editor_logo.png" alt="editor_logo">
     </div>
     <!--サイドバー-->
     <transition name="editor-side">
@@ -108,6 +108,7 @@
             <% end %>
               <%= button_to "「@top.tilleのサイト」を削除する", top_path(@top.id), method: :delete %>
               <%= link_to "商品ページを追加する", new_product_path %>
+              <%= link_to 'topへもどる', root_path, class:"back-btn" %>
           </div>
         <% end %>
       </div>
@@ -115,4 +116,5 @@
   </div><%#app1%>
 </div>
 
-<%=link_to 'topへもどる', root_path, class:"back-btn" %>
+
+<%= render "shared/footer" %>
