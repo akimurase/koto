@@ -1,5 +1,5 @@
 <div class="top">
- <!--------メニュー--------->
+  <!--------メニュー--------->
   <div class="menu-wrap">
     <div id="app1">
       <!--メニューのボタン-->
@@ -11,16 +11,16 @@
       <!--サイドバー-->
       <transition name="menu">
         <div class="menu" v-show="ActiveBtn">
-          <%# ユーザー認証 %>
           <div class='user-conf' >
             <% if user_signed_in? %>
-              <div class="user-login">
-                <p><%= current_user.name %></p>
-                <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user-logout" %></p>
+              <div class="user-sin-login">
+                <p><%#= link_to current_user.name, edit_user_registration_path  %></p>
+                <p><%= link_to current_user.name  %></p>
+                <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
                 <%#= link_to '予約状況を見る', event_path, class: "#" %>
               </div>
               <% else %>
-              <div class="user-sain-login">
+              <div class="user-sin-login">
                 <p>
                   <%= link_to "新規登録する", new_user_registration_path %>
                 </p>
@@ -30,26 +30,22 @@
               </div>
             <% end %>
           </div>
-          
-          <%# プロダクト %>
+          <!----サイドバー商品名----->
           <div class="プロダクト">
-            <div class="">
-              <% @products.each do |product|  %>
-                <ul>
-                  <li>
-                    <%= link_to products_path(product.id) do %>
-                      <%= product.name %>
-                    <% end %>
-                  </li>
-                </ul>
-              <% end %>
-            </div>
+            <% @products.each do |product|  %>
+              <ul>
+                <li>
+                  <%= link_to products_path(product.id) do %>
+                    <%= product.name %>
+                  <% end %>
+                </li>
+              </ul>
+            <% end %>
           </div>
         </div>
       </transition>
     </div>
   </div>
-
   <!----動画----->
   <div class="top_video_content" >
     <% if @top == nil %>
@@ -68,14 +64,12 @@
       </div>
     <% end %>
   </div>
-
-
   <!----商品----->
   <div class="products-container container-fluid">
       <div class="row row-cols-3">
         <% @products.each do |product| %>
           <div class="products_hero col">
-            <%= link_to edit_product_path(product.id) do %>
+            <%= link_to products_path(product.id) do %>
               <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
               <div class="products_info">
                 <p class="products_name"><%= product.name %></p>
@@ -86,9 +80,5 @@
         <% end %>
       </div>
   </div>
-
-
-  <!----------------------------------->
   <%= render "shared/footer" %>
-
 </div>

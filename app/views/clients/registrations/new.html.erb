@@ -66,7 +66,7 @@
               <p class="devise_title"><%= f.label :パスワード確認 %></p>
               <ul class="login_ul">
                 <li><p class="text-danger">必須</p></li>
-                <li><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"例)xxxxxx@koto.com  %></li>
+                <li><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"例)xxxxxx@koto.com" %></li>
               </ul>
             </div>
             <div class="actions">
@@ -77,5 +77,3 @@
     </div>
   </div><!--container bg-white text-dark-->
 </div><!--background_client-->
-
-<%= render "clients/shared/links" %>
