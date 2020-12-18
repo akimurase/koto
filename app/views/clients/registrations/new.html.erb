@@ -1,49 +1,85 @@
-<h2>Sign up</h2>
+<%# <div class="background_img_devise" style="background-image: url(<%= @top.title);> </div> %>
+<%# <div class="background_img_devise" style="background-image: url('');"> </div>%>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "clients/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :company_name %><br />
-    <%= f.text_field :company_name, class:"input-default", id:"#", placeholder:"例)トヨタ " %>
-  </div>
-
-  <div class="field">
-    <%= f.label :c_kana %><br />
-    <%= f.text_field :c_kana, class:"input-default", id:"#", placeholder:"例) " %>
-  </div>
-
-  <div class="field">
-    <%= f.label :supervisor %><br />
-    <%= f.text_field :s_kana, class:"input-default", id:"#", placeholder:"例) " %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-    <div class="field">
-    <%= f.label :tel %><br />
-    <%= f.text_field :tel, class:"input-default", id:"#", placeholder:"例) " %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+<%# ここ背景は画像にしたい %>
+<div class="background_client" > 
+  <div class="container bg-white text-dark">
+    <div class="devise_main">
+      <h2>新規登録</h2>
+        <div class="devise-item">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "clients/shared/error_messages", resource: resource %>
+            <div class="field">
+              <p class="devise_title"><%= f.label :会社名 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :company_name, class:"input-default", id:"#", placeholder:"例)kototabi " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :カナ %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :c_kana, class:"input-default", id:"#", placeholder:"例)コトタビ " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :責任者 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :supervisor, class:"input-default", id:"#", placeholder:"例)山田 太旅 " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :カナ %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :s_kana, class:"input-default", id:"#", placeholder:"例)ヤマダ タリョ " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :住所 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%#= f.text_field :company_adrress, class:"input-default", id:"#", placeholder:"例)東京都千代田区1-1 " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :TEL %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :tel, class:"input-default", id:"#", placeholder:"例)090-1111-2222 " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :メール %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.email_field :email, autofocus: true, autocomplete: "email" %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :パスワード（6文字以上） %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.password_field :password, autocomplete: "current-password" %></li>
+              </ul>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :パスワード確認 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.password_field :password_confirmation, autocomplete: "new-password" %></li>
+              </ul>
+            </div>
+            <div class="actions">
+              <%= f.submit "新規登録", class:"actions-btn btn-danger p-2 shadow rounded"%>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div><!--container bg-white text-dark-->
+</div><!--background_client-->
 
 <%= render "clients/shared/links" %>

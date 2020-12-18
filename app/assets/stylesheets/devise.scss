@@ -5,7 +5,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: relative;	 */
+}
+
+.devise_main {
+  margin: 20px 130px;
+  padding-left: 50px;
+  border-left: solid 0.1px rgb(230, 230, 230) ;
+}
+
+.devise-item {
+}
+
+
+
+.devise_main h2 {
+  margin: 10px;
+}
+
+.devise-item {
+  margin: 20px;
+}
+
+.actions-btn {
+  width: 60%;
 }
 
 .login_ul{
