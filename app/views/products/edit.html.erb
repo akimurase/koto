@@ -150,66 +150,66 @@
 
 <%# ------------------ここからエディター----------------------- %>
 <div class="editor-wrap">
-    <div id="app2">
-      <!--メニューのボタン-->
-      <div class="editor_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-        <img src="/assets/editor_logo.png" alt="editor_logo" class="img">
-      </div>
-      <!--サイドバー-->
-      <transition name="editor-side">
-        <div class="editor-side" v-show="ActiveBtn">
-          <div class="editor">
-            <div class="point-editor">
-              <h3>ポイントの追加</h3>
-                <%= form_with url:product_points_path(@product.id), local: true do |f| %>
-                  <div class="point-editor-tilte-box">
-                  <p class ="editor-title"><%= f.label :タイトル %></p>
-                    <%= f.text_field :title %>
-                  </div>
-                  <div class="point-editor-text-box">
-                    <p class ="editor-title"><%= f.label :テキスト %></p>
-                    <%= f.text_area :text %>
-                  </div>
-                  <div class="point-editor-image-box">
-                  <p class ="editor-title"><%= f.label :画像 %></p>
-                    <%= f.file_field :image %>
-                  </div>
-                <%= f.submit "作成する", class:"#" %>
-                <% end %>
-            </div>
-            <div class="itinerary-editor">
-              <h3>旅程追加 </h3>
-                <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
-                  <div class="itinerary-editor-time-box">
-                    <p class ="editor-time"><%= f.label :時間 %></p>
-                    <%= f.text_field :time %>
-                  </div>
-                  <div class="itinerary-editor-title-box">
-                    <p class ="editor-time"><%= f.label :タイトル %></p>
-                    <%= f.text_field :title %>
-                  </div>
-                  <div class="itinerary-editor-text-box">
-                    <p class ="editor-time"><%= f.label :テキスト %></p>
-                    <%= f.text_area :text %>
-                  </div>
-                  <div class="itinerary-editor-image-box">
-                    <p class ="editor-time"><%= f.label :画像 %></p>
-                    <%= f.file_field :image %>
-                  </div>
-                <%= f.submit "作成する", class:"#" %>
-                <% end %>
-            </div>
-            <div class="delete-box">
-              <%# ここにタイトルを引っ張りたい %>
-              <%#= link_to "「〇〇」の商品ページを編集する", edit_product_path(@product.id) %>
-              <%= button_to "この商品ページを削除する", product_path(@product.id), method: :delete %>
-              <%= link_to "戻る", root_path, class:"#" %>
-            </div>
+  <div id="app2">
+    <!--メニューのボタン-->
+    <div class="editor_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+      <img src="/assets/editor_logo.png" alt="editor_logo" class="img">
+    </div>
+    <!--サイドバー-->
+    <transition name="editor-side">
+      <div class="editor-side" v-show="ActiveBtn">
+        <div class="editor">
+          <div class="point-editor">
+            <h3>ポイントの追加</h3>
+              <%= form_with url:product_points_path(@product.id), local: true do |f| %>
+                <div class="point-editor-tilte-box">
+                <p class ="editor-title"><%= f.label :タイトル %></p>
+                  <%= f.text_field :title %>
+                </div>
+                <div class="point-editor-text-box">
+                  <p class ="editor-title"><%= f.label :テキスト %></p>
+                  <%= f.text_area :text %>
+                </div>
+                <div class="point-editor-image-box">
+                <p class ="editor-title"><%= f.label :画像 %></p>
+                  <%= f.file_field :image %>
+                </div>
+              <%= f.submit "作成する", class:"#" %>
+              <% end %>
+          </div>
+          <div class="itinerary-editor">
+            <h3>旅程追加 </h3>
+              <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
+                <div class="itinerary-editor-time-box">
+                  <p class ="editor-time"><%= f.label :時間 %></p>
+                  <%= f.text_field :time %>
+                </div>
+                <div class="itinerary-editor-title-box">
+                  <p class ="editor-time"><%= f.label :タイトル %></p>
+                  <%= f.text_field :title %>
+                </div>
+                <div class="itinerary-editor-text-box">
+                  <p class ="editor-time"><%= f.label :テキスト %></p>
+                  <%= f.text_area :text %>
+                </div>
+                <div class="itinerary-editor-image-box">
+                  <p class ="editor-time"><%= f.label :画像 %></p>
+                  <%= f.file_field :image %>
+                </div>
+              <%= f.submit "作成する", class:"#" %>
+              <% end %>
+          </div>
+          <div class="delete-box">
+            <%# ここにタイトルを引っ張りたい %>
+            <%#= link_to "「〇〇」の商品ページを編集する", edit_product_path(@product.id) %>
+            <%= button_to "この商品ページを削除する", product_path(@product.id), method: :delete %>
+            <%= link_to "戻る", root_path, class:"#" %>
           </div>
         </div>
-      </transition><%#editor-side%>
-
-    </div>
+      </div>
+    </transition><%#editor-side%>
+  </div>
 </div>
 
-  <%= render "shared/footer" %>
+    <%= render "shared/footer" %>
+
