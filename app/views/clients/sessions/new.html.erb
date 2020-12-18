@@ -1,11 +1,7 @@
-
-
 <%# <div class="background_img_devise" style="background-image: url(<%= @top.title);> </div> %>
 <%# <div class="background_img_devise" style="background-image: url('');"> </div>%>
-
 <%# ここ背景は画像にしたい %>
 <div class="background_client" > 
-
   <div class="container bg-white text-dark">
     <div class="devise_main">
       <h2 class="m-3">ログイン</h2>
@@ -14,7 +10,7 @@
           <p class="devise_title"><%= f.label :メール %></p>
           <ul class="login_ul">
             <li class="m-3 "><p class="text-danger">必須</p></li>
-            <li class="m-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"devise_form" %></li>
+            <li class="m-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"devise_form", placeholder:"例)xxxxxx@koto.com" %></li>
           </ul>
         </div>
         <div class="field">
@@ -25,7 +21,7 @@
           </ul>
         </div>
         <div class="actions">
-          <%= f.submit "👉  ログイン >", class:"actions-btn btn-danger p-2 shadow rounded", placeholder:"例）kototabi@koto.com"%>
+          <%= f.submit "👉  ログイン >", class:"actions-btn btn-danger p-2 shadow rounded" %>
         </div>
           <p>パスワードをお忘れの方
           <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
