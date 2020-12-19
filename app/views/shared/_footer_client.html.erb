@@ -1,13 +1,13 @@
   <div class="footer">
     <div class='client-wrap' >
-      <% if client_signed_in? %>
+      <% if client_signed_in? %> 
         <div class="client-admin-if-login-box">
           <div class="company-info">
             <ul>
-              <li>会社名<span>:</span><%= current_client.company_name %></li>
+              <li>会社名<span>:</span><%#= current_client.company_name %></li>
               <li>所在<span>:</span><%#= current_client.company_address %></li>
-              <li>e-mail<span>:</span><%= current_client.email %></li>
-              <li>TEL<span>:</span><%= current_client.tel %></li>
+              <li>e-mail<span>:</span><%#= current_client.email %></li>
+              <li>TEL<span>:</span><%#= current_client.tel %></li>
             </ul>
           </div>
           <!--画像の有無--->
@@ -45,8 +45,8 @@
             </ul>
           </div>
           <div class="client-admin-no-account">
-            <ul>
-              <div id="app3">
+            <div id="app3">
+              <ul>
                 <li>
                   <div class="admin-button-box" v-on:click='ActiveBtn=!ActiveBtn'>
                     <p>Admin</p>
@@ -58,8 +58,8 @@
                       <li><%= link_to "ログイン", new_client_session_path, class:"client-about-sign-up" %></li>
                     </div>
                   </transition>
-              </div><!--app3-->
-            </ul>
+              </ul>
+            </div><!--app3-->
           </div><!--client-admin-noaccount"-->
         </div><!--client-no-account-box-->
       <% end %>

@@ -2,11 +2,12 @@ class ProductsController < ApplicationController
   # before_action :set_item, only: [:]
 
   def index
-    @products = Product.all
+    # @products = Product.all
     @product = Product.find(params[:format]) #現在のidを取得する為params[:format]を使用
-    @points = Point.all #ポイントをproducts/indexに表示させる為に定義
-    @itinerarys = Itinerary.all #旅程をproducts/indexに表示させる定義
+    @points = Point.where(product_id: @product)#ポイントをproducts/indexに表示させる為に定義
+    @itinerarys = Itinerary.where(product_id: @product) #旅程をproducts/indexに表示させる定義
     @event = Event.new
+    @client = Client.find_by(params[:id])
   end
 
   def new
@@ -16,9 +17,6 @@ class ProductsController < ApplicationController
   def create
     product = Product.new(products_params)
     product.save!
-  end
-
-  def show
   end
 
   

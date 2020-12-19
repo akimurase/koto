@@ -1,27 +1,2 @@
 <h1>Tops#new</h1>
 <p>Find me in app/views/tops/new.html.erb</p>
-
-<%= form_with model: @top, local: true do |f| %>
-
-<div class="">
-  <%= f.label :video %>
-  <%= f.file_field :video_top, :accept => 'video/*' %>
-</div>
-
-<div class="">
-  <%= f.label :image_rogo %>
-  <%= f.file_field :image %>
-</div>
-
-<div class="">
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-</div>
-
-  <%# 下部ボタン %>
-  <div class="#">
-    <%= f.submit "作成する" ,class:"#" %>
-    <%=link_to 'もどる', root_path, class:"back-btn" %>
-  </div>
-  <%# /下部ボタン %>
-<% end %>

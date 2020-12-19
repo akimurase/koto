@@ -1,4 +1,4 @@
-<%# Tops#edit %>
+Topsedit
 
 <div class="top-edit-wrap">
 <!-----動画------>
@@ -84,31 +84,63 @@
       <div class="editor-side" v-show="ActiveBtn">
         <% if @top == nil %>
           <div class="top-new">
-            <%= link_to "新規top画面を作成する", new_top_path %>
+            <%= link_to "新規ページを作成する", new_top_path %>
           </div>
             <% else %>
-          <div class="top-editor">
+          <div class="top-editor-said">
             <%#= link_to "top画面を編集する", edit_top_path(@top.id) %>
-            <%= form_with model: @top, local: true do |f| %>
-              <div class="top-editor-video-box">
-                <p class="editor-title"><%= f.label :動画 %></p>
-                <%= f.file_field :video_top, :accept => 'video/*' %>
-              </div>
-              <div class="top-editor-logo-box">
-                <%#カラム名直すrogo->logo%><p class="editor-title"><%= f.label :ロゴ %></p>
-                <%= f.file_field :image %>
-              </div>
-              <div class="top-editor-title-box">
-                <p class="editor-title"><%= f.label :タイトル %></p>
-                <%= f.text_field :title %>
-              </div>
-              <div class="top-editor-submit-box">
-                <%= f.submit "編集する", class:"top-editor-submit" %>
-              </div>
-            <% end %>
+            <div class="edit-top">
+              <h3>トップ画面編集</h3>
+              <%= form_with model: @top, local: true do |f| %>
+                <div class="top-editor-video-box">
+                  <p class="editor-title"><%= f.label :動画 %></p>
+                  <%= f.file_field :video_top, :accept => 'video/*' %>
+                </div>
+                <div class="top-editor-logo-box">
+                  <p class="editor-title"><%= f.label :ロゴ %></p>
+                  <%= f.file_field :image %>
+                </div>
+                <div class="top-editor-title-box">
+                  <p class="editor-title"><%= f.label :タイトル %></p>
+                  <%= f.text_field :title %>
+                </div>
+                <div class="top-editor-submit-box">
+                  <%= f.submit "編集する", class:"top-editor-submit" %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="add-product">
+              <h3>商品追加</h3>
+              <%= form_with model: @product, local: true do |f| %>
+                <div>
+                  <p><%= f.label :画像 %></p>
+                  <%= f.file_field :image %>
+                </div>
+                <div>
+                  <p><%= f.label :商品名 %></p>
+                  <%= f.text_field :name %>
+                </div>
+                <div>
+                  <p><%= f.label :表題 %></p>
+                  <%= f.text_field :title %>
+                </div>
+                <div>
+                  <p><%= f.label :紹介文 %></p>
+                  <%= f.text_area :text %>
+                </div>
+                <div>
+                  <p><%= f.label :金額 %></p>
+                  <%= f.text_field :price %>
+                </div>
+                <div>
+                  <p><%= f.label :単位 %></p>
+                  <%= f.text_field :unit %>
+                </div>
+                <%= f.submit "作成する", class:"#" %>
+              <% end %>
+            </div>
               <%= button_to "「@top.tilleのサイト」を削除する", top_path(@top.id), method: :delete %>
-              <%= link_to "商品ページを追加する", new_product_path %>
-              <%= link_to 'topへもどる', root_path, class:"back-btn" %>
           </div>
         <% end %>
       </div>
@@ -116,5 +148,4 @@
   </div><%#app1%>
 </div>
 
-
-<%= render "shared/footer" %>
+<%#= render "shared/footer" %>

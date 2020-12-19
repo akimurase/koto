@@ -1,118 +1,122 @@
-<h1>product#index</h1>
-<div class="products-wrap">
-  <%= render "shared/header" %>
-    <div class="products-main">
-      <!-----見出し----->
-      <div class="products-top">
-        <div class="product-editor-name-box">
-          <h1>【<%= @product.name %>】</h1>
-        </div>
-        <div class="product-editor-text-box">
-          <p><<%= @product.title %></p>
-        </div>
-          <p><%= @product.text %></p>
-        <div class="product-editor-imag-box">
-          <%= image_tag @product.image, class:"products_show_img" if @product.image.attached?  %>
-        </div>
-      </div>
+<h1>products#index</h1>
 
-      <!-----商品の詳細----->
-      <div class="products-show-container">
-        <div class="products-show-container-main">
-          <!-----ポイント----->
-          <div class="point-container">
-            <h3>おすすめポイント</h3>
-            <div class="point-content">
-              <% @points.each do |point|  %>
-                <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
-                  <div class="point-item">
-                    <div class="point-item-info">
-                      <div class="oint-item-title-box">
-                        <%= point.title %>
-                      </div>
-                      <div class="point-item-text-box">
-                        <%= point.text %>
-                      </div>
+<%= render "shared/header" %>
+
+<div class="products-wrap">
+  <div class="products-main">
+    <!-----見出し----->
+    <div class="products-top">
+      <div class="product-editor-name-box">
+        <h1>【<%= @product.name %>】</h1>
+      </div>
+      <div class="product-editor-text-box">
+        <p><<%= @product.title %></p>
+      </div>
+        <p><%= @product.text %></p>
+      <div class="product-editor-imag-box">
+        <%= image_tag @product.image, class:"products_show_img" if @product.image.attached?  %>
+      </div>
+    </div>
+
+    <!-----商品の詳細----->
+    <div class="products-show-container">
+      <div class="products-show-container-main">
+        <!-----ポイント----->
+        <div class="point-container">
+          <h3>おすすめポイント</h3>
+          <div class="point-content">
+            <% @points.each do |point|  %>
+              <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
+                <div class="point-item">
+                  <div class="point-item-info">
+                    <div class="oint-item-title-box">
+                      <%= point.title %>
                     </div>
-                    <div class="point-item-img">
-                      <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
+                    <div class="point-item-text-box">
+                      <%= point.text %>
                     </div>
                   </div>
-                <hr>
-              <% end %>
-            </div>
-          </div>
-          <%# ここから旅程作成 表題もクライアントが作れる用にする %>
-          <!-----旅程----->
-          <div class="itinerary_content">
-            <h3>旅程</h3>
-            <% @itinerarys.each do |itinerary|  %>
-              <div class="itinerary_item">
-                <div class="itinerary_item_time_box">
-                  <%= itinerary.time %>
-                </div>
-                <div class="itinerary_item_info">
-                  <div class="itinerary_item_title">
-                    <%= itinerary.title %>
-                  </div>
-                  <div class="itinerary_item_text">
-                    <%= itinerary.text %>
+                  <div class="point-item-img">
+                    <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
                   </div>
                 </div>
-                <div class="itinerary_item_img_box">
-                  <%= image_tag itinerary.image, class: "itinerary_item_img" if itinerary.image.attached?  %>
-                </div>
-              </div>
               <hr>
             <% end %>
           </div>
-        </div><%# products-show-container-main %>
-      </div><%# products_show_container"%>
-      <!-----予約フォーム----->
-      <div class="form-contents">
-        <div class=form-item>
-          <div class="form-price">
-            <div class="form-price-total">
-              <div class="form-price-one-inside">
-                <P>合計金額</P>  
-                <h4>¥<span id="total_price">0</span></h4>
+        </div>
+        <%# ここから旅程作成 表題もクライアントが作れる用にする %>
+        <!-----旅程----->
+        <div class="itinerary_content">
+          <h3>旅程</h3>
+          <% @itinerarys.each do |itinerary|  %>
+            <div class="itinerary_item">
+              <div class="itinerary_item_time_box">
+                <%= itinerary.time %>
+              </div>
+              <div class="itinerary_item_info">
+                <div class="itinerary_item_title">
+                  <%= itinerary.title %>
+                </div>
+                <div class="itinerary_item_text">
+                  <%= itinerary.text %>
+                </div>
+              </div>
+              <div class="itinerary_item_img_box">
+                <%= image_tag itinerary.image, class: "itinerary_item_img" if itinerary.image.attached?  %>
               </div>
             </div>
-            <div class="form-price-one">
-              <div class="form-price-one-inside">
-                <h5>¥<span id="one_price"><%= @product.price %></span>/<span><%= @product.unit %></span></span></h5>
-              </div>
+            <hr>
+          <% end %>
+        </div>
+      </div><%# products-show-container-main %>
+    </div><%# products_show_container"%>
+    <!-----予約フォーム----->
+    <div class="form-contents">
+      <div class=form-item>
+        <div class="form-price">
+          <div class="form-price-total">
+            <div class="form-price-one-inside">
+              <P>合計金額</P>  
+              <h4>¥<span id="total_price">0</span></h4>
             </div>
           </div>
-
-          <div class="form-input">
-            <%= form_with url:edit_product_path(@product.id), method: :get, local: true do |f| %>
-              <%= f.hidden_field :price, id: "f_price"  %>
-              <div class="form-num">
-                <div class="form-num-title-box">
-                  <p><span><%= @product.unit %></span><%= f.label :num, '数' %></p>
-                </div>
-                <div class="form-num-select-box">
-                  <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
-                  <%= f.select(:num_id, num_options, {}, {class:"form-num-select", data:{select:0}, id:"num" }) %>
-                </div>
-              </div>
-
-              <div class="form-day">
-                <div class="form-plan-title">
-                  <p><%= f.label :start_time, 'ご希望日' %></p>
-                </div>
-                  <%= f.date_select :start_time %>
-              </div>
-              <%# unless client_signed_in? %>
-                <div class="form-submit-box">
-                  <%= f.submit "予約へ進む >", class:"form-submit shadow-lg rounded-pill border-danger" %>
-                </div>
-              <%# end %>
-            <% end %>
+          <div class="form-price-one">
+            <div class="form-price-one-inside">
+              <h5>¥<span id="one_price"><%= @product.price %></span>/<span><%= @product.unit %></span></span></h5>
+            </div>
           </div>
-        </div><%# form-item %>
-      </div><%# form-contents %>
-    </div><%#products-wrap-main%>
-  <%= render "shared/user_footer" %>
+        </div>
+
+        <div class="form-input">
+          <%= form_with url:edit_product_path(@product.id), method: :get, local: true do |f| %>
+            <%= f.hidden_field :price, id: "f_price"  %>
+            <div class="form-num">
+              <div class="form-num-title-box">
+                <p><span><%= @product.unit %></span><%= f.label :num, '数' %></p>
+              </div>
+              <div class="form-num-select-box">
+                <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
+                <%= f.select(:num_id, num_options, {}, {class:"form-num-select", data:{select:0}, id:"num" }) %>
+              </div>
+            </div>
+
+            <div class="form-day">
+              <div class="form-plan-title">
+                <p><%= f.label :start_time, 'ご希望日' %></p>
+              </div>
+                <%= f.date_select :start_time %>
+            </div>
+            <%# unless client_signed_in? %>
+              <div class="form-submit-box">
+                <%= f.submit "予約へ進む >", class:"form-submit shadow-lg rounded-pill border-danger" %>
+              </div>
+            <%# end %>
+          <% end %>
+        </div>
+      </div><%# form-item %>
+    </div><%# form-contents %>
+  </div><%#products-wrap-main%>
+    <div class="footer">
 </div><%#products-wrap%>
+
+<%= render "shared/user_footer" %>
