@@ -4,72 +4,75 @@
 
 <div class="products-wrap">
   <div class="products-main">
-    <!-----見出し----->
-    <div class="products-top">
-      <div class="product-editor-name-box">
-        <h1>【<%= @product.name %>】</h1>
+    <div class="for-event">
+      <!-----見出し----->
+      <div class="products-top">
+        <div class="product-editor-name-box">
+          <h1>【<%= @product.name %>】</h1>
+        </div>
+        <div class="product-editor-title-box">
+          <p><%= @product.title %></p>
+        </div>
+        <div class="product-editor-text-box">
+          <p><%= @product.text %></p>
+        </div>
+        <div class="product-editor-imag-box">
+          <%= image_tag @product.image, class:"products_show_img" if @product.image.attached?  %>
+        </div>
       </div>
-      <div class="product-editor-text-box">
-        <p><<%= @product.title %></p>
-      </div>
-        <p><%= @product.text %></p>
-      <div class="product-editor-imag-box">
-        <%= image_tag @product.image, class:"products_show_img" if @product.image.attached?  %>
-      </div>
-    </div>
-
-    <!-----商品の詳細----->
-    <div class="products-show-container">
-      <div class="products-show-container-main">
-        <!-----ポイント----->
-        <div class="point-container">
-          <h3>おすすめポイント</h3>
-          <div class="point-content">
-            <% @points.each do |point|  %>
-              <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
-                <div class="point-item">
-                  <div class="point-item-info">
-                    <div class="oint-item-title-box">
-                      <%= point.title %>
+      <!-----商品の詳細----->
+      <div class="products-show-container">
+        <div class="products-show-container-main">
+          <!-----ポイント----->
+          <div class="point-container">
+            <h3>おすすめポイント</h3>
+            <div class="point-content">
+              <% @points.each do |point|  %>
+                <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
+                  <div class="point-item">
+                    <div class="point-item-info">
+                      <div class="point-item-title-box">
+                        <%= point.title %>
+                      </div>
+                      <div class="point-item-text-box">
+                        <%= point.text %>
+                      </div>
                     </div>
-                    <div class="point-item-text-box">
-                      <%= point.text %>
+                    <div class="point-item-img">
+                      <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
                     </div>
                   </div>
-                  <div class="point-item-img">
-                    <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
+                <hr>
+              <% end %>
+            </div>
+          </div>
+          <%# ここから旅程作成 表題もクライアントが作れる用にする %>
+          <!-----旅程----->
+          <div class="itinerary_content">
+            <h3>旅程</h3>
+            <% @itinerarys.each do |itinerary|  %>
+              <div class="itinerary_item">
+                <div class="itinerary_item_time_box">
+                  <%= itinerary.time %>
+                </div>
+                <div class="itinerary_item_info">
+                  <div class="itinerary_item_title">
+                    <%= itinerary.title %>
+                  </div>
+                  <div class="itinerary_item_text">
+                    <%= itinerary.text %>
                   </div>
                 </div>
+                <div class="itinerary_item_img_box">
+                  <%= image_tag itinerary.image, class: "itinerary_item_img" if itinerary.image.attached?  %>
+                </div>
+              </div>
               <hr>
             <% end %>
           </div>
-        </div>
-        <%# ここから旅程作成 表題もクライアントが作れる用にする %>
-        <!-----旅程----->
-        <div class="itinerary_content">
-          <h3>旅程</h3>
-          <% @itinerarys.each do |itinerary|  %>
-            <div class="itinerary_item">
-              <div class="itinerary_item_time_box">
-                <%= itinerary.time %>
-              </div>
-              <div class="itinerary_item_info">
-                <div class="itinerary_item_title">
-                  <%= itinerary.title %>
-                </div>
-                <div class="itinerary_item_text">
-                  <%= itinerary.text %>
-                </div>
-              </div>
-              <div class="itinerary_item_img_box">
-                <%= image_tag itinerary.image, class: "itinerary_item_img" if itinerary.image.attached?  %>
-              </div>
-            </div>
-            <hr>
-          <% end %>
-        </div>
-      </div><%# products-show-container-main %>
-    </div><%# products_show_container"%>
+        </div><%# products-show-container-main %>
+      </div><%# products_show_container"%>
+    </div>
     <!-----予約フォーム----->
     <div class="form-contents">
       <div class=form-item>
@@ -88,7 +91,7 @@
         </div>
 
         <div class="form-input">
-          <%= form_with url:edit_product_path(@product.id), method: :get, local: true do |f| %>
+          <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
             <%= f.hidden_field :price, id: "f_price"  %>
             <div class="form-num">
               <div class="form-num-title-box">
@@ -116,7 +119,6 @@
       </div><%# form-item %>
     </div><%# form-contents %>
   </div><%#products-wrap-main%>
-    <div class="footer">
 </div><%#products-wrap%>
 
-<%= render "shared/user_footer" %>
+<%= render "shared/footer_client" %>

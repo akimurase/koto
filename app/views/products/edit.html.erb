@@ -1,106 +1,107 @@
+<%= render "shared/header" %>
 
 <div class="products-wrap">
   <div class="products-main">
-    <!-----見出し----->
-    <div class="products-top">
-      <%= form_with model: @product, local: true do |f| %>
-        <div class="product-editor-name-box">
-          <h1>【<%= f.text_field :name, class:"product-name" %>】</h1>
-        </div>
-          <div class="product-editor-text-box">
-            <p><%= f.text_field :title, class:"product-title" %></p>
+    <div class="for-event">
+      <!-----見出し----->
+      <div class="products-top">
+        <%= form_with model: @product, local: true do |f| %>
+          <div class="product-editor-name-box">
+            <h1>【<%= f.text_field :name, class:"product-name" %>】</h1>
           </div>
-            <p><%= f.text_area :text, class:"product-text" %></p>
-          <div class="product-editor-imag-box">
-            <%= image_tag @product.image, class:"products_show_img" if @product.image.attached?  %>
-            <br>
-            <%= f.file_field :image %>
-          </div>
-          <div class="product-under">
-            <div class="product-editor-price-box">
-              <p class ="editor-title"><%= f.label :料金 %></p>
-              <%= f.text_field :price %>
+            <div class="product-editor-title-box">
+              <p><%= f.text_field :title, class:"product-title" %></p>
             </div>
-            <div class="product-editor-unit-box">
-              <p class ="editor-title"><%= f.label :単位 %></p>
-              <%= f.text_field :unit %>
+              <p><%= f.text_area :text, class:"product-text" %></p>
+            <div class="product-editor-imag-box">
+              <%= image_tag @product.image, class:"products_show_img" if @product.image.attached?  %>
+              <br>
+              <%= f.file_field :image %>
             </div>
+            <div class="product-under">
+              <div class="product-editor-price-box">
+                <p class ="editor-title"><%= f.label :料金 %></p>
+                <%= f.text_field :price %>
+              </div>
+              <div class="product-editor-unit-box">
+                <p class ="editor-title"><%= f.label :単位 %></p>
+                <%= f.text_field :unit %>
+              </div>
+            </div>
+          <%= f.submit "編集する", class:"product-edit-button" %>
+        <% end %>
+      </div>
+      <!-----商品の詳細----->
+      <div class="products-show-container">
+        <div class="products-show-container-main">
+          <!-----ポイント----->
+          <div class="point-container">
+            <h3>おすすめポイント</h3>
+              <div class="point-content">
+                <% @points.each do |point|  %>
+                  <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
+                    <%# 編集用のフォーム %>
+                    <%= form_with model: @point, url:product_point_path(@product, point.id), method: :PATCH, local: true do |f| %>
+                      <div class="point-item">
+                        <div class="point-item-info">
+                          <div class="oint-item-title-box">
+                            <%= f.text_field :title, value:point.title, class:"point-item-title" %>
+                          </div>
+                          <div class="point-item-text-box">
+                            <%= f.text_area :text, value:point.text, class:"point-item-text" %>
+                          </div>
+                        </div>
+                        <div class="point-item-img">
+                          <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
+                          <p class="m-3"><%= f.file_field :image %></p>
+                        </div>
+                      </div>
+                      <div class="">
+                        <%= f.submit "編集する", class:"#" %>
+                      </div>
+                      <div class="">
+                        <%= button_to "削除する", product_point_path(@product, point.id), method: :delete %>
+                      </div>
+                      <hr>
+                    <% end %>
+                <% end %>
+              </div>
           </div>
-        <%= f.submit "編集する", class:"product-edit-button" %>
-      <% end %>
-    </div>
 
-    <!-----商品の詳細----->
-    <div class="products-show-container">
-      <div class="products-show-container-main">
-        <!-----ポイント----->
-        <div class="point-container">
-          <h3>おすすめポイント</h3>
-            <div class="point-content">
-              <% @points.each do |point|  %>
-                <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
-                  <%# 編集用のフォーム %>
-                  <%= form_with model: @point, url:product_point_path(@product, point.id), method: :PATCH, local: true do |f| %>
-                    <div class="point-item">
-                      <div class="point-item-info">
-                        <div class="oint-item-title-box">
-                          <%= f.text_field :title, value:point.title, class:"point-item-title" %>
-                        </div>
-                        <div class="point-item-text-box">
-                          <%= f.text_area :text, value:point.text, class:"point-item-text" %>
-                        </div>
+          <%# ここから旅程作成 表題もクライアントが作れる用にする %>
+          <!-----旅程----->
+          <div class="itinerary_content">
+            <h3>旅程</h3>
+              <% @itinerarys.each do |itinerary|  %>
+                <%# 編集用のフォーム %>
+                <%= form_with model: @itinerary, url:product_itinerary_path(@product, itinerary.id), method: :PATCH, local: true do |f| %>
+                  <div class="itinerary_item">
+                    <div class="itinerary_item_time_box">
+                      <%= f.text_field :time, value:itinerary.time, class:"itinerary_item_time"%>
+                    </div>
+                    <div class="itinerary_item_info">
+                      <div class="itinerary_item_title">
+                        <%= f.text_field :title, value:itinerary.title, class:"itinerary_item_title" %>
                       </div>
-                      <div class="point-item-img">
-                        <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
-                        <p class="m-3"><%= f.file_field :image %></p>
+                      <div class="itinerary_item_text">
+                        <%= f.text_area :text, value:itinerary.text, class:"itinerary_item_text" %>
                       </div>
                     </div>
-                    <div class="">
-                      <%= f.submit "編集する", class:"#" %>
+                    <div class="itinerary_item_img_box">
+                      <%= image_tag itinerary.image, class: "itinerary_item_img" if itinerary.image.attached?  %>
+                      <br>
+                      <%= f.file_field :image %>
                     </div>
-                    <div class="">
-                      <%= button_to "削除する", product_point_path(@product, point.id), method: :delete %>
-                    </div>
-                    <hr>
-                  <% end %>
+                  </div>
+                    <%= f.submit "編集する", class:"#" %>
+                    <% end %>
+                  <%= button_to "削除する", product_itinerary_path(@product, itinerary.id), method: :delete %>
+                <hr>
               <% end %>
-            </div>
-        </div>
-
-        <%# ここから旅程作成 表題もクライアントが作れる用にする %>
-        <!-----旅程----->
-        <div class="itinerary_content">
-          <h3>旅程</h3>
-            <% @itinerarys.each do |itinerary|  %>
-              <%# 編集用のフォーム %>
-              <%= form_with model: @itinerary, url:product_itinerary_path(@product, itinerary.id), method: :PATCH, local: true do |f| %>
-                <div class="itinerary_item">
-                  <div class="itinerary_item_time_box">
-                    <%= f.text_field :time, value:itinerary.time, class:"itinerary_item_time"%>
-                  </div>
-                  <div class="itinerary_item_info">
-                    <div class="itinerary_item_title">
-                      <%= f.text_field :title, value:itinerary.title, class:"itinerary_item_title" %>
-                    </div>
-                    <div class="itinerary_item_text">
-                      <%= f.text_area :text, value:itinerary.text, class:"itinerary_item_text" %>
-                    </div>
-                  </div>
-                  <div class="itinerary_item_img_box">
-                    <%= image_tag itinerary.image, class: "itinerary_item_img" if itinerary.image.attached?  %>
-                    <br>
-                    <%= f.file_field :image %>
-                  </div>
-                </div>
-                  <%= f.submit "編集する", class:"#" %>
-                  <% end %>
-                <%= button_to "削除する", product_itinerary_path(@product, itinerary.id), method: :delete %>
-              <hr>
-            <% end %>
-        </div>
-      </div><%# products-show-container-main %>
-    </div><%# products_show_container"%>
-
+          </div>
+        </div><%# products-show-container-main %>
+      </div><%# products_show_container"%>
+    </div>
     <!-----予約フォーム----->
     <div class="form-contents">
       <div class=form-item>
@@ -139,7 +140,7 @@
             </div>
             <%# unless client_signed_in? %>
               <div class="form-submit-box">
-                <%= f.submit "予約へ進む >", class:"form-submit shadow-lg rounded-pill border-danger" %>
+                <%= f.submit "予約へ進む >", class:"form-submit shadow-lg rounded-pill" %>
               </div>
             <%# end %>
           <% end %>
@@ -150,10 +151,10 @@
 </div><%#products-wrap%>
 
 <%# ------------------ここからエディター----------------------- %>
-<div class="editor-wrap">
+<div class="product-editor-wrap">
   <div id="app2">
     <!--メニューのボタン-->
-    <div class="editor_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+    <div class="product-editor_btn" v-on:click='ActiveBtn=!ActiveBtn'>
       <img src="/assets/editor_logo.png" alt="editor_logo" class="img">
     </div>
     <!--サイドバー-->
@@ -204,7 +205,6 @@
             <%# ここにタイトルを引っ張りたい %>
             <%#= link_to "「〇〇」の商品ページを編集する", edit_product_path(@product.id) %>
             <%= button_to "この商品ページを削除する", product_path(@product.id), method: :delete %>
-            <%= link_to "戻る", root_path, class:"#" %>
           </div>
         </div>
       </div>
@@ -212,4 +212,4 @@
   </div>
 </div>
 
-    <%#= render "shared/footer" %>
+    <%#= render "shared/footer_cle" %>

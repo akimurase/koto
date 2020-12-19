@@ -1,21 +1,19 @@
 // event
 .form-contents {
-  position: fixed;
-  top: 300px;
-  left: 1400px;
+  margin-left: 40px;
   z-index: 1000;
+}
+
+.products-main {
+  display: flex;
 }
 
 .form-item {
   position: -webkit-sticky;
   position: sticky;
-  top: 10px;
-  left: auto;
-  right: 170px;
+  top: 330px;
   width: 350px;
   height: auto;
-  margin-right: auto;
-  margin-left: auto;
   border: 0.1px solid #E9EBF2;
 }
 

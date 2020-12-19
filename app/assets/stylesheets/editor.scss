@@ -1,11 +1,29 @@
 /*ボタン*/
-.editor_btn {
+.top-editor_btn {
   position: fixed;
   top: 30px;
-  left: 30px;
+  left: 40px;
   cursor: pointer;
   z-index: 50;
 }
+
+.top-editor_btn img {
+  width: 65px;
+}
+
+.product-editor_btn {
+  position: fixed;
+  top: 100px;
+  left: 40px;
+  cursor: pointer;
+  z-index: 50;
+}
+
+.product-editor_btn img {
+  width: 65px;
+}
+
+
 
 .section_btn {
   // position: fixed;
@@ -24,7 +42,6 @@
   width: 325px;
   height: 100vh;
   top: 0;
-  padding-top: 130px;
 }
 
 
@@ -59,6 +76,7 @@
 // product
 .editor {
   padding-left: 30px;
+  margin-top :200px
 }
 
 .editor-title {
