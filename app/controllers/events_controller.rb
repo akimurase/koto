@@ -13,7 +13,6 @@ class EventsController < ApplicationController
     @user = User.find(current_user.id)
     # @user = User.all
     @product = Product.find(params[:product_id])
-    # binding.pry
   end
 
   def confirm

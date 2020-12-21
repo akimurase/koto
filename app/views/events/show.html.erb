@@ -1,22 +1,38 @@
 <h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<%= render "shared/header" %>
 
-<h1>検索結果</h1>
-  <% if @results.length !=0 %>
-    <% @results.each do |result| %>
-      <%= link_to edit_event_path(result.id) do %>
-          <td>
-          <br>
-          <li>
-              <%= result.start_time %>
-              <%= result.product_name %>
-              <%= result.user_name %>
-              <%= result.num_id %>
-          </li>
+<div class="search-wrap">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">.id</th>
+        <th scope="col">名前</th>
+        <th scope="col">人数</th>
+        <th scope="col">商品名</th>
+        <th scope="col">Email</th>
+        <th scope="col">TEL</th>
+        <th scope="col">オプション</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <% @results.each do |result| %>
+        <%= link_to edit_event_path(result.id) do %>
+          <tr>
+            <th scope="row"><%= result.id %></th>
+            <td><%= result.user_name %></td>
+            <td><%= result.num_id %></td>
+            <td><%= result.product_name %></td>
+            <td><%#= result.product_name %></td>
+            <td><%#= result.product_name %></td>
+            <td><%= button_to "編集", edit_event_path(result.id), method: :get, class:"search-edit-button" %></td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  <% else %>
-    該当者はいません
-  <% end %>
-  <br>
-<%= link_to 'トップページへ戻る', root_path %>
+    </tr>
+    </tbody>
+    <br>
+  </table>
+
+  <%= link_to 'トップページへ戻る', root_path %>
+</div>
