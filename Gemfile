@@ -61,6 +61,7 @@ gem "carrierwave"
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'ransack', '~>2.3.2'
+gem 'rails-i18n'
 # gem 'payjp'
 # gem 'cocoon'
 # gem 'jquery-rails'
