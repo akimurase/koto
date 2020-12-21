@@ -1,5 +1,5 @@
 <h1>Events#index</h1>
-
+<%= render "shared/header" %>
 
 <div class="">
   <div class="search">
@@ -21,16 +21,18 @@
     </div>
   </div>
 
-  <%# カレンダーの表示 %>
+  <!---カレンダー-->
   <%= month_calendar events: @events do |date, events| %>
     <%= date.day %>
 
-  <%# イベントの表示 %>
+  <!----イベントー---->
     <ul class="event-list">
       <% events.each do |event| %>
       <li class="list">
         <%= link_to edit_event_path(event.id) do %>
+          <%= event.user_name %>
           <%= event.num.name %>
+          <%= event.product_name %>
         <% end %>
       </li>
     </ul>

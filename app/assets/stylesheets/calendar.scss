@@ -1,3 +1,4 @@
+// 上部
 .search {
   display: flex;
 }
@@ -14,4 +15,53 @@
   margin-bottom: 20px;
   margin-right: 40px;
   margin-left: 40px;
+}
+
+.calendar-heading {
+  text-align: -webkit-center;
+}
+
+.calendar-heading ul {
+  display: flex;
+  justify-content: space-between;
+  font-size: 40px;
+  width: 800px;
+}
+
+.calendar-title {
+  margin-left: 10px;
+}
+
+.calendar-title-li-m a {
+  color: #5f6368;
+}
+
+
+// カレンダー
+.simple-calendar table {
+  height: 100vh;
+}
+
+.simple-tr {
+  text-align: center;
+}
+
+.simple-calendar th {
+  text-align: center;
+}
+
+.event-list {
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.list {
+  text-align: initial;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.list a {
+  color: black;
 }
