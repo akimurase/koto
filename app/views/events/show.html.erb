@@ -17,22 +17,19 @@
     <tbody>
     <tr>
       <% @results.each do |result| %>
-        <%= link_to edit_event_path(result.id) do %>
-          <tr>
-            <th scope="row"><%= result.id %></th>
-            <td><%= result.user_name %></td>
-            <td><%= result.num_id %></td>
-            <td><%= result.product_name %></td>
-            <td><%#= result.product_name %></td>
-            <td><%#= result.product_name %></td>
-            <td><%= button_to "編集", edit_event_path(result.id), method: :get, class:"search-edit-button" %></td>
-          </tr>
-        <% end %>
+        <tr>
+          <th scope="row"><%= result.id %></th>
+          <td><%= result.user_name %></td>
+          <td><%= result.num_id %></td>
+          <td><%= result.product_name %></td>
+          <td><%= result.user_email %></td>
+          <td><%= result.user_tel %></td>
+          <td><%= button_to "編集", edit_event_path(result.id), method: :get, class:"search-edit-button" %></td>
+        </tr>
       <% end %>
     </tr>
     </tbody>
     <br>
   </table>
-
   <%= link_to 'トップページへ戻る', root_path %>
 </div>

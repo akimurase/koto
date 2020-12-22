@@ -1,42 +1,38 @@
 <h1>Events#edit</h1>
 <%= render "shared/header" %>
 
-
-    <p>名前: <%= @event.user_name %></p>
-    <p>商品名: <%= @event.product_name %></p>
-    <p>参加人数: <%= @event.num.name %></p>
-
-<%= form_with(model: @event, local: true) do |f| %>
-
-  <div class="">
-
-    <div class="">
-      <%= f.text_field :start_time %>
-    </div>
-
-    <div class="">
-    <%= f.text_field :price %>
-    </div>
-
-    <div class="">
-      <p>参加人数</p>
-    </div>
-    <div class ="">
-      <%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %>
-    </div>
-
-  </div>
-
-      <div class="">
-        <%= f.submit "編集する" %>
-      </div>
-
-      <div class="">
-        <%= link_to "削除する", event_path(@event.id), method: :delete, class:"#" %>
-      </div>
-
-<% end %>
-
- <div class="">
-    <%= link_to "戻る", root_path%>
-  </div>
+<div class="edit-wrap">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">名前</th>
+        <th scope="col">人数</th>
+        <th scope="col">商品名</th>
+        <th scope="col">金額</th>
+        <th scope="col">参加日</th>
+        <th scope="col">Email</th>
+        <th scope="col">TEL</th>
+        <th scope="col">オプション</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <%= form_with(model: @event, local: true) do |f| %>
+        <tr>
+          <td><%= f.text_field :user_name %></td>
+          <td><%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %></td>
+          <td><%= f.text_field :product_name %></td>
+          <td><%= f.text_field :price %></td>
+          <td><%= f.text_field :start_time %></td>
+          <td><%= f.text_field :user_email %></td>
+          <td><%= f.text_field :user_tel %></td>
+          <td><%= f.submit "保存する" %></td>
+          <td><%#= button_to "削除する", event_path(@event.id), method: :delete, class:"#" %></td>
+        </tr>
+      <% end %>
+    </tr>
+    </tbody>
+    <br>
+  </table>
+</div>
