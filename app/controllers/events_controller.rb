@@ -55,8 +55,9 @@ class EventsController < ApplicationController
   end
 
   def search_words
-    # @events = Event.search(params[:keyword])
-    @users = User.search(params[:keyword])
+    @events = Event.search(params[:keyword])
+    # @users = User.search(params[:keyword])
+    # binding.pry
   end
 
   def search

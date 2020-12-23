@@ -1,13 +1,14 @@
 <h1>名前検索結果</h1>
 
-<% if @users == nil %>
+<%# if @users == nil %>
+<% if @evens == nil %>
 <p>検索結果はありません</p>
   <% else %>
-    <%# @events.each do |event| %>
-    <% @users.each do |user| %>
-      <%= link_to edit_event_path(user.id) do %>
-        <%= user.name %>
-      <% end %>
+    <% @events.each do |event| %>
+    <%# @users.each do |user| %>
+        <%#= user.name %>
+        <%= event.name %>
+      <%= link_to "編集", edit_event_path(event.id) %>
     <% end %>
 <% end %>
 

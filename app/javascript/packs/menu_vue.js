@@ -25,10 +25,3 @@ const app3 = new Vue({
     ActiveBtn: false
   },
 })
-
-const app4 = new Vue({
-  el: '#app4',
-  data: {
-    ActiveBtn: false
-  },
-})

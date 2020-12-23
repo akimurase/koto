@@ -37,22 +37,22 @@
 /*サイドバー*/
 .editor-side {
   position: fixed;
-  background-color: #fffaf0e0;
+  background-color: hsla(0, 0%, 57%, 0.829);
   z-index: 30;
   width: 325px;
   height: 100vh;
   top: 0;
+  // transition: opacity 0.4s;
 }
+
+
 
 
 // top-editor
 
-.editor-side {
-  // transition: opacity 0.4s;
-}
-
 .top-editor-said {
-  margin: 20px;
+  margin-top: 140px;
+  margin-left: 20px;
 }
 
 .top-editor-submit-box {
@@ -84,9 +84,6 @@
   margin-bottom: 0px;
 }
 
-.delete-box {
-
-}
 
 // point
 .point-editor {
