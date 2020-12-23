@@ -38,6 +38,7 @@
               <ul class="login_ul">
                 <li><p class="text-danger">必須</p></li>
                 <li><%#= f.text_field :company_adrress, class:"input-default", id:"#", placeholder:"例)東京都千代田区1-1 " %></li>
+                <li><%= f.text_field :company_adrress, class:"input-default", id:"#", placeholder:"例)東京都千代田区1-1 " %></li>
               </ul>
             </div>
             <div class="field">
@@ -66,7 +67,7 @@
               <p class="devise_title"><%= f.label :パスワード確認 %></p>
               <ul class="login_ul">
                 <li><p class="text-danger">必須</p></li>
-                <li><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"例)xxxxxx@koto.com" %></li>
+                <li><%= f.password_field :password_confirmation, autocomplete: "new-password" %></li>
               </ul>
             </div>
             <div class="actions">

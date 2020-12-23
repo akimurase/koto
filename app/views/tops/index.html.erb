@@ -50,14 +50,15 @@
   <!----動画----->
   <div class="top_video_content" >
     <% if @top == nil %>
-      <img url="#" alt="ダミー動画">
+    <%#= video_tag "/videos/kototabi.mp4", class: "top_video", loop: true, autoplay: true, muted: true, alt:"ダミー画像" %>
+    <h2>新規トップ画面を作成してください</h2>
     <% else %>
       <div class="container-fluid">
         <div class="row">
           <div class="col">
             <%= video_tag @top.video_top, class:"top_video", :loop => true, :autoplay => true, :muted => true %> 
             <div class="top_hero" >
-              <%= image_tag @top.image, class: "top_logo" %>
+              <%#= image_tag @top.image, class: "top_logo" %>
               <h3 class="top_title"><%= @top.title %></h3>
             </div>
           </div>

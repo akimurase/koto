@@ -4,7 +4,7 @@ class CreateItineraries < ActiveRecord::Migration[6.0]
       t.string  :time
       t.string  :title
       t.text    :text
-      t.integer :product_id
+      t.integer :product_id,  null: false
 
       t.timestamps
     end

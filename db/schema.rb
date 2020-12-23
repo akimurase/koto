@@ -34,13 +34,14 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
   end
 
   create_table "clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "company_name"
-    t.string "c_kana"
-    t.string "supervisor"
-    t.string "s_kana"
+    t.string "company_name", null: false
+    t.string "c_kana", null: false
+    t.string "supervisor", null: false
+    t.string "s_kana", null: false
+    t.string "company_adrress", null: false
+    t.string "tel", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "tel"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -59,9 +60,9 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
     t.string "price"
     t.integer "num_id"
     t.datetime "start_time"
-    t.integer "user_id"
-    t.integer "product_id"
-    t.integer "client_id"
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -70,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
     t.string "time"
     t.string "title"
     t.text "text"
-    t.integer "product_id"
+    t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,27 +79,26 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "text"
-    t.integer "product_id"
+    t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "text"
     t.string "title"
-    t.text "text2"
-    t.integer "price"
+    t.string "price"
     t.string "unit"
-    t.integer "client_id"
+    t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "video_top"
-    t.string "title"
-    t.integer "client_id"
+    t.string "video_top", null: false
+    t.string "title", null: false
+    t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
