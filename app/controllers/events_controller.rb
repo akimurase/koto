@@ -6,6 +6,9 @@ class EventsController < ApplicationController
     # @e = Event.ransack(params[:q])
     @events = Event.all
     set_event_column
+    @client = Client.find_by(params[:id]) #footer条件分岐のため
+    @top = Top.find_by(params[:id]) #footer条件分岐のため
+
   end
 
   def new
@@ -13,6 +16,8 @@ class EventsController < ApplicationController
     @user = User.find(current_user.id)
     # @user = User.all
     @product = Product.find(params[:product_id])
+    @client = Client.find_by(params[:id]) #footer条件分岐のため
+    @top = Top.find_by(params[:id]) #footer条件分岐のため
   end
 
   def confirm
@@ -29,6 +34,9 @@ class EventsController < ApplicationController
     # else pay_event && @event.save!
       # redirect_to @event
     # end
+    @client = Client.find_by(params[:id]) #footer条件分岐のため
+    @top = Top.find_by(params[:id]) #footer条件分岐のため
+
   end
 
   def show
@@ -39,6 +47,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @client = Client.find_by(params[:id]) #footer条件分岐のため
     # @user = User.where()
     # @product = Product.all
   end
@@ -55,12 +64,14 @@ class EventsController < ApplicationController
   end
 
   def search_words
+    @client = Client.find_by(params[:id]) #footer条件分岐のため
     @events = Event.search(params[:keyword])
     # @users = User.search(params[:keyword])
     # binding.pry
   end
 
   def search
+    @client = Client.find_by(params[:id]) #footer条件分岐のため
     # @e = Event.ransack(params[:q])
     @results = @e.result#.includes(:event)
   end
@@ -68,8 +79,13 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+    params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
   end
+
+  # def event_params
+  #   params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+  # end
+
 
   def search_event
     @e = Event.ransack(params[:q])

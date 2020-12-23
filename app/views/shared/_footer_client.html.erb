@@ -1,38 +1,59 @@
   <div class="footer">
     <div class='client-wrap' >
-      <% if client_signed_in? %> 
+      <% if @client != nil %> 
         <div class="client-admin-if-login-box">
           <div class="company-info">
             <ul>
-              <li>会社名<span>:</span><%#= current_client.company_name %></li>
-              <li>所在<span>:</span><%#= current_client.company_address %></li>
-              <li>e-mail<span>:</span><%#= current_client.email %></li>
-              <li>TEL<span>:</span><%#= current_client.tel %></li>
+              <li>会社名<span>:</span><%= @client.company_name %></li>
+              <li>所在<span>:</span><%#= @client.company_address %></li>
+              <li>e-mail<span>:</span><%= @client.email %></li>
+              <li>TEL<span>:</span><%= @client.tel %></li>
             </ul>
           </div>
           <!--画像の有無--->
-          <div class="client-menu">
-            <ul>
-              <li>
-                <p>Admin</p>
-              </li>
-              <% if @top == nil %>
+          <% if client_signed_in? %>
+            <div class="client-menu">
+              <ul>
                 <li>
-                  <%= link_to "新規top画面を作成する", new_top_path, class:"client-menu-li" %>
+                  <p>Admin</p>
                 </li>
-              <% else %>
-                <li>
-                  <%= link_to "管理者画面に行く", edit_top_path(@top.id), class:"client-menu-li" %>
-                </li>
-                <li>
-                  <%= link_to "予約管理画面", events_path, class:"client-menu-li" %>
-                </li>
-              <% end %>
-              <li>
-                <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class:"client-menu-li" %>
-              </li>
-            </ul>
-          </div>
+                <% if @top == nil %>
+                  <li>
+                    <%= link_to "新規top画面を作成する", new_top_path, class:"client-menu-li" %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "管理者画面に行く", edit_top_path(@top.id), class:"client-menu-li" %>
+                  </li>
+                  <li>
+                    <%= link_to "予約管理画面", events_path, class:"client-menu-li" %>
+                  </li>
+                <% end %>
+                  <li>
+                    <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class:"client-menu-li" %>
+                  </li>
+              </ul>
+            </div>
+          <% else %>
+            <div class="client-menu">
+              <div class="client-admin-no-account">
+                  <div id="app3">
+                    <ul>
+                      <li>
+                        <div class="admin-button-box" v-on:click='ActiveBtn=!ActiveBtn'>
+                          <p>Admin</p>
+                        </div>
+                      </li>
+                        <transition name="editor-side">
+                          <div v-show="ActiveBtn">
+                            <li><%= link_to "ログイン", new_client_session_path, class:"client-about-sign-up" %></li>
+                          </div>
+                        </transition>
+                    </ul>
+                  </div><!--app3-->
+              </div><!--client-admin-noaccount"-->
+            </div>
+          <% end %>
         </div><!---client-admin-if-login-box--->
       <% else %>
         <div class="client-no-account-box">
