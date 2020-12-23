@@ -1,10 +1,17 @@
+
 <%= render "shared/header" %>
-
-
-<h1>ご予約完了しました。</h1>
-
-<div>
-  <%= link_to "Topへ戻る", root_path %>
+<div class="done-wrap">
+    <div class="done-container">
+      <div class="done-box">
+        <h1>ご予約完了しました。</h1>
+        <p>ご予約が完了しました。<br>
+          確認のメールをお送りしましたので、予約内容を必ずご確認ください。
+        </p>
+        <div>
+          <%= link_to "Topへ戻る", root_path %>
+        </div>
+      </div>
+    </div>
 </div>
-
 <%= render "shared/footer_user" %>
+

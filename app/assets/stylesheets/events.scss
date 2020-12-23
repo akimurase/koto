@@ -184,3 +184,22 @@ padding-left: 10px;
   width: 280px;
 }
 
+
+// 完了画面
+.done-wrap {
+  background-color: #fca9a9;
+
+}
+
+.done-container {
+  // padding-top: 30px;
+  // padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.done-box {
+  background-color: white;
+  width: 550px;
+}
