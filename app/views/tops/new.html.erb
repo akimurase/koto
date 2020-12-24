@@ -1,90 +1,15 @@
 <h1>Tops#new</h1>
 
-<!----------------ここからエディター---------------->
-<div class="top-editor-wrap">
-  <div id="app2">
-    <!--メニューのボタン-->
-    <div class="top-editor_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-      <img src="/assets/editor_logo.png" alt="editor_logo">
-    </div>
-    <!--サイドバー-->
-    <transition name="editor-side">
-      <div class="editor-side" v-show="ActiveBtn">
-        <% if @top == nil %>
-          <div class="top-new">
-            <%= link_to "新規ページを作成する", new_top_path %>
-          </div>
-            <% else %>
-          <div class="top-editor-said">
-            <%#= link_to "top画面を編集する", edit_top_path(@top.id) %>
-            <div class="edit-top">
-              <h3>トップ画面編集</h3>
-              <%= form_with model: @top, local: true do |f| %>
-                <div class="top-editor-video-box">
-                  <p class="editor-title"><%= f.label :動画 %></p>
-                  <%= f.file_field :video_top, :accept => 'video/*' %>
-                </div>
-                <div class="top-editor-logo-box">
-                  <p class="editor-title"><%= f.label :ロゴ %></p>
-                  <%= f.file_field :image %>
-                </div>
-                <div class="top-editor-title-box">
-                  <p class="editor-title"><%= f.label :タイトル %></p>
-                  <%= f.text_field :title %>
-                </div>
-                <div class="top-editor-submit-box">
-                  <%= f.submit "編集する", class:"top-editor-submit" %>
-                </div>
-              <% end %>
-            </div>
-
-            <div class="add-product">
-              <h3>商品追加</h3>
-              <%= form_with model: @product, local: true do |f| %>
-                <div>
-                  <p><%= f.label :画像 %></p>
-                  <%= f.file_field :image %>
-                </div>
-                <div>
-                  <p><%= f.label :商品名 %></p>
-                  <%= f.text_field :name %>
-                </div>
-                <div>
-                  <p><%= f.label :表題 %></p>
-                  <%= f.text_field :title %>
-                </div>
-                <div>
-                  <p><%= f.label :紹介文 %></p>
-                  <%= f.text_area :text %>
-                </div>
-                <div>
-                  <p><%= f.label :金額 %></p>
-                  <%= f.text_field :price %>
-                </div>
-                <div>
-                  <p><%= f.label :単位 %></p>
-                  <%= f.text_field :unit %>
-                </div>
-                <%= f.submit "作成する", class:"#" %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </transition>
-  </div><%#app%>
-</div>
-
 <%= render "shared/header" %>
-<%# <div class="margin"></div> %>
+
 <div class="top-new-wrap">
-  <div class="contents row">
+  <div class="top-contents-row">
     <div class="top-new">
       <h3>トップ画面作成</h3>
         <%= form_with model: @top, local: true do |f| %>
           <div class="top-field">
             <div class="top-new-field">
-              <p class="editor-title"><%= f.label :動画 %></p>
+              <p class="editor-title-new"><%= f.label :動画 %></p>
               <%= f.file_field :video_top, :accept => 'video/*' %>
             </div>
             <div class="top-new-field">
@@ -93,7 +18,7 @@
             </div>
             <div class="top-new-field">
               <p class="editor-title-new"><%= f.label :タイトル %></p>
-              <%= f.text_field :title %>
+              <%= f.text_field :title, class:"top-new-field-input" %>
             </div>
             <div class="top-new-field">
               <%= f.submit "作成する", class:"top-new-submit" %>
@@ -102,7 +27,8 @@
         <% end %>
     </div>
   </div>
-    <div class="footer-logo-box">
-      <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
-    </div>
+</div>
+
+<div class="footer-logo-box">
+  <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
 </div>

@@ -1,44 +1,45 @@
 <h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
-<h1>ここにコクーンが欲しい</h1>
 
-<%= form_with model: @product, local: true do |f| %>
+<%= render "shared/header" %>
 
-<div class="">
-  <%= f.label :image %>
-  <%= f.file_field :image %>
+<div class="product-new-wrap">
+  <div class="product-contents-row">
+      <%= form_with model: @product, local: true do |f| %>
+        <div class="product-new">
+          <h3>商品追加</h3>
+          <div class="product-field">
+            <div class="product-file-box">
+              <p><%= f.label :画像 %></p>
+              <%= f.file_field :image %>
+            </div>
+              <p><%= f.label :商品名 %></p>
+            <div class="product-field-box">
+              <%= f.text_field :name, class:"product-field-input"%>
+            </div>
+            <div class="product-field-box">
+              <p><%= f.label :表題 %></p>
+              <%= f.text_field :title, class:"product-field-input" %>
+            </div>
+            <div class="product-field-box">
+              <p><%= f.label :紹介文 %></p>
+              <%= f.text_area :text, class:"product-field-input" %>
+            </div>
+            <div class="product-field-box">
+              <p><%= f.label :金額 %></p>
+              <%= f.text_field :price, class:"product-field-input" %>
+            </div>
+            <div class="product-field-box">
+              <p><%= f.label :単位 %></p>
+              <%= f.text_field :unit, class:"product-field-input" %>
+            </div>
+            <%= f.submit "作成する", class:"product-field-submit" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
 </div>
 
-<div class="">
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="footer-logo-box">
+  <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
 </div>
-
-<div class="">
-  <%= f.label :text %>
-  <%= f.text_area :text %>
-</div>
-
-<%# showで表示 %>
-<div class="#">
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-</div>
-
-<div class="#">
-  <%= f.label :text2 %>
-  <%= f.text_field :text2 %>
-</div>
-
-<div class="#">
-  <%= f.label :price %>
-  <%= f.text_field :price %>
-</div>
-
-<div class="#">
-  <%= f.label :unit %>
-  <%= f.text_field :unit %>
-
-<%= f.submit "作成する", class:"#" %>
-<%= link_to "戻る", root_path, class:"#" %>
-<% end %>

@@ -21,6 +21,7 @@ class TopsController < ApplicationController
     @top = Top.new(tops_params)
     @top.save!
     # @tops = Top.find_by(params[:id])
+    redirect_to new_product_path
   end
 
   def edit
