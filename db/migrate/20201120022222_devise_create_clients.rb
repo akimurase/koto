@@ -8,7 +8,7 @@ class DeviseCreateClients < ActiveRecord::Migration[6.0]
       t.string :c_kana,             null: false
       t.string :supervisor,         null: false
       t.string :s_kana,             null: false
-      t.string :company_adrress,    null: false
+      t.string :company_address,    null: false
       t.string :tel,                null: false
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
