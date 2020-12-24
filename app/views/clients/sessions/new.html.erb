@@ -1,8 +1,10 @@
 <%# <div class="background_img_devise" style="background-image: url(<%= @top.title);> </div> %>
 <%# <div class="background_img_devise" style="background-image: url('');"> </div>%>
 <%# ここ背景は画像にしたい %>
+<%= render "shared/header" %>
+
 <div class="background_client" > 
-  <div class="container bg-white text-dark">
+  <div class="container text-dark">
     <div class="devise_main">
       <h2 class="m-3">ログイン</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -38,4 +40,8 @@
       </p>
     </div>
   </div>
+</div>
+
+<div class="footer-logo-box">
+  <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
 </div>
