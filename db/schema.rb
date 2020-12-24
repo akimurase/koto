@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
     t.string "c_kana", null: false
     t.string "supervisor", null: false
     t.string "s_kana", null: false
-    t.string "company_adrress", null: false
+    t.string "company_address", null: false
     t.string "tel", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
