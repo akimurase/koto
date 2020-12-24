@@ -89,7 +89,6 @@
             </div>
           </div>
         </div>
-
         <div class="form-input">
           <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
             <%= f.hidden_field :price, id: "f_price"  %>
@@ -102,12 +101,11 @@
                 <%= f.select(:num_id, num_options, {}, {class:"form-num-select", data:{select:0}, id:"num" }) %>
               </div>
             </div>
-
             <div class="form-day">
               <div class="form-plan-title">
                 <p><%= f.label :start_time, 'ご希望日' %></p>
               </div>
-      <%= raw sprintf(
+              <%= raw sprintf(
                   f.date_select(
                     :start_time,
                     use_month_numbers: true,
@@ -118,11 +116,9 @@
                     date_separator: '%s'),
                   "年", "月") + "日" %>
               </div>
-            <%# unless client_signed_in? %>
               <div class="form-submit-box">
                 <%= f.submit "予約へ進む >", class:"form-submit shadow-lg " %>
               </div>
-            <%# end %>
           <% end %>
         </div>
       </div><%# form-item %>

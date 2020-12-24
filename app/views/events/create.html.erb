@@ -4,14 +4,19 @@
     <div class="done-container">
       <div class="done-box">
         <h1>ご予約完了しました。</h1>
-        <p>ご予約が完了しました。<br>
+        <p>ありがとうございます。<br>
+          ご予約が完了しました。<br>
           確認のメールをお送りしましたので、予約内容を必ずご確認ください。
         </p>
-        <div>
-          <%= link_to "Topへ戻る", root_path %>
+        <div class="back-container">
+          <div class="back-container-box">
+            <%= link_to "トップへ戻る", root_path, class:"btn btn-default back-button" %>
+          </div>
         </div>
       </div>
     </div>
 </div>
-<%= render "shared/footer_user" %>
+<div class="footer-logo-box">
+  <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
+</div>
 
