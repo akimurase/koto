@@ -74,3 +74,35 @@
     </transition>
   </div><%#app%>
 </div>
+
+<%= render "shared/header" %>
+<%# <div class="margin"></div> %>
+<div class="top-new-wrap">
+  <div class="contents row">
+    <div class="top-new">
+      <h3>トップ画面作成</h3>
+        <%= form_with model: @top, local: true do |f| %>
+          <div class="top-field">
+            <div class="top-new-field">
+              <p class="editor-title"><%= f.label :動画 %></p>
+              <%= f.file_field :video_top, :accept => 'video/*' %>
+            </div>
+            <div class="top-new-field">
+              <p class="editor-title-new"><%= f.label :ロゴ %></p>
+              <%= f.file_field :image %>
+            </div>
+            <div class="top-new-field">
+              <p class="editor-title-new"><%= f.label :タイトル %></p>
+              <%= f.text_field :title %>
+            </div>
+            <div class="top-new-field">
+              <%= f.submit "作成する", class:"top-new-submit" %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+    <div class="footer-logo-box">
+      <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
+    </div>
+</div>

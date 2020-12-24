@@ -1,4 +1,8 @@
 // all
+body {
+  background-color: #f5f5f3;
+}
+
 label{
   margin:0;
 }
@@ -14,7 +18,7 @@ p {
 
 // tops_index
 .top {
-  background-color: #f3f3f3;
+  background-color: #eeeeee;
   height: auto;
 }
 
@@ -82,7 +86,6 @@ small {
 
 
 
-
 // tops_edit
 .products-container {
   margin-top: -6.7px;
@@ -94,6 +97,51 @@ small {
 
 
 
+// top_new
+.row  {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 660px;
+  display: block;
+}
+
+.top-new {
+  margin: 20px 0;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+  background-color: white;
+  box-sizing: border-box;
+}
+
+
+
+.top-new h3 {
+  margin-top: 30px;
+}
+
+.top-new-field {
+  margin-top: 30px;
+}
+
+.top-new-field input {
+  width: 100%;
+  margin: 5px 0 15px;
+  padding: 10px;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  font-family: "游ゴシック",
+}
+
+
+.top-new-submit {
+  background-color: #57C3E9;
+  color: #f5f5f3;
+  border: none;
+
+}
 
 
 // .products_items
