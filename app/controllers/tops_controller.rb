@@ -28,7 +28,8 @@ class TopsController < ApplicationController
   end
 
   def edit
-    @top = Top.find(params[:id]) #データ取得（トップ動画再生と編集データ取得）
+    @top = Top.find_by(params[:id]) #データ取得（トップ動画再生と編集データ取得）
+    # @top = Top.find(params[:id]) #データ取得（トップ動画再生と編集データ取得）
     @products = Product.all #プロダクト画像
     @client = Client.find_by(params[:id]) #footer条件分岐のため
 

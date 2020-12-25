@@ -55,7 +55,9 @@ class ProductsController < ApplicationController
   def destroy
     product = Product.find(params[:id])
     product.destroy!
-    redirect_to edit_top_path #topの編集画面に遷移したい
+    @top = Top.find_by(params[:id])
+    # @top = Top.find(params[:id])
+    redirect_to edit_top_path(@top.id) #topの編集画面に遷移したい
   end
 
   private

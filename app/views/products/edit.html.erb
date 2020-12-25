@@ -213,7 +213,8 @@
           <div class="delete-box">
             <%# ここにタイトルを引っ張りたい %>
             <%#= link_to "「〇〇」の商品ページを編集する", edit_product_path(@product.id) %>
-            <%= button_to "この商品ページを削除する", product_path(@product.id), method: :delete %>
+            <%#= button_to "この商品ページを削除する", product_path(@product.id), method: :delete %>
+            <%= button_to "この商品ページを削除する", product_path, method: :delete %>
           </div>
         </div>
       </div>

@@ -1,1 +1,44 @@
 <h1>tops#show</h1>
+
+<!-----区切り------>
+  <div id="app1">
+    <div class="section">
+      <div class="section_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+        <img src="/assets/section-logo.png" alt="editor_logo" >
+      </div>
+      <transition name="editor-side">
+        <div v-show="ActiveBtn">
+          <div class="container mt-5 mb-5">
+            <div class="row">
+              <div class="col-2">
+                <img src="/assets/logo.png">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo (1).png">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo (5).png">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo (2).png">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo (3).png">
+              </div>
+              <div class="col-2">
+                <img src="/assets/logo ().png">
+              </div>
+            </div>
+          </div>
+          <div class="container mb-5">
+            <div class="row">
+              <h2 class="section col-12">
+              <span class="section-name mb-5 border-bottom">products</span>
+              <small>プラン</small>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </div>
