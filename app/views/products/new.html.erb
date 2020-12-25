@@ -4,39 +4,40 @@
 
 <div class="product-new-wrap">
   <div class="product-contents-row">
-      <%= form_with model: @product, local: true do |f| %>
-        <div class="product-new">
-          <h3>商品追加</h3>
-          <div class="product-field">
-            <div class="product-file-box">
-              <p><%= f.label :画像 %></p>
-              <%= f.file_field :image %>
-            </div>
-              <p><%= f.label :商品名 %></p>
-            <div class="product-field-box">
-              <%= f.text_field :name, class:"product-field-input"%>
-            </div>
-            <div class="product-field-box">
-              <p><%= f.label :表題 %></p>
-              <%= f.text_field :title, class:"product-field-input" %>
-            </div>
-            <div class="product-field-box">
-              <p><%= f.label :紹介文 %></p>
-              <%= f.text_area :text, class:"product-field-input" %>
-            </div>
-            <div class="product-field-box">
-              <p><%= f.label :金額 %></p>
-              <%= f.text_field :price, class:"product-field-input" %>
-            </div>
-            <div class="product-field-box">
-              <p><%= f.label :単位 %></p>
-              <%= f.text_field :unit, class:"product-field-input" %>
-            </div>
-            <%= f.submit "作成する", class:"product-field-submit" %>
+    <div class="product-new">
+      <h3>商品追加</h3>
+        <%= form_with model: @product, local: true do |f| %>
+          <%= render 'shared/error_messages', model: f.object %>
+            <div class="product-field">
+              <div class="product-file-box">
+                <p><%= f.label :画像 %></p>
+                <%= f.file_field :image %>
+              </div>
+                <p><%= f.label :商品名 %></p>
+              <div class="product-field-box">
+                <%= f.text_field :name, class:"product-field-input"%>
+              </div>
+              <div class="product-field-box">
+                <p><%= f.label :表題 %></p>
+                <%= f.text_field :title, class:"product-field-input" %>
+              </div>
+              <div class="product-field-box">
+                <p><%= f.label :紹介文 %></p>
+                <%= f.text_area :text, class:"product-field-input" %>
+              </div>
+              <div class="product-field-box">
+                <p><%= f.label :金額 %></p>
+                <%= f.text_field :price, class:"product-field-input" %>
+              </div>
+              <div class="product-field-box">
+                <p><%= f.label :単位 %></p>
+                <%= f.text_field :unit, class:"product-field-input" %>
+              </div>
+              <%= f.submit "作成する", class:"product-field-submit" %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
   </div>
 </div>
 

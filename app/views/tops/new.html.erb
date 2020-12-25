@@ -7,6 +7,7 @@
     <div class="top-new">
       <h3>トップ画面作成</h3>
         <%= form_with model: @top, local: true do |f| %>
+          <%= render 'shared/error_messages', model: f.object %>
           <div class="top-field">
             <div class="top-new-field">
               <p class="editor-title-new"><%= f.label :動画 %></p>

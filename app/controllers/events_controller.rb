@@ -54,8 +54,7 @@ class EventsController < ApplicationController
   
   def update
     event = Event.find(params[:id])
-    # event.update(event_edit_params)
-    event.update(event_params)
+    event.update(event_edit_params)
     redirect_to edit_event_path(event.id)
   end
   
@@ -83,10 +82,9 @@ class EventsController < ApplicationController
     params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
   end
 
-  # def event_edit_params
-  # def event_params
-  #   params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
-  # end
+  def event_edit_params
+    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+  end
 
 
   def search_event

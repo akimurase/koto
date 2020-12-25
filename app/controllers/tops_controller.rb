@@ -19,9 +19,12 @@ class TopsController < ApplicationController
 
   def create
     @top = Top.new(tops_params)
-    @top.save!
+    if @top.save
+      redirect_to new_product_path
+    else
+      render :new
+    end
     # @tops = Top.find_by(params[:id])
-    redirect_to new_product_path
   end
 
   def edit
@@ -34,12 +37,16 @@ class TopsController < ApplicationController
   def update
     top = Top.find(params[:id])
     top.update(tops_params)
+    # if top.valid?
     redirect_to edit_top_path
+    # else
+    # end
   end
 
   def destroy
     @top = Top.find(params[:id])
     @top.destroy!
+    redirect_to root_path
   end
 
   private

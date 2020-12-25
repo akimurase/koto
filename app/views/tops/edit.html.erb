@@ -93,6 +93,7 @@ Topsedit
             <div class="edit-top">
               <h3>トップ画面編集</h3>
               <%= form_with model: @top, local: true do |f| %>
+                <% render 'shared/error_messages', model: f.object %>
                 <div class="top-editor-video-box">
                   <p class="editor-title"><%= f.label :動画 %></p>
                   <%= f.file_field :video_top, :accept => 'video/*' %>
@@ -113,7 +114,7 @@ Topsedit
 
             <div class="add-product">
               <h3>商品追加</h3>
-              <%= form_with model: @product, local: true do |f| %>
+              <%= form_with model: @product, url:products_path, local: true do |f| %>
                 <div>
                   <p><%= f.label :画像 %></p>
                   <%= f.file_field :image %>
@@ -141,7 +142,7 @@ Topsedit
                 <%= f.submit "作成する", class:"#" %>
               <% end %>
             </div>
-              <%= button_to "「@top.tilleのサイト」を削除する", top_path(@top.id), method: :delete %>
+              <%#= button_to "「@top.tilleのサイト」を削除する", top_path(@top.id), method: :delete %>
           </div>
         <% end %>
       </div>

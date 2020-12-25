@@ -15,8 +15,13 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(products_params)
-    product.save!
+    @product = Product.new(products_params)
+    if @product.save
+      @top = Top.find_by(params[:id])
+      redirect_to edit_top_path(@top.id)
+    else
+      render :new
+    end
   end
 
   
