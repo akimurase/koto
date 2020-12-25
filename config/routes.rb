@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'events/search' 
 
   resources :tops
+  post 'products/add'
   resources :products do
     resources :points
     resources :itinerarys

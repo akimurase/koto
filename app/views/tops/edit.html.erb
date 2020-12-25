@@ -114,7 +114,8 @@ Topsedit
 
             <div class="add-product">
               <h3>商品追加</h3>
-              <%= form_with model: @product, url:products_path, local: true do |f| %>
+              <%= form_with model: @product, url:products_add_path, local: true do |f| %>
+                <%#= render 'shared/error_messages', model: f.object %>
                 <div>
                   <p><%= f.label :画像 %></p>
                   <%= f.file_field :image %>

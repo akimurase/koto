@@ -8,7 +8,7 @@ class Event < ApplicationRecord
   belongs_to_active_hash :num
   
   # 後でバリデーション設定する :start_time,
-  validates :num_id, presence: true
+  validates :num_id, :start_time, :price, presence: true #token
 
   # <ワード検索時の処理>
   def self.search(search)

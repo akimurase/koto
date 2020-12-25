@@ -10,21 +10,18 @@ const price = function () {
       const dataNum = numSelectBox.options[ numSelectBox.selectedIndex].getAttribute("data-multiple");
       // 一人料金のidを取得
       const priceOne = document.getElementById("one_price");
-      //値を数字にする
+      //idを数字にする
       const displayPriceOne = priceOne.innerHTML;
       //カンマを削除
       const displayPriceOneInteger = Number( displayPriceOne.replace(/,/, '') );
       // 計算する
       const total = (displayPriceOneInteger*dataNum);
+      // 取得した合計金額をフォームに入力
+      document.getElementById("f_price").value = total;
       // 正規表現でカンマ区切りにする
       const totalComma = total.toLocaleString('ja-JP');
       // 表示する
       totalPrice.innerHTML = totalComma;
-      // ----<フォームに入力>
-      // 合計金額の値を取得 
-      const displayPriceTotal = totalPrice.innerHTML;
-      // 取得した合計金額をフォームに入力
-      document.getElementById("f_price").value = displayPriceTotal;
     });
 }
 

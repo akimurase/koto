@@ -24,6 +24,18 @@ class ProductsController < ApplicationController
     end
   end
 
+  def add
+    @product = Product.new(products_add_params)
+    if @product.save
+      @top = Top.find_by(params[:id])
+      redirect_to edit_top_path(@top.id)
+    else
+      @top = Top.find_by(params[:id])
+      redirect_to edit_top_path(@top.id)
+    end
+
+  end
+
   
   def edit
     @product = Product.find(params[:id]) #表示させる際プロダクトを特定するためfind(params[:id])が必要
@@ -50,5 +62,9 @@ class ProductsController < ApplicationController
 
   def products_params
     params.require(:product).permit(:image, :name, :text, :title, :text2, :price, :unit).merge(client_id: current_client.id)
+  end
+
+  def products_add_params
+    params.permit(:image, :name, :text, :title, :text2, :price, :unit).merge(client_id: current_client.id)
   end
 end

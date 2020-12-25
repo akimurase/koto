@@ -14,21 +14,18 @@ class EventsController < ApplicationController
   def new
     @event = Event.new(event_params)
     @user = User.find(current_user.id)
-    # @user = User.all
     @product = Product.find(params[:product_id])
     @client = Client.find_by(params[:id]) #footer条件分岐のため
     @top = Top.find_by(params[:id]) #footer条件分岐のため
   end
-
-  def confirm
-    @event = Event.new(event_params)
-    # binding.pry
-    # render : if @event.invalid?
-  end
-
+  
   def create
     event = Event.new(event_params)
-    event.save!
+    if event.save!
+      
+    else
+      render :new
+    end  
     # if params[:back]
     #   render :new
     # else pay_event && @event.save!
@@ -36,7 +33,6 @@ class EventsController < ApplicationController
     # end
     @client = Client.find_by(params[:id]) #footer条件分岐のため
     @top = Top.find_by(params[:id]) #footer条件分岐のため
-
   end
 
   def show
