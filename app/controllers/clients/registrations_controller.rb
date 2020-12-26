@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Clients::RegistrationsController < Devise::RegistrationsController
+  def new_guest
+    client = Client.guest
+    sign_in client
+    redirect_to root_path, notice: 'ゲストクライアントとしてログインしました。'
+  end
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 

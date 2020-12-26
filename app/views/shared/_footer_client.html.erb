@@ -46,6 +46,7 @@
                       </li>
                         <transition name="editor-side">
                           <div v-show="ActiveBtn">
+                            <li><%= link_to 'ゲストログイン', clients_guest_sign_in_path, method: :post, class:"client-about-sign-up" %></li>
                             <li><%= link_to "ログイン", new_client_session_path, class:"client-about-sign-up" %></li>
                           </div>
                         </transition>
@@ -75,6 +76,8 @@
                 </li>
                   <transition name="editor-side">
                     <div v-show="ActiveBtn">
+                    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+                      <li><%= link_to 'ゲストログイン', clients_guest_sign_in_path, method: :post, class:"client-about-sign-up" %></li>
                       <li><%= link_to "新規登録する", new_client_registration_path, class:"client-about-sign-up" %></li>
                       <li><%= link_to "ログイン", new_client_session_path, class:"client-about-sign-up" %></li>
                     </div>

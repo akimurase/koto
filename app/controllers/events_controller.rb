@@ -20,8 +20,8 @@ class EventsController < ApplicationController
   end
   
   def create
-    event = Event.new(event_params)
-    if event.save!
+    @event = Event.new(event_create_params)
+    if @event.save!
       
     else
       render :new
@@ -74,8 +74,14 @@ class EventsController < ApplicationController
 
   private
   
+
   def event_params
     params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+  end
+
+  def event_create_params
+    # params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
   end
 
   def event_edit_params

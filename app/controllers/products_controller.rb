@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
   def update
     product = Product.find(params[:id]) #編集するべきレコードのid
     product.update(products_params)
-    # 更新できたかどうかはJSのアラートで知らせる
+    # binding.pry
     redirect_to edit_product_path(product) #どのプロダクトに帰るかidを指定
   end
 
