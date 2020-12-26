@@ -92,6 +92,7 @@
         <div class="form-input">
           <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
             <%= f.hidden_field :price, id: "f_price"  %>
+            <%#= render 'shared/error_messages', model: f.object %>
             <div class="form-num">
               <div class="form-num-title-box">
                 <p><span><%= @product.unit %></span><%= f.label :num, '数' %></p>

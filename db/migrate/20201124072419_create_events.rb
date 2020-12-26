@@ -10,7 +10,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.integer   :num_id
       t.datetime  :start_time
       t.integer   :user_id,      null: false
-      t.integer   :product_id,   null: false
+      t.references   :product,   null: false, foreign_key: true
       t.integer   :client_id,    null: false
 
       t.timestamps
