@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
-  belongs_to :user , optional: true #optionalはuserがなくても保存できてしまうので後で外す
-  belongs_to :client , optional: true #optionalはclientがなくても保存できてしまうので後で外す
-  belongs_to :product, foreign_key: 'client_id' ,optional: true
+  belongs_to :user #, optional: true #optionalはuserがなくても保存できてしまうので後で外す
+  belongs_to :client #, optional: true #optionalはclientがなくても保存できてしまうので後で外す
+  belongs_to :product, foreign_key: 'client_id'#3,optional: true
   #モジュールを取り込む記述
   extend ActiveHash::Associations::ActiveRecordExtensions
   # アクティブハッシュ用rアソシエーション

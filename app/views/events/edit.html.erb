@@ -28,11 +28,12 @@
           <td><%= f.text_field :user_email %></td>
           <td><%= f.text_field :user_tel %></td>
           <td><%= f.submit "保存する" %></td>
-          <td><%#= button_to "削除する", event_path(@event.id), method: :delete, class:"#" %></td>
+          <td><%= button_to "削除する", event_path(@event.id), method: :delete, class:"#" %></td>
         </tr>
       <% end %>
     </tr>
     </tbody>
     <br>
   </table>
+  <%= link_to '管理画面へ戻る', events_path, class: 'a-back btn' %>
 </div>

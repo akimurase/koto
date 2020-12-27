@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     if @event.save!
       
     else
-      # render :new
+      render :new
       # redirect_to new_product_event_path
       # redirect_to products_path(:product_id)
     end  
@@ -59,6 +59,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
+    redirect_to events_search_path
   end
 
   def search_words

@@ -1,5 +1,6 @@
 class Top < ApplicationRecord
   belongs_to :client
+  has_many :product  #, dependent: :destroy
   # Active Storage用アソシエーション
   has_one_attached :image
   # career wave用
