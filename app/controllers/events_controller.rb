@@ -12,27 +12,20 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new(event_params)
     @user = User.find(current_user.id)
+    @event = Event.new(event_params)
     @product = Product.find(params[:product_id])
     @client = Client.find_by(params[:id]) #footer条件分岐のため
     @top = Top.find_by(params[:id]) #footer条件分岐のため
   end
   
   def create
-    @event = Event.new(event_params)
-    # @event = Event.new(event_create_params)
     # @event = Event.new(event_params)
-    if @event.save!
-      
-    else
-      render :new
-      # redirect_to new_product_event_path
-      # redirect_to products_path(:product_id)
-    end  
-    # unless @event.save!
-    #   render :new
-    # end
+    @event = Event.new(event_create_params)
+    unless @event.save
+    render :new
+    # redirect_to new_product_event_path
+    end
     @client = Client.find_by(params[:id]) #footer条件分岐のため
     @top = Top.find_by(params[:id]) #footer条件分岐のため
   end
