@@ -9,9 +9,10 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string     :price
       t.integer    :num_id
       t.datetime   :start_time
-      t.references :user_id,        null: false, foreign_key: true
-      t.references :product,        null: false, foreign_key: true
-      t.references :client_id,      null: false, foreign_key: true
+      # t.references :user,        null: false, foreign_key: true
+      t.string :user_id,        null: false
+      t.references :product,     null: false, foreign_key: true
+      t.references :client,      null: false, foreign_key: true
 
       t.timestamps
     end

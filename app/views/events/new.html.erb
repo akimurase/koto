@@ -1,19 +1,21 @@
 <%= render "shared/header" %>
 
-<div class="conf-wrap"vvvvv>
+<div class="conf-wrap">
   <div class="conf-container container">
     <div class="conf-content">
       <div class="pay-content">
-        <%= form_with url:product_events_path, id: 'charge-form', local: true do |f| %>
+        <%= form_with model: @event, url:product_events_path, id: 'charge-form', local: true do |f| %>
+          <%= render 'shared/error_messages', model: f.object %>
           <%#= render 'shared/error_messages', @event.object %>
-          <%= f.hidden_field :user_name, value:@user.name %>
-          <%= f.hidden_field :user_kana, value:@user.kana %>
-          <%= f.hidden_field :user_email, value:@user.email %>
-          <%= f.hidden_field :user_tel, value:@user.tel %>
+          <%= f.hidden_field :user_name, value:current_user.name %>
+          <%= f.hidden_field :user_kana, value:current_user.kana %>
+          <%= f.hidden_field :user_email, value:current_user.email %>
+          <%= f.hidden_field :user_tel, value:current_user.tel %>
           <%= f.hidden_field :product_name, value:@product.name %>
-          <%= f.hidden_field :num_id, value:@event.num.name %>
+          <%= f.hidden_field :num_id, value:@event.num.id %>
           <%= f.hidden_field :start_time, value:@event.start_time %>
           <%= f.hidden_field :price, value:@event.price %>
+          <%= f.hidden_field :product_id, value:@product.id %>
           <%# 決済機能 %>
           <div class='pay-form-box'>
             <h1>お支払い</h1>
@@ -41,7 +43,7 @@
       <div class="conf-title-box">
         <h1>内容の確認</h1>
         <div class="conf-title">
-          <p>名前: <%= @user.name %>様</p>
+          <p>名前: <%= current_user.name %>様</p>
           <p>商品名: <%= @product.name %></p>
           <p>参加人数: <%= @event.num.name %></p>
           <p>ご希望日: <%= @event.start_time %></p>

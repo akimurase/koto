@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string     :title
       t.string     :price
       t.string     :unit
-      t.references :client_id, null: false, foreign_key: true
+      t.references :client, null: false, foreign_key: true
 
       t.timestamps
     end

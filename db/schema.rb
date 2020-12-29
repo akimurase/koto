@@ -60,11 +60,12 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
     t.string "price"
     t.integer "num_id"
     t.datetime "start_time"
-    t.integer "user_id", null: false
+    t.string "user_id", null: false
     t.bigint "product_id", null: false
-    t.integer "client_id", null: false
+    t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_events_on_client_id"
     t.index ["product_id"], name: "index_events_on_product_id"
   end
 
@@ -93,17 +94,19 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
     t.string "title"
     t.string "price"
     t.string "unit"
-    t.integer "client_id", null: false
+    t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_products_on_client_id"
   end
 
   create_table "tops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "video_top", null: false
     t.string "title", null: false
-    t.integer "client_id", null: false
+    t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_tops_on_client_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -122,7 +125,10 @@ ActiveRecord::Schema.define(version: 2020_11_26_021649) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "events", "clients"
   add_foreign_key "events", "products"
   add_foreign_key "itineraries", "products"
   add_foreign_key "points", "products"
+  add_foreign_key "products", "clients"
+  add_foreign_key "tops", "clients"
 end

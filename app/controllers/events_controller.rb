@@ -20,8 +20,9 @@ class EventsController < ApplicationController
   end
   
   def create
-    # @event = Event.new(event_params)
+    @product = Product.find(params[:product_id])
     @event = Event.new(event_create_params)
+    @client = Client.find_by(params[:id]) #footer条件分岐のため
     unless @event.save
     render :new
     # redirect_to new_product_event_path
