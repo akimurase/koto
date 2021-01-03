@@ -1,0 +1,2 @@
+module KototabiHelper
+end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'kototabi/index'
+  get 'kototabi/show'
   # devise_for :clients
   # devise_for :users
   devise_for :clients, controllers: {
