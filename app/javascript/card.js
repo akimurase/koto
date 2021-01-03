@@ -3,8 +3,6 @@ const pay = () => {
   const form = document.getElementById("charge-form");
 
   form.addEventListener("submit", (e) => {
-    alert("予約します")
-
     e.preventDefault();
 
     const formResult = document.getElementById("charge-form");
@@ -12,16 +10,16 @@ const pay = () => {
 
     // modelメッソドを使ってインスタン変数に代入した場合はこちら。eventの中の[]の値を取得
     const card = {
-    //   number: formData.get("event[number]"),
-    //   cvc: formData.get("event[cvc]"),
-    //   exp_month: formData.get("event[exp_month]"),
-    //   exp_year: `20${formData.get("event[exp_year]")}`,
+      number: formData.get("event[number]"),
+      cvc: formData.get("event[cvc]"),
+      exp_month: formData.get("event[exp_month]"),
+      exp_year: `20${formData.get("event[exp_year]")}`,
     // };
-    // 通常はこちら
-      number: formData.get("number"),
-      cvc: formData.get("cvc"),
-      exp_month: formData.get("exp_month"),
-      exp_year: `20${formData.get("exp_year")}`,
+    // modelメッソドを使わない
+      // number: formData.get("number"),
+      // cvc: formData.get("cvc"),
+      // exp_month: formData.get("exp_month"),
+      // exp_year: `20${formData.get("exp_year")}`,
     };
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
@@ -35,7 +33,7 @@ const pay = () => {
       // document.getElementById("event_cvc").removeAttribute("name");
       // document.getElementById("event_exp_month").removeAttribute("name");
       // document.getElementById("event_exp_year").removeAttribute("name");
-      // 通常はこちら
+      // modelメッソドを使わない
       document.getElementById("number").removeAttribute("name");
       document.getElementById("cvc").removeAttribute("name");
       document.getElementById("exp_month").removeAttribute("name");
