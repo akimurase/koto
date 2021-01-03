@@ -23,9 +23,11 @@ class EventsController < ApplicationController
     @product = Product.find(params[:product_id])
     @event = Event.new(event_create_params)
     @client = Client.find_by(params[:id]) #footer条件分岐のため
-    unless @event.save
-    render :new
-    # redirect_to new_product_event_path
+    if @event.valid?
+      pay_item
+      @event.save
+    else
+      render :new
     end
     @client = Client.find_by(params[:id]) #footer条件分岐のため
     @top = Top.find_by(params[:id]) #footer条件分岐のため
@@ -73,17 +75,26 @@ class EventsController < ApplicationController
   
 
   def event_params
-    params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+    params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)
   end
 
   def event_create_params
-    # params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
-    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id, token: params[:token])
   end
 
   def event_edit_params
-    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)  #,:token
+    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)
   end
+
+  def pay_item
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 環境変数に入れて呼び込む
+    Payjp::Charge.create(
+      amount: @event.price, 
+      card: event_create_params[:token], # カードトークン
+      currency: 'jpy'                 # 通貨の種類(日本円)
+    )
+  end
+
 
 
   def search_event
