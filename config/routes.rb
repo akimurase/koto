@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'kototabi/index'
-  get 'kototabi/show'
   # devise_for :clients
   # devise_for :users
   devise_for :clients, controllers: {
@@ -24,6 +22,9 @@ Rails.application.routes.draw do
 
 
   root to: 'tops#index'
+  # root to: 'kototabi#index'
+  get 'kototabi/index'
+  get 'kototabi/show'
   resources :events do #管理画面用
     collection do
       get 'search_words'
