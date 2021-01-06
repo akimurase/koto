@@ -1,6 +1,14 @@
 <h1>Kototabi#show</h1>
 
-<%= render "shared/header" %>
+<div class="header-wrap">
+  <div class="header-main">
+    <div class="header-logo-box">
+      <%= link_to  kototabi_index_path image_tag("/assets/header-logo"), %>
+    </div>
+    <div class="header-menu">
+    </div>
+  </div>
+</div>
 
 <div class="products-wrap">
   <div class="products-main">
@@ -303,5 +311,24 @@
     </div><%# form-contents %>
   </div><%#products-wrap-main%>
 </div><%#products-wrap%>
+
 <div class="footer_session"></div>
-<%= render "shared/footer_sample" %>
+
+<div class="footer">
+  <div class='client-wrap' >
+    <div class="client-admin-if-login-box">
+      <div class="company-info">
+        <ul>
+          <li>会社名<span>:</span>◯◯◯◯株式会社</li>
+          <li>所在<span>:△△△県□□□市</span></li>
+          <li>e-mail<span>:xxxx@kototabi.com</span></li>
+          <li>TEL<span>:</span>0120-123-1234</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-logo-box">
+      <img src="/assets/sample_logo.png" alt="サンプルロゴ.png" class="footer-logo">
+    </div>
+  </div><!--client-wrap-->
+</div><!--footer-->
+
