@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
     # @point = Point.find(params[:id]) #編集のさいフォームに予め現在のデータを入力させておく為には設定が必要
     @itinerarys = Itinerary.where(product_id: @product) #確認用に旅程をproducts/indexに表示させる定義。現在のproduct_idを取得する為where(product_id: @product)でidを探す
     @event = Event.new #申し込みフォーム
+    @client = Client.find_by(params[:id])
   end
   
   def update

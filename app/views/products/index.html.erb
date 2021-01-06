@@ -90,6 +90,7 @@
           </div>
         </div>
         <div class="form-input">
+        <% if user_signed_in? %>
           <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
             <%= f.hidden_field :price, id: "f_price"  %>
             <%#= render 'shared/error_messages', model: f.object %>
@@ -121,10 +122,43 @@
                 <%= f.submit "予約へ進む >", class:"form-submit shadow-lg " %>
               </div>
           <% end %>
+        <% else %>
+          <%= form_with url:new_user_session_path, method: :get, local: true do |f| %>
+            <%= f.hidden_field :price, id: "f_price"  %>
+            <div class="form-num">
+              <div class="form-num-title-box">
+                <p><span><%= @product.unit %></span><%= f.label :num, '数' %></p>
+              </div>
+              <div class="form-num-select-box">
+                <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
+                <%= f.select(:num_id, num_options, {}, {class:"form-num-select", data:{select:0}, id:"num" }) %>
+              </div>
+            </div>
+            <div class="form-day">
+              <div class="form-plan-title">
+                <p><%= f.label :start_time, 'ご希望日' %></p>
+              </div>
+              <%= raw sprintf(
+                  f.date_select(
+                    :start_time,
+                    use_month_numbers: true,
+                    discard_hour: true,
+                    prompt:'--',
+                    start_year: 2021,
+                    end_year: (Time.now.year + 3),
+                    date_separator: '%s'),
+                  "年", "月") + "日" %>
+              </div>
+              <div class="form-submit-box">
+                <%= f.submit "予約へ進む >", class:"form-submit shadow-lg " %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div><%# form-item %>
     </div><%# form-contents %>
   </div><%#products-wrap-main%>
 </div><%#products-wrap%>
 
+<div class="footer_session"></div>
 <%= render "shared/footer_user" %>
