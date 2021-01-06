@@ -25,21 +25,21 @@
         <div class="products-show-container-main">
           <!-----ポイント----->
           <div class="point-container">
-            <h3>おすすめポイント</h3>
             <div class="point-content">
               <% @points.each do |point|  %>
                 <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
+                <h6>POINT <span><%= point.id %><span></h6>
                   <div class="point-item">
                     <div class="point-item-info">
                       <div class="point-item-title-box">
-                        <%= point.title %>
+                        <h4><%= point.title %></h4>
                       </div>
                       <div class="point-item-text-box">
-                        <%= point.text %>
+                        <p><%= point.text %></p>
                       </div>
                     </div>
                     <div class="point-item-img">
-                      <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
+                      <p><%= image_tag point.image, class: "point-img" if point.image.attached?  %></p>
                     </div>
                   </div>
                 <hr>
@@ -112,8 +112,8 @@
                     use_month_numbers: true,
                     discard_hour: true,
                     prompt:'--',
-                    start_year: 2020,
-                    end_year: (Time.now.year + 5),
+                    start_year: 2021,
+                    end_year: (Time.now.year + 3),
                     date_separator: '%s'),
                   "年", "月") + "日" %>
               </div>

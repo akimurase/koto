@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
 
   root to: 'tops#index'
+  # root to: 'kototabi#index'
+  get 'kototabi/index'
+  get 'kototabi/show'
   resources :events do #管理画面用
     collection do
       get 'search_words'
