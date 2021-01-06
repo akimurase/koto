@@ -53,10 +53,7 @@
   <!----動画----->
   <div class="top_video_content" >
     <% if @top == nil %>
-    <%#= video_tag kototabi.mp4, class: "top_video", loop: true, controls: true, muted: true, alt:"ダミー画像" %>
-    <%#= video_tag "kototabi_video.mp4", class: "top_video", loop: true, autoplay: true, muted: true, alt:"ダミー画像" %>
     <%= video_tag("/public/kototabi_video.mp4", class: "top_video", controls: true, muted: true, alt:"ダミー画像") %>
-    <%#= video_tag("kototabi.mp4", class: "top_video", autoplay: true, muted: true, alt:"ダミー画像") %>
     <h2>トップ画面作成</h2>
     <% else %>
       <div class="container-fluid">
