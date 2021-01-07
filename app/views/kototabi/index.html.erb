@@ -1,42 +1,68 @@
 <h1>Kototabi#index</h1>
-
+<!-----ヘッター------>
+<div class="header-wrap">
+  <div class="header-main">
+    <div class="header-left">
+      <div class="header-logo-box">
+        <%= link_to image_tag("/assets/header-logo"), tops_path, class:"header-logo-img" %>
+      </div>
+      <div class="header-introduction">
+        <ul>
+          <li><%#=link_to "", kototabi_show_about_path %></li>
+          <li><%=link_to "機能紹介", kototabi_show_about_path %></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-right-li">
+        <span><%= link_to 'とりあえず試作する', clients_guest_sign_in_path, method: :post %></span>
+      </div>
+      <div class="header-right-li">
+        <%= link_to "新規登録する", new_client_registration_path %>
+      </div>
+      <div class="header-right-li">
+        <%= link_to "ログイン", new_client_session_path %>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="top">
   <!----動画----->
   <div class="top_video_content" >
-    <h2>トップ画面作成</h2>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <%= video_tag("kototabi.mp4", class: "top_video", autoplay: true, loop: true, muted: true, alt:"ダミー画像") %>
-            <div class="top_hero" >
-              <%= image_tag "top-logo.png", class: "top_logo" %>
-              <h3 class="top_title">ネットで作るECサイト</h3>
-            </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <%= video_tag("kototabi.mp4", class: "top_video", autoplay: true, loop: true, muted: true, alt:"ダミー画像") %>
+          <div class="top_hero" >
+            <%= image_tag "top-logo.png", class: "top_logo" %>
+            <h3 class="top_title">ネットで作るECサイト</h3>
           </div>
         </div>
       </div>
+    </div>
   </div>
 <!-----区切り------>
-<div class="section">
-      <div class="container mb-5">
-        <div class="row">
-        <%# <h3>ネットでECサイトを作るなら</h3>
-        <h3>クリックひとつ簡単作成。顧客・商品管理まできこれ一本</h3> %>
-          <h2 class="section col-12">
-          <span class="section-name mb-5 border-bottom">sample</span>
-          <small>サンプル</small>
-          </h2>
-        </div>
+  <div class="section">
+    <div class="container mb-5">
+      <div class="row">
+      <%# <h3>ネットでECサイトを作るなら</h3>
+      <h3>クリックひとつ簡単作成。顧客・商品管理まできこれ一本</h3> %>
+        <h2 class="section col-12">
+        <span class="section-name mb-5 border-bottom">sample</span>
+        <small>サンプル</small>
+        </h2>
       </div>
-</div>
+    </div>
+  </div>
   <!----商品----->
   <div class="products-container container-fluid">
     <div class="row row-cols-3">
         <div class="products_hero col">
-          <%= link_to kototabi_show_path do %>
+          <%= link_to kototabi_show_about_path do %>
             <%=image_tag "gojyunoto_b.jpg", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
-              <p class="products_name">kototabiとは</p>
+              <p class="products_name">about kototabi</p>
               <p class="products_text"></p>
             </div>
           <% end %>
@@ -45,17 +71,17 @@
           <%= link_to kototabi_show_path do %>
             <%=image_tag "product_sample.png", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
-              <p class="products_name">商品名サンプル</p>
-              <p class="products_text">説明、、、、</p>
+              <p class="products_name">sample</p>
+              <p class="products_text"></p>
             </div>
           <% end %>
         </div>
         <div class="products_hero col">
           <%= link_to kototabi_index_path do %>
-            <%=image_tag "スクリーンショット 2021-01-06 15.49.40.png", alt:"商品画像", class:"products_img" %>
+            <%=image_tag "puroduct_sample2", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
-              <p class="products_name">商品名サンプル</p>
-              <p class="products_text">説明、、、、</p>
+              <p class="products_name">sample</p>
+              <p class="products_text"></p>
             </div>
           <% end %>
         </div>

@@ -47,7 +47,7 @@
                         <transition name="editor-side">
                           <div v-show="ActiveBtn">
                             <li><%= link_to "新規登録する", new_client_registration_path, class:"client-about-sign-up" %></li>
-                            <li><%#= link_to 'ゲストログイン', clients_guest_sign_in_path, method: :post, class:"client-about-sign-up" %></li>
+                            <li><%= link_to 'ゲストログイン', clients_guest_sign_in_path, method: :post, class:"client-about-sign-up" %></li>
                             <li><%= link_to "ログイン", new_client_session_path, class:"client-about-sign-up" %></li>
                           </div>
                         </transition>
@@ -64,7 +64,7 @@
               <li>会社名<span>:</span>KOTOTABI</li>
               <li>所在<span>:</span>京都府京都市上京区京都御苑</li>
               <li>E-mail<span>:</span>kototabi@xxx.com</li>
-              <li>TEL<span>:</span>090-1234-5678</li>
+              <li>TEL<span>:</span>050-5362-5645</li>
             </ul>
           </div>
           <div class="client-admin-no-account">
@@ -76,10 +76,10 @@
                   </div>
                 </li>
                   <transition name="editor-side">
-                    <div v-show="ActiveBtn">
-                      <li><%#= link_to 'ゲストログイン', clients_guest_sign_in_path, method: :post, class:"client-about-sign-up" %></li>
-                      <li><%= link_to "新規登録する", new_client_registration_path, class:"client-about-sign-up" %></li>
-                      <li><%= link_to "ログイン", new_client_session_path, class:"client-about-sign-up" %></li>
+                    <div class="client-about-sign-up" v-show="ActiveBtn">
+                      <li><%= link_to 'ゲストログイン', clients_guest_sign_in_path, method: :post %></li>
+                      <li><%= link_to "新規登録する", new_client_registration_path %></li>
+                      <li><%= link_to "ログイン", new_client_session_path %></li>
                     </div>
                   </transition>
               </ul>

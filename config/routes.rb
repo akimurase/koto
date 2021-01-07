@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   # root to: 'tops#index'
   root to: 'kototabi#index'
   get 'kototabi/index'
+  get 'kototabi/show_about'
+  # get 'kototabi/show1'
+  # get 'kototabi/show2'
   get 'kototabi/show'
   # resources :kototabi, only: [:index, :show]
   resources :events do #管理画面用
