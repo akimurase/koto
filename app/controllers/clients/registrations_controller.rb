@@ -8,7 +8,7 @@ class Clients::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
-    tops_path # ログイン後に遷移するpathを設定
+    new_top_path # ログイン後に遷移するpathを設定
   end
 
 

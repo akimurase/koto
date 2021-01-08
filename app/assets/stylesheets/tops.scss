@@ -64,8 +64,6 @@ p {
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  border: dashed white;
-  padding: 250px;
 }
 
 .top_ziza a {
@@ -156,6 +154,11 @@ small {
 
 .editor-title-new{
   margin-bottom: 10px;
+}
+
+.editor-title-new span {
+  color: red;
+  margin-left: 20px;
 }
 
 .top-new-field-input {
