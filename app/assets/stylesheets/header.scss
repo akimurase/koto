@@ -28,14 +28,20 @@
 }
 
 .header-introduction ul {
-  border-left: solid 0.1px white;
+  display: flex;
   margin-left: 25px;
+}
+
+.header-introduction li {
   padding-left: 10px;
+  margin-right: 20px;
+  border-left: solid 0.1px white;
 }
 
 .header-introduction a {
   color: white;
   font-size: 22px;
+  text-decoration: none;
 }
 
 .header-right {

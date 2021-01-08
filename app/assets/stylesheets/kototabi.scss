@@ -1,3 +1,51 @@
-// Place all the styles related to the kototabi controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// 機能紹介
+
+.cover {
+  background-color: rgb(17, 109, 255);
+  width: 100%;
+}
+
+.font_0 {
+  color: aliceblue;
+  font-size: 54px;
+}
+
+.cover-introduction{
+  color: aliceblue;
+  font-size: 20px;
+  line-height: 1.6em;
+}
+
+.cover-create-button {
+  position: relative;
+  width: 250px;
+  height: 70px;
+  background-color: white;
+  border-radius: 90px;
+}
+
+.cover-create-button h {
+  // color: rgb(17, 109, 255);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.cover-footer ul {
+  display: flex;
+  margin-left: 20px;
+}
+
+.cover-footer li {
+  border-right: solid 0.1px;
+  padding-left: 10px;
+}
+
+// .cover-br br {
+//   color: aliceblue;
+//   size: 2px;
+// }

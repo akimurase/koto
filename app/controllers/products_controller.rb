@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
   # before_action :set_item, only: [:]
 
   def index
-    # @products = Product.all
     @product = Product.find(params[:format]) #現在のidを取得する為params[:format]を使用
     @points = Point.where(product_id: @product)#ポイントをproducts/indexに表示させる為に定義
     @itinerarys = Itinerary.where(product_id: @product) #旅程をproducts/indexに表示させる定義
@@ -38,6 +37,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @client = Client.find(current_client.id) #footer条件分岐のため
+    @top = @top = Top.find_by(client_id: @client.id) #footer条件分岐のため
     @product = Product.find(params[:id]) #表示させる際プロダクトを特定するためfind(params[:id])が必要
     @points = Point.where(product_id: @product) #確認用におすすめをproducts/indexに表示させる為の定義。現在のproduct_idを取得する為where(product_id: @product)でidを探す
     # @point = Point.find(params[:id]) #編集のさいフォームに予め現在のデータを入力させておく為には設定が必要

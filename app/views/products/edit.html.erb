@@ -36,36 +36,36 @@
         <div class="products-show-container-main">
           <!-----ポイント----->
           <div class="point-container">
-            <h3>おすすめポイント</h3>
-              <div class="point-content">
-                <% @points.each do |point|  %>
-                  <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
-                    <%# 編集用のフォーム %>
-                    <%= form_with model: @point, url:product_point_path(@product, point.id), method: :PATCH, local: true do |f| %>
-                      <div class="point-item">
-                        <div class="point-item-info">
-                          <div class="oint-item-title-box">
-                            <%= f.text_field :title, value:point.title, class:"point-item-title" %>
-                          </div>
-                          <div class="point-item-text-box">
-                            <%= f.text_area :text, value:point.text, class:"point-item-text" %>
-                          </div>
+            <div class="point-content">
+              <% @points.each do |point|  %>
+                <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
+                  <%# 編集用のフォーム %>
+                  <%= form_with model: @point, url:product_point_path(@product, point.id), method: :PATCH, local: true do |f| %>
+                    <h6>POINT <span><%= point.id %><span></h6>
+                    <div class="point-item">
+                      <div class="point-item-info">
+                        <div class="oint-item-title-box">
+                          <%= f.text_field :title, value:point.title, class:"point-item-title" %>
                         </div>
-                        <div class="point-item-img">
-                          <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
-                          <p class="m-3"><%= f.file_field :image %></p>
+                        <div class="point-item-text-box">
+                          <%= f.text_area :text, value:point.text, class:"point-item-text" %>
                         </div>
                       </div>
-                      <div class="">
-                        <%= f.submit "編集する", class:"#" %>
+                      <div class="point-item-img">
+                        <%= image_tag point.image, class: "point-img" if point.image.attached?  %>
+                        <p class="m-3"><%= f.file_field :image %></p>
                       </div>
-                      <div class="">
-                        <%= button_to "削除する", product_point_path(@product, point.id), method: :delete %>
-                      </div>
-                      <hr>
-                    <% end %>
-                <% end %>
-              </div>
+                    </div>
+                    <div class="">
+                      <%= f.submit "編集する", class:"#" %>
+                    </div>
+                    <div class="">
+                      <%= button_to "削除する", product_point_path(@product, point.id), method: :delete %>
+                    </div>
+                    <hr>
+                  <% end %>
+              <% end %>
+            </div>
           </div>
 
           <%# ここから旅程作成 表題もクライアントが作れる用にする %>
@@ -142,8 +142,8 @@
                                 use_month_numbers: true,
                                 discard_hour: true,
                                 prompt:'--',
-                                start_year: 2020,
-                                end_year: (Time.now.year + 5),
+                                start_year: 2021,
+                                end_year: (Time.now.year + 3),
                                 date_separator: '%s'),
                               "年", "月") + "日" %>
             </div>
