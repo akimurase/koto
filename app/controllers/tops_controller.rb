@@ -1,9 +1,9 @@
 class TopsController < ApplicationController
   def index
-    # @top = Top.find(current_client.id)
-    @top = Top.find_by(params[:id])
-    @products = Product.all #top/indexでproductのデータを表示させる為。元々レンダーで_product.htmlを表示させる為の定義だった。
-    @client = Client.find_by(params[:id]) #footer条件分岐のため
+    @client = Client.find(current_client.id) #footer条件分岐のため。どのクライアントか特定する為にcurrent_client.id
+    @top = Top.find_by(client_id: @client.id) 
+    # @products = Product.find(params[:id]) #top/indexでproductのデータを表示させる為。元々レンダーで_product.htmlを表示させる為の定義だった。
+    @products = Product.where(client_id: @client.id) #top/indexでproductのデータを表示させる為。元々レンダーで_product.htmlを表示させる為の定義だった。
   end
 
   def new

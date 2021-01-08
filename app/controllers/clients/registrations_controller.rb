@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
 class Clients::RegistrationsController < Devise::RegistrationsController
-  def new_guest
-    client = Client.guest
-    sign_in client
-    redirect_to root_path, notice: 'ゲストクライアントとしてログインしました。'
+  # def new_guest
+  #   client = Client.guest
+  #   sign_in client
+  #   redirect_to tops_path, notice: 'ゲストクライアントとしてログインしました。'
+  # end
+
+  def after_sign_up_path_for(resource)
+    tops_path # ログイン後に遷移するpathを設定
   end
+
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

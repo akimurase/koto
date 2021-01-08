@@ -42,3 +42,32 @@
       </transition>
     </div>
   </div>
+
+
+
+  <div class="products-container container-fluid">
+    <div class="row row-cols-3">
+      <% if @product == nil %>
+        <div class="products_hero col">
+          <%= link_to new_top_path do %>
+            <%= image_tag "/assets/product_sample.png", class:"products_img" %>
+            <div class="products_info">
+              <p class="products_name">サイトを作成する</p>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <% @products.each do |product| %>
+          <div class="products_hero col">
+            <%= link_to products_path(product.id) do %>
+              <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
+              <div class="products_info">
+                <p class="products_name"><%= product.name %></p>
+                <p class="products_text"><%= product.title %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

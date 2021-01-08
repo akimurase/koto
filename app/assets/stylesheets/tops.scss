@@ -57,6 +57,23 @@ p {
   color: aliceblue;
 }
 
+.top_ziza {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  border: dashed white;
+  padding: 250px;
+}
+
+.top_ziza a {
+color: white;
+text-decoration: none;
+}
+
+
 .products_name {
 font-size: 28px;
 letter-spacing: 2px;

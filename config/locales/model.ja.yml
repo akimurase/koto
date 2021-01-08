@@ -18,6 +18,7 @@ ja:
         title: タイトル
       product:
         image: 画像
+        name: 商品名
       event:
         start_time: 希望日
         num_id: 人数

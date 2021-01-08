@@ -17,7 +17,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(products_params)
     if @product.save
-      @top = Top.find_by(params[:id])
+      @client = Client.find(current_client.id) #どのクライアントか特定する為にcurrent_client.id
+      @top = Top.find_by(client_id: @client.id)
+      binding.pry
       redirect_to edit_top_path(@top.id)
     else
       render :new
@@ -36,20 +38,19 @@ class ProductsController < ApplicationController
 
   end
 
-  
   def edit
+    @client = Client.find(current_client.id)
+    # @top = Top.find_by(client_id: @client.id) 
     @product = Product.find(params[:id]) #表示させる際プロダクトを特定するためfind(params[:id])が必要
     @points = Point.where(product_id: @product) #確認用におすすめをproducts/indexに表示させる為の定義。現在のproduct_idを取得する為where(product_id: @product)でidを探す
     # @point = Point.find(params[:id]) #編集のさいフォームに予め現在のデータを入力させておく為には設定が必要
     @itinerarys = Itinerary.where(product_id: @product) #確認用に旅程をproducts/indexに表示させる定義。現在のproduct_idを取得する為where(product_id: @product)でidを探す
     @event = Event.new #申し込みフォーム
-    @client = Client.find_by(params[:id])
   end
   
   def update
     product = Product.find(params[:id]) #編集するべきレコードのid
     product.update(products_params)
-    # binding.pry
     redirect_to edit_product_path(product) #どのプロダクトに帰るかidを指定
   end
 

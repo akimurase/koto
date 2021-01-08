@@ -53,8 +53,18 @@
   <!----動画----->
   <div class="top_video_content" >
     <% if @top == nil %>
-    <%= video_tag("/public/kototabi_video.mp4", class: "top_video", controls: true, muted: true, alt:"ダミー画像") %>
-    <h2>トップ画面作成</h2>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <%= video_tag("/", class: "top_video", controls: true, alt:"ダミー") %> 
+            <%= link_to new_top_path do %>
+              <div class="top_ziza" >
+                <h3 class="top_title">サイトを作成する</h3>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     <% else %>
       <div class="container-fluid">
         <div class="row">
