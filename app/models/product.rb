@@ -6,5 +6,5 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :itinerarys, allow_destroy: true
   # Active Storage用アソシエーション
   has_one_attached :image
-  validates :image, :name, presence: true
+  validates :image, :name, :price, :unit, presence: true
 end

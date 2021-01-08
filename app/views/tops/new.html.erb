@@ -10,7 +10,7 @@
           <%= render 'shared/error_messages', model: f.object %>
           <div class="top-field">
             <div class="top-new-field">
-              <p class="editor-title-new"><%= f.label :動画 %><span>必須</span></p>
+              <p class="editor-title-new"><%= f.label :動画 %><span class="require">必須</span></p>
               <%= f.file_field :video_top, :accept => 'video/*' %>
             </div>
             <div class="top-new-field">

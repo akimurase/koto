@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
     if @product.save
       @client = Client.find(current_client.id) #どのクライアントか特定する為にcurrent_client.id
       @top = Top.find_by(client_id: @client.id)
-      binding.pry
       redirect_to edit_top_path(@top.id)
     else
       render :new
