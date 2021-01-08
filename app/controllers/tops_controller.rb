@@ -3,7 +3,7 @@ class TopsController < ApplicationController
     @client = Client.find(current_client.id) #footer条件分岐のため。どのクライアントか特定する為にcurrent_client.id
     @top = Top.find_by(client_id: @client.id) 
     # @products = Product.find(params[:id]) #top/indexでproductのデータを表示させる為。元々レンダーで_product.htmlを表示させる為の定義だった。
-    @products = Product.where(client_id: @client.id) #top/indexでproductのデータを表示させる為。元々レンダーで_product.htmlを表示させる為の定義だった。
+    @products = Product.where(client_id: @client.id) #top/indexでproductのデータを表示させる為。
   end
 
   def new
@@ -28,10 +28,10 @@ class TopsController < ApplicationController
   end
 
   def edit
+    @client = Client.find(current_client.id) #footer条件分岐のため
+    # @top = Top.find_by(client_id: @client.id)
     @top = Top.find_by(params[:id]) #データ取得（トップ動画再生と編集データ取得）
-    # @top = Top.find(params[:id]) #データ取得（トップ動画再生と編集データ取得）
-    @products = Product.all #プロダクト画像
-    @client = Client.find_by(params[:id]) #footer条件分岐のため
+    @products = Product.where(client_id: @client.id) #top/indexでproductのデータを表示させる為。
 
   end
 

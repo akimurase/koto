@@ -39,8 +39,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @client = Client.find(current_client.id)
-    # @top = Top.find_by(client_id: @client.id) 
     @product = Product.find(params[:id]) #表示させる際プロダクトを特定するためfind(params[:id])が必要
     @points = Point.where(product_id: @product) #確認用におすすめをproducts/indexに表示させる為の定義。現在のproduct_idを取得する為where(product_id: @product)でidを探す
     # @point = Point.find(params[:id]) #編集のさいフォームに予め現在のデータを入力させておく為には設定が必要
