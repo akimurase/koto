@@ -75,28 +75,28 @@ Topsedit
               <%= form_with model: @product, url:products_add_path, local: true do |f| %>
                 <%#= render 'shared/error_messages', model: f.object %>
                 <div>
-                  <p><%= f.label :画像 %></p>
+                  <p><%= f.label :画像 %><span class="require">*</span></p>
                   <%= f.file_field :image %>
                 </div>
                 <div>
-                  <p><%= f.label :商品名 %></p>
-                  <%= f.text_field :name %>
+                  <p><%= f.label :商品名 %><span class="require">*</span></p>
+                  <%= f.text_field :name, placeholder:"例) 京都ツアー" %>
                 </div>
                 <div>
-                  <p><%= f.label :表題 %></p>
-                  <%= f.text_field :title %>
+                  <p><%= f.label :サブタイトル %></p>
+                  <%= f.text_field :title, placeholder:"例) 京都を歩く" %>
                 </div>
                 <div>
                   <p><%= f.label :紹介文 %></p>
                   <%= f.text_area :text %>
                 </div>
                 <div>
-                  <p><%= f.label :金額 %></p>
-                  <%= f.text_field :price %>
+                  <p><%= f.label :金額 %><span class="require">*</span></p>
+                  <%= f.text_field :price, placeholder:"例) 10,000" %>
                 </div>
                 <div>
-                  <p><%= f.label :単位 %></p>
-                  <%= f.text_field :unit %>
+                  <p><%= f.label :単位 %><span class="require">*</span></p>
+                  <%= f.text_field :unit, placeholder:"例) 個" %>
                 </div>
                 <%= f.submit "作成する", class:"#" %>
               <% end %>

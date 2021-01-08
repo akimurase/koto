@@ -10,10 +10,10 @@
           <%= render 'shared/error_messages', model: f.object %>
             <div class="product-field">
               <div class="product-file-box">
-                <p><%= f.label :画像 %><span class="require">必須</span></p>
+                <p><%= f.label :画像 %><span class="require">*</span></p>
                 <%= f.file_field :image %>
               </div>
-                <p><%= f.label :商品名 %><span class="require">必須</span></p>
+                <p><%= f.label :商品名 %><span class="require">*</span></p>
               <div class="product-field-box">
                 <%= f.text_field :name, class:"product-field-input", placeholder:"例) 京都ツアー"%>
               </div>
@@ -26,11 +26,11 @@
                 <%= f.text_area :text, class:"product-field-input" %>
               </div>
               <div class="product-field-box">
-                <p><%= f.label :金額 %><span class="require">必須</span></p>
+                <p><%= f.label :金額 %><span class="require">*</span></p>
                 <%= f.text_field :price, class:"product-field-input", placeholder:"例) 10,000" %>
               </div>
               <div class="product-field-box">
-                <p><%= f.label :単位 %><span class="require">必須</span></p>
+                <p><%= f.label :単位 %><span class="require">*</span></p>
                 <%= f.text_field :unit, class:"product-field-input", placeholder:"例) 個" %>
               </div>
               <%= f.submit "作成する", class:"product-field-submit" %>
