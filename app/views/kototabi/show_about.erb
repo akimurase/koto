@@ -1,1 +1,104 @@
-<p>show_about</p>
+<!-----ヘッター------>
+<div class="header-wrap">
+  <div class="header-main-1">
+    <div class="header-left">
+      <div class="header-logo-box">
+        <%= link_to image_tag("/assets/header-logo2"), tops_path, class:"header-logo-img" %>
+      </div>
+      <div class="header-introduction-1">
+        <ul>
+          <li><%=link_to "機能紹介", kototabi_show_about_path %></li>
+          <li><%=link_to "サンプルを使う", kototabi_show_path %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-right-li-1">
+        <span><%= link_to '試作する', clients_guest_sign_in_path, method: :post %></span>
+      </div>
+      <div class="header-right-li-1">
+        <%= link_to "新規登録", new_client_registration_path %>
+      </div>
+      <div class="header-right-li-1">
+        <%= link_to "ログイン", new_client_session_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about-wrap">
+  <div class="cover">
+    <div class="cover-introduction">
+      <div class="cover-center">
+        <h1 class=font_0>KOTOTABI 機能紹介</h1>
+        <div class="cover-text">
+          <p>Webサイトの作成と運営に必要な顧客・商品管理機能がここに。</p>
+          <p></p>
+          <p>KOTOTABI の機能をご紹介します。</p>
+        </div>
+          <%= link_to new_client_session_path do %>
+            <div class="cover-create-button">
+              <h3>サイトを作成する</h3>
+            </div>
+          <% end %>
+      </div>
+      <div class="cover-br">
+      </div>
+      <div class="cover-footer">
+        <ul><a href=""></a>
+          <li class="cover-footer-li-1"><a href="#sec1">クリエイト</a></li>
+          <li class="cover-footer-li"><a href="#sec2">アド</a></li>
+          <li class="cover-footer-li"><a href="#sec3">エディタ</a></li>
+          <li class="cover-footer-li"><a href="#sec4">アドミン</a></li>
+        </ul>
+      </div>
+    </div><%#cover-introduction%>
+  </div>
+
+  <div class="about-container">
+    <div class="row">
+      <div class="about-main">
+        <div class="about-main-create">
+          <h1>Create 作成する</h1>
+            <div class="bout-main-create-text">
+              <p>簡単２ステップ。好きな動画や画像を選択するだけ。</p>
+              <p>タイトルや紹介文など、運営に必要内容を入力すると、</p>
+              <a name="#sec1">
+              <p>あなただけのWebサイトが完成ます。</p>
+              </a>
+            </div>
+          画像
+        </div>
+        <div class="about-main-add">
+          <h1>Add 追加</h1>
+            <div class="about-main-add-text">
+              <p>管理画面へ行き左上のEditerボタンを押すとメニューバーが現れます。</p>
+              <a name="sec2">
+              <p>増やしたい項目に入力するだけ。</p>
+              </a>
+            </div>
+            画像
+        </div>
+        <div class="about-main-edit">
+          <h1>Edit 編集</h1>
+            <div class="about-main-edit-text">
+              <p>管理画面から商品のページに進みます。</p>
+              <a name="sec3">
+              <p>編集したい項目を書き換え、編集ボタンを押すと編集されます。</p>
+              </a>
+            </div>
+            画像
+        </div>
+        <div class="about-main-admin">
+          <h1>Admin 予約管理</h1>
+            <div class="about-admin-text">
+              <a name="sec4">
+              <p>予約管理ボタンを押すと、、、</p>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

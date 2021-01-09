@@ -5,47 +5,170 @@
   width: 100%;
 }
 
+.cover-introduction {
+  padding-top: 70px;
+  padding-bottom: 40px;
+  margin-left: 30px;
+}
+
 .font_0 {
   color: aliceblue;
   font-size: 54px;
+  margin-bottom: 30px;
 }
 
-.cover-introduction{
+.cover-text {
+}
+
+.cover-text p {
+  font-size: 23px;
+  line-height: 200%;
+}
+
+.cover-center {
   color: aliceblue;
-  font-size: 20px;
-  line-height: 1.6em;
+
 }
 
 .cover-create-button {
   position: relative;
-  width: 250px;
+  margin-top: 35px;
+  margin-bottom: 50px;
+  width: 300px;
   height: 70px;
   background-color: white;
   border-radius: 90px;
 }
 
-.cover-create-button h {
-  // color: rgb(17, 109, 255);
-  text-align: center;
+.cover-create-button h3 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.cover-br {
+  border-top: solid 0.1px wheat;
+}
+
+.cover-footer {
+  margin-top: 40px;
 }
 
 .cover-footer ul {
   display: flex;
-  margin-left: 20px;
 }
 
-.cover-footer li {
+.cover-footer-li-1 {
+  color: white;
   border-right: solid 0.1px;
-  padding-left: 10px;
+  padding-left: 0;
+  padding-right: 30px;
+  font-size: 23px;
 }
 
-// .cover-br br {
-//   color: aliceblue;
-//   size: 2px;
-// }
+
+.cover-footer-li {
+  color: white;
+  border-right: solid 0.1px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 23px;
+}
+
+.cover-footer a {
+  color: white;
+}
+
+
+.about-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+}
+
+.about-main {
+  // width: 1000px;
+  width: 100%;
+  padding-top: 60px;
+}
+
+.about-main-create {
+  width: 1000px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.about-main-add {
+  width: 1000px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.about-main-edit {
+  width: 1000px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.about-admin{
+  width: 1000px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.about-main-create h1 {
+  font-size: 54px;
+}
+
+.bout-main-create-text {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  font-size: 19px;
+  line-height: 200%;
+  border-bottom: solid 0.1px;
+}
+
+.about-main-add h1 {
+  font-size: 54px;
+}
+
+.about-main-add-text {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  font-size: 19px;
+  line-height: 200%;
+  border-bottom: solid 0.1px;
+}
+
+.about-main-edit h1 {
+  font-size: 54px;
+}
+
+.about-main-edit-text {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  font-size: 19px;
+  line-height: 200%;
+  border-bottom: solid 0.1px;
+}
+
+.about-main-admin h1 {
+  font-size: 54px;
+}
+
+.about-admin-text {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  font-size: 19px;
+  line-height: 200%;
+  border-bottom: solid 0.1px;
+}
