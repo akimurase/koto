@@ -22,13 +22,12 @@ Rails.application.routes.draw do
 
 
   # root to: 'tops#index'
-  root to: 'kototabi#index'
-  get 'kototabi/index'
-  get 'kototabi/show_about'
-  # get 'kototabi/show1'
-  # get 'kototabi/show2'
-  get 'kototabi/show'
-  # resources :kototabi, only: [:index, :show]
+  root to: 'kototabis#index'
+  get 'kototabis/index'
+  get 'kototabis/show_top'
+  get 'kototabis/show_product'
+  get 'kototabis/show_about'
+
   resources :events do #管理画面用
     collection do
       get 'search_words'

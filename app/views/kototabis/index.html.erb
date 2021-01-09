@@ -1,4 +1,5 @@
-<h1>Kototabi#index</h1>
+<h1>Kototabis#index</h1>
+
 <!-----ヘッター------>
 <div class="header-wrap">
   <div class="header-main">
@@ -8,8 +9,8 @@
       </div>
       <div class="header-introduction">
         <ul>
-          <li><%=link_to "機能紹介", kototabi_show_about_path %></li>
-          <li><%=link_to "サンプルを使う", kototabi_show_path %></li>
+          <li><%=link_to "機能紹介", kototabis_show_about_path %></li>
+          <li><%=link_to "デモを使う", kototabis_show_top_path %></li>
         </ul>
       </div>
     </div>
@@ -60,7 +61,7 @@
   <div class="products-container container-fluid">
     <div class="row row-cols-3">
         <div class="products_hero col">
-          <%= link_to kototabi_show_path do %>
+          <%= link_to kototabis_show_top_path do %>
             <%=image_tag "product_sample3", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name">sample</p>
@@ -69,7 +70,7 @@
           <% end %>
         </div>
         <div class="products_hero col">
-          <%= link_to kototabi_show_path do %>
+          <%= link_to kototabis_show_top_path do %>
             <%=image_tag "product_sample.png", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name">sample</p>
@@ -78,8 +79,7 @@
           <% end %>
         </div>
         <div class="products_hero col">
-          <%#= link_to kototabi_index_path do %>
-          <%= link_to kototabi_show_path do %>
+          <%= link_to kototabis_show_top_path do %>
             <%=image_tag "puroduct_sample2", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name">sample</p>
@@ -91,5 +91,8 @@
   </div>
   <%= render "shared/footer_client" %>
 </div>
+
+
+
 
 
