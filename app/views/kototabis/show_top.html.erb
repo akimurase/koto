@@ -1,0 +1,97 @@
+<p>Kototabis#show_top_about</p>
+
+
+<div class="top">
+  <!--------メニュー--------->
+  <div class="menu-wrap">
+    <div id="app1">
+      <div class="hamburger_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+        <span class="line line_01" v-bind:class="{'btn_line01':ActiveBtn}"></span>
+        <span class="line line_02" v-bind:class="{'btn_line02':ActiveBtn}"></span>
+        <span class="line line_03" v-bind:class="{'btn_line03':ActiveBtn}"></span>
+      </div>
+      <!--サイドバー-->
+      <transition name="menu">
+        <div class="menu" v-show="ActiveBtn">
+          <div class='user-conf' >
+            <% if user_signed_in? %>
+              <div class="user-sin-login">
+                <p><%#= link_to current_user.name, edit_user_registration_path  %></p>
+                <p><%= link_to current_user.name  %></p>
+                <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
+                <%#= link_to '予約状況を見る', event_path, class: "#" %>
+              </div>
+              <% else %>
+              <div class="user-sin-login">
+                <p>
+                  <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+                </p>
+                <p>
+                  <%= link_to "新規登録する", new_user_registration_path %>
+                </p>
+                <p>
+                  <%= link_to "ログイン", new_user_session_path %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+          <!----サイドバー商品名----->
+          <div class="main-product">
+              <ul>
+                <li>
+                  <%= link_to kototabis_show_product_path, "サンプル" %>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </div>
+  <!----動画----->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <%= video_tag("kototabi.mp4", class: "top_video", autoplay: true, loop: true, muted: true, alt:"ダミー画像") %>
+          <div class="top_hero" >
+            <%= image_tag "top-logo.png", class: "top_logo" %>
+            <h3 class="top_title">ネットで作るECサイト</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!----商品----->
+  <div class="products-container container-fluid">
+    <div class="row row-cols-3">
+        <div class="products_hero col">
+          <%= link_to kototabis_show_product_path do %>
+            <%=image_tag "gojyunoto_b.jpg", alt:"商品画像", class:"products_img" %>
+            <div class="products_info">
+              <p class="products_name">sample</p>
+              <p class="products_text"></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="products_hero col">
+          <%= link_to kototabis_show_product_path do %>
+            <%=image_tag "tatumibashi.jpg", alt:"商品画像", class:"products_img" %>
+            <div class="products_info">
+              <p class="products_name">sample</p>
+              <p class="products_text"></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="products_hero col">
+          <%= link_to kototabis_show_product_path do %>
+            <%=image_tag "IMG_3159.jpg", alt:"商品画像", class:"products_img" %>
+            <div class="products_info">
+              <p class="products_name">sample</p>
+              <p class="products_text"></p>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+  <%= render "shared/footer_client" %>
+</div>

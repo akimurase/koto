@@ -1,9 +1,9 @@
-<h1>Kototabi#show</h1>
+<h1>Kototabis#show_product</h1>
 
 <div class="header-wrap">
   <div class="header-main">
     <div class="header-logo-box">
-      <%= link_to image_tag("/assets/header-logo"), kototabi_index_path%>
+      <%= link_to image_tag("/assets/header-logo"), kototabis_index_path%>
     </div>
     <div class="header-menu">
     </div>
@@ -277,7 +277,7 @@
           </div>
         </div>
         <div class="form-input">
-          <%= form_with url:kototabi_show_path, method: :get, local: true do |f| %>
+          <%= form_with url:root_path, method: :get, local: true do |f| %>
             <div class="form-num">
               <div class="form-num-title-box">
                 <p><span>人</span><%= f.label :num, '数' %></p>
@@ -331,4 +331,3 @@
     </div>
   </div><!--client-wrap-->
 </div><!--footer-->
-
