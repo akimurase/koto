@@ -19,10 +19,20 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
+  # root to: 'kototabis#index'
+  root to: 'demos#home'
+  get 'demos/home'
+  get 'demos/about'
+  get 'demos/show'
+  resources :demos, only: [:index, :new, :edit, :update, :create, :destroy]
+  # get 'demos/index'
+  # get 'demos/new'
+  # get 'demos/edit'
+  # get 'demos/update'
+  # get 'demos/destroy'
+  get 'demos/search'
+  get 'demos/search_words'
 
-
-  # root to: 'tops#index'
-  root to: 'kototabis#index'
   get 'kototabis/index'
   get 'kototabis/show_top'
   get 'kototabis/show_product'
