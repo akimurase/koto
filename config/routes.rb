@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :samples
   # devise_for :clients
   # devise_for :users
   devise_for :clients, controllers: {
