@@ -1,5 +1,5 @@
-<p>Kototabis#show_top</p>
-
+<h1>Demos#index</h1>
+<p>Find me in app/views/demos/index.html.erb</p>
 
 <div class="top">
   <!--------メニュー--------->
@@ -28,13 +28,13 @@
           <div class="main-product">
               <ul>
                 <li>
-                  <%= link_to "サンプル", kototabis_show_product_path %>
+                  <%= link_to "サンプル", demos_show_path %>
                 </li>
                 <li>
-                  <%= link_to "サンプル", kototabis_show_product_path %>
+                  <%= link_to "サンプル", demos_show_path %>
                 </li>
                 <li>
-                  <%= link_to "サンプル", kototabis_show_product_path %>
+                  <%= link_to "サンプル", demos_show_path %>
                 </li>
               </ul>
           </div>
@@ -56,11 +56,11 @@
       </div>
     </div>
   </div>
-<!----商品----->
+ <!----商品----->
   <div class="products-container container-fluid">
     <div class="row row-cols-3">
         <div class="products_hero col">
-          <%= link_to kototabis_show_product_path do %>
+          <%= link_to demos_show_path do %>
             <%=image_tag "gojyunoto_b.jpg", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name"></p>
@@ -69,7 +69,7 @@
           <% end %>
         </div>
         <div class="products_hero col">
-          <%= link_to kototabis_show_product_path do %>
+          <%= link_to demos_show_path do %>
             <%=image_tag "tatumibashi.jpg", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name"></p>
@@ -78,7 +78,7 @@
           <% end %>
         </div>
         <div class="products_hero col">
-          <%= link_to kototabis_show_product_path do %>
+          <%= link_to demos_show_path do %>
             <%=image_tag "IMG_3159.jpg", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name"></p>
@@ -110,7 +110,7 @@
             <%= link_to "予約管理", events_path, class:"client-menu-li" %>
           </li>
           <li>
-            <%= link_to 'ログアウト', root_path, method: :delete, class:"client-menu-li" %>
+            <%= link_to 'ログアウト', root_path, class:"client-menu-li" %>
           </li>
         </ul>
       </div>
