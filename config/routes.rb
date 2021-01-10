@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   devise_for :samples
   # devise_for :clients
   # devise_for :users
+  # devise_for :samples, controllers: {
+  #   sessions:      'samples/sessions',
+  #   passwords:     'samples/passwords',
+  #   registrations: 'samples/registrations'
+  # }
   devise_for :clients, controllers: {
     sessions:      'clients/sessions',
     passwords:     'clients/passwords',
