@@ -1,7 +1,18 @@
 # frozen_string_literal: true
 
-class Sample::SessionsController < Devise::SessionsController
+class Samples::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+
+  def new_guest
+    sample = Sample.guest
+    sign_in sample
+    redirect_to demos_path
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path # ログアウト後に遷移するpathを設定
+  end
+
 
   # GET /resource/sign_in
   # def new

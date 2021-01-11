@@ -6,6 +6,7 @@ class DemosController < ApplicationController
   end
 
   def index
+    @sample = Sample.find(current_sample.id)
   end
 
   def new
@@ -21,6 +22,9 @@ class DemosController < ApplicationController
   end
 
   def destroy
+  end
+
+  def schedule
   end
 
   def search

@@ -17,10 +17,15 @@
             <div class="user-sin-login">
               <h2>デモメニュー</h2>
               <p>
-                <%= link_to "予約管理", events_path, class:"client-menu-li" %>
+                <%= link_to samples_guest_sign_in_path, method: :post do%>
+                  <%= @sample.name %>
+                <% end %>
               </p>
               <p>
-                <%= link_to "ログアウト", root_path %>
+                <%= link_to "予約管理", demos_schedule_path%>
+              </p>
+              <p>
+                <%=link_to "ログアウト", destroy_sample_session_path, method: :delete %>
               </p>
             </div>
           </div>
@@ -110,7 +115,7 @@
             <%= link_to "予約管理", events_path, class:"client-menu-li" %>
           </li>
           <li>
-            <%= link_to 'ログアウト', root_path, class:"client-menu-li" %>
+            <%= link_to "ログアウト", destroy_sample_session_path, method: :delete, class:"client-menu-li" %>
           </li>
         </ul>
       </div>
