@@ -5,7 +5,7 @@
 <div class="">
   <div class="search">
     <div class="search-data">
-      <h3>日付検索</h3>
+      <%# <h3>日付検索</h3> %>
       <%#= search_form_for @e, url: events_search_path do |f| %>
         <%#= f.label :start_time_eq, '予約日' %>
         <%#= f.collection_select :start_time_eq, @event_name, :start_time, :start_time,  include_blank: '指定なし' %>
@@ -30,11 +30,11 @@
     <ul class="event-list">
       <% demos.each do |demo| %>
       <li class="list">
-        <%# link_to edit_event_path(demo.id) do %>
+        <%= link_to edit_demo_path(demo.id) do %>
           <%= demo.sample_name %>
           <%= demo.num.name %><span>人</span>
           <%= demo.sample_product_name %>
-        <% #end %>
+        <% end %>
       </li>
     </ul>
     <% end %>

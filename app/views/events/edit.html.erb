@@ -28,9 +28,9 @@
           <td><%= f.text_field :user_email %></td>
           <td><%= f.text_field :user_tel %></td>
           <td><%= f.submit "保存する" %></td>
+      <% end %>
           <td><%= button_to "削除する", event_path(@event.id), method: :delete, class:"#" %></td>
         </tr>
-      <% end %>
     </tr>
     </tbody>
     <br>

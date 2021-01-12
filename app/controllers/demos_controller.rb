@@ -26,18 +26,24 @@ class DemosController < ApplicationController
   end
 
   def schedule
-    # binding.pry
-    @events = Event.all
     @demos = Demo.all
   end
 
   def edit
+    @demo = Demo.find(params[:id])
+
   end
 
   def update
+    demo = Demo.find(params[:id])
+    demo.update!(demo_create_params)
+    redirect_to edit_demo_path(demo.id)
   end
-
+  
   def destroy
+    demo = Demo.find(params[:id])
+    demo.destroy
+    redirect_to demos_schedule_path(demo.id)
   end
 
   def search

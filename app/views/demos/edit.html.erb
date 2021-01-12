@@ -1,2 +1,41 @@
 <h1>Demos#edit</h1>
 <p>Find me in app/views/demos/edit.html.erb</p>
+
+<%= render "shared/header" %>
+
+<div class="edit-wrap">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">名前</th>
+        <th scope="col">人数</th>
+        <th scope="col">商品名</th>
+        <th scope="col">金額</th>
+        <th scope="col">参加日</th>
+        <th scope="col">Email</th>
+        <th scope="col">TEL</th>
+        <th scope="col">オプション</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <%= form_with(model: @demo, url:demo_path, method: :PATCH, local: true) do |f| %>
+        <tr>
+          <td><%= f.text_field :sample_name %></td>
+          <td><%= f.collection_select(:num_id, Num.all, :id, :name, {}, {class:"#", id:"#"}) %></td>
+          <td><%= f.text_field :sample_product_name %></td>
+          <td><%= f.text_field :price %></td>
+          <td><%= f.text_field :start_time %></td>
+          <td><%= f.text_field :sample_email %></td>
+          <td><%= f.text_field :sample_tel %></td>
+          <td><%= f.submit "保存する" %></td>
+      <% end %>
+          <td><%= button_to "削除する", demo_path(@demo.id), method: :delete, class:"#" %></td>
+        </tr>
+    </tr>
+    </tbody>
+    <br>
+  </table>
+  <%= link_to '管理画面へ戻る', demos_path, class: 'a-back btn' %>
+</div>
