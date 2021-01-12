@@ -277,6 +277,7 @@
         </div>
         <div class="form-input">
           <%= form_with url:new_demo_path, method: :get, local: true do |f| %>
+            <%= f.hidden_field :price, id: "f_price"  %>
             <div class="form-num">
               <div class="form-num-title-box">
                 <p><span>人</span><%= f.label :num, '数' %></p>

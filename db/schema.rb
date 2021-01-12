@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2021_01_10_072800) do
   end
 
   create_table "demos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "sample_name"
+    t.string "sample_kana"
+    t.string "sample_email"
+    t.string "sample_tel"
+    t.string "sample_product_name"
+    t.string "price"
+    t.integer "num_id"
+    t.datetime "start_time"
+    t.integer "sample_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -111,6 +120,7 @@ ActiveRecord::Schema.define(version: 2021_01_10_072800) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "tel", null: false
+    t.string "product_name", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

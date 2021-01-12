@@ -29,6 +29,13 @@
               </ul>
             </div>
             <div class="field">
+              <p class="devise_title"><%= f.label :商品名 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :product_name, class:"input-default", id:"#", placeholder:"例)京都ツアー " %></li>
+              </ul>
+            </div>
+            <div class="field">
               <p class="devise_title"><%= f.label :メール %></p>
               <ul class="login_ul">
                 <li><p class="text-danger">必須</p></li>

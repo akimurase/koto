@@ -10,6 +10,17 @@ class DemosController < ApplicationController
   end
 
   def new
+    @demo = Demo.new(demo_params)
+  end
+
+  def create
+    @demo = Demo.new(demo_params)
+    if @demo.valid?
+      @demo.save
+    else
+      render :new
+    end
+
   end
 
   def show
@@ -32,4 +43,12 @@ class DemosController < ApplicationController
 
   def search_words
   end
+
+  private
+
+  def demo_params
+    # params.require(:demo).permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
+    params.permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
+  end
+
 end
