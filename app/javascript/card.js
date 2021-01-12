@@ -14,13 +14,19 @@ const pay = () => {
       cvc: formData.get("event[cvc]"),
       exp_month: formData.get("event[exp_month]"),
       exp_year: `20${formData.get("event[exp_year]")}`,
+    };
+    // const card = {
+    //   number: formData.get("demo[number]"),
+    //   cvc: formData.get("demo[cvc]"),
+    //   exp_month: formData.get("demo[exp_month]"),
+    //   exp_year: `20${formData.get("demo[exp_year]")}`,
     // };
     // modelメッソドを使わない
       // number: formData.get("number"),
       // cvc: formData.get("cvc"),
       // exp_month: formData.get("exp_month"),
       // exp_year: `20${formData.get("exp_year")}`,
-    };
+    // };
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
@@ -46,3 +52,4 @@ const pay = () => {
 };
 
 window.addEventListener("load", pay);
+

@@ -8,7 +8,7 @@
   <div class="conf-container container">
     <div class="conf-content">
       <div class="pay-content">
-        <%= form_with model: @demo, url:demos_path, id: 'charge-form', local: true do |f| %>
+        <%= form_with model: @demo, url:demos_path, id: 'demo-charge-form', local: true do |f| %>
           <%= render 'shared/error_messages', model: f.object %>
           <%= f.hidden_field :sample_name, value:current_sample.name %>
           <%= f.hidden_field :sample_kana, value:current_sample.kana %>

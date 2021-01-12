@@ -14,12 +14,14 @@ class DemosController < ApplicationController
   end
 
   def create
-    @demo = Demo.new(demo_params)
+    @demo = Demo.new(demo_create_params)
+    # binding.pry
     if @demo.valid?
       @demo.save
     else
       render :new
     end
+
 
   end
 
@@ -49,6 +51,10 @@ class DemosController < ApplicationController
   def demo_params
     # params.require(:demo).permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
     params.permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
+  end
+
+  def demo_create_params
+    params.require(:demo).permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
   end
 
 end
