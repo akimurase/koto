@@ -1,0 +1,22 @@
+
+<%= render "shared/header" %>
+<div class="done-wrap">
+    <div class="done-container">
+      <div class="done-box">
+        <h1>ご予約完了しました。</h1>
+        <p>ありがとうございます。<br>
+          ご予約が完了しました。<br>
+          確認のメールをお送りしましたので、予約内容を必ずご確認ください。
+        </p>
+        <div class="back-container">
+          <div class="back-container-box">
+            <%= link_to "トップへ戻る", samples_guest_sign_in_path, method: :post, class:"btn btn-default back-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="footer-logo-box">
+  <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
+</div>
+

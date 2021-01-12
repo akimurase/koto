@@ -22,7 +22,6 @@
           <%# 決済機能 %>
           <div class='pay-form-box'>
             <h1>お支払い</h1>
-              
             <div class='pay-form'>
               <div class='card-num'>
                 <h4>カード番号</h4>
@@ -31,10 +30,13 @@
               <div class='input-expiration-date-wrap'>
                 <h4>有効期限</h4>
                 <div class="input-expiration-date-box">
-                  <p><span class="expiration-date">月</span><%= f.text_field :exp_month, class:"input-expiration-date", id:"exp_month", placeholder:"例)1" %></p>
-                  <p><span class="expiration-date">年</span><%= f.text_field :exp_year, class:"input-expiration-date", id:"exp_year", placeholder:"例)24" %></p>
-                  <p><span>セキュリティコード</span><%= f.text_field :cvc, class:"input-cvc", id:"cvc", placeholder:"カード背面の番号", maxlength:"3" %></p>
+                  <li><span class="expiration-date">月</span><%= f.text_field :exp_month, class:"input-expiration-date", id:"exp_month", placeholder:"例)1" %></li>
+                  <li><span class="expiration-date">年</span><%= f.text_field :exp_year, class:"input-expiration-date", id:"exp_year", placeholder:"例)24" %></li>
                 </div>
+              </div>
+              <div class="input-expiration-s">
+                <h4>セキュリティコード</h4>
+                <%= f.text_field :cvc, class:"input-cvc", id:"cvc", placeholder:"カード背面の番号", maxlength:"3" %>
               </div>
               <div class='pay-button'>
                 <p><%= f.submit "予約する", class:"pay-submit" %></p>
