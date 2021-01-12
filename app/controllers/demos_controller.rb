@@ -15,17 +15,20 @@ class DemosController < ApplicationController
 
   def create
     @demo = Demo.new(demo_create_params)
-    # binding.pry
     if @demo.valid?
       @demo.save
     else
       render :new
     end
-
-
   end
 
   def show
+  end
+
+  def schedule
+    # binding.pry
+    @events = Event.all
+    @demos = Demo.all
   end
 
   def edit
@@ -35,9 +38,6 @@ class DemosController < ApplicationController
   end
 
   def destroy
-  end
-
-  def schedule
   end
 
   def search

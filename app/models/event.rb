@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   belongs_to :product, optional: true
   #モジュールを取り込む記述
   extend ActiveHash::Associations::ActiveRecordExtensions
-  # アクティブハッシュ用rアソシエーション
+  # アクティブハッシュ用アソシエーション
   belongs_to_active_hash :num
 
   # バリデーション
