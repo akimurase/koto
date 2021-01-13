@@ -1,0 +1,83 @@
+<p>demo#schedule</p>
+
+<!-----ヘッター----->
+<div class="header-wrap">
+  <div class="header-main">
+    <div class="header-logo-box">
+      <%= link_to image_tag("/assets/header-logo"), demos_path%>
+    </div>
+    <div class="header-menu">
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <div class="search">
+    <div class="search-data">
+      <h3>日付検索</h3>
+      <%= search_form_for @d, url: demos_search_path do |f| %>
+        <%= f.label :sample_product_name_eq, '商品名検索' %>
+        <%= f.collection_select :sample_product_name_eq, @demo_date, :sample_product_name, :sample_product_name,  include_blank: '指定なし' %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
+    <div class="search-name">
+      <%# <h3>名前検索</h1> %>
+      <%#= form_with(url: search_words_events_path, local: true, method: :get, class: "#") do |form| %>
+        <%# <label>名前</label> %>
+        <%#= form.text_field :keyword, placeholder: "名前で検索する", class: "#" %>
+        <%#= form.submit "検索", class: "#" %>
+      <%# end %>
+    </div>
+  </div>
+
+  <!---カレンダー-->
+  <%= month_calendar events: @demos do |date, demos| %>
+    <%= date.day %>
+
+  <!----イベントー---->
+    <ul class="event-list">
+      <% demos.each do |demo| %>
+      <li class="list">
+        <%= link_to edit_demo_path(demo.id) do %>
+          <%= demo.sample_name %>
+          <%= demo.num.name %><span>人</span>
+          <%= demo.sample_product_name %>
+        <% end %>
+      </li>
+    </ul>
+    <% end %>
+  <% end %>
+</div>
+
+<!------フッター------>
+  <div class="footer">
+    <div class="footer-demo">
+      <div class="client-admin-if-login-box">
+        <div class="company-info">
+          <ul>
+            <li>会社名<span>:</span>◯◯◯◯株式会社</li>
+            <li>所在<span>:△△△県□□□市</span></li>
+            <li>メール<span>:xxxx@kototabi.com</span></li>
+            <li>TEL<span>:</span>0120-123-1234</li>
+          </ul>
+        </div>
+      </div>
+      <div class="client-menu">
+        <ul>
+          <li>
+            <p>Admin</p>
+          </li>
+          <li>
+            <%= link_to "予約管理", demos_schedule_path, class:"client-menu-li" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_sample_session_path, method: :delete, class:"client-menu-li" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-logo-box">
+      <img src="/assets/sample_logo.png" alt="サンプルロゴ.png" class="footer-logo">
+    </div>
+  </div><!--footer-->

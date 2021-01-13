@@ -19,7 +19,14 @@ ja:
       product:
         image: 画像
         name: 商品名
+        price: 金額 
+        unit: 単位
       event:
+        start_time: 希望日
+        num_id: 人数
+        price: 金額
+        token: カード情報
+      demo:
         start_time: 希望日
         num_id: 人数
         price: 金額

@@ -121,6 +121,7 @@ select {
   width: 400px;
   height: 50px;
   color: #dc3545;
+  margin-top: 30px;
 }
 
 .pay-submit {
@@ -130,18 +131,35 @@ select {
   height: 100%;
 }
 
-.input-expiration-date-box {
-  margin-top: 10px;
-  margin-bottom: 10px;
+.input-expiration-number {
+  font-size: 19px;
+  width: 230px;
 }
 
 .input-expiration-date-wrap {
   margin-top: 30px;
 }
 
-.input-expiration-date-wrap p {
+.input-expiration-date-box {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.input-expiration-date-wrap li {
   font-size: 19px;
   padding-bottom: 10px;
+  display: flex;
+}
+
+.input-expiration-date-box input {
+  width: 60px;
+
+}
+
+.input-expiration-s input {
+  font-size: 19px;
+  width: 170px;
 }
 
 .expiration-date {
@@ -150,6 +168,11 @@ margin-left: 20px;
 
 .input-expiration-date-wrap span {
   padding-right: 10px;
+}
+
+// 確認
+.conf-title-box {
+  margin-top: 50px;
 }
 
 .conf-title {

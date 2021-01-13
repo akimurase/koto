@@ -71,7 +71,7 @@
           <div class="col">
             <%= video_tag @top.video_top, class:"top_video", :loop => true, :autoplay => true, :muted => true %> 
             <div class="top_hero" >
-              <%= image_tag @top.image, :size =>"230×270", class: "top_logo" %>
+              <%= image_tag @top.image, :size =>"230×270", class: "top_logo" if @top.image.attached? %>
               <h3 class="top_title"><%= @top.title %></h3>
             </div>
           </div>
