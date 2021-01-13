@@ -33,10 +33,6 @@ Rails.application.routes.draw do
   get 'demos/home'
   get 'demos/about'
   get 'demos/show'
-  # get 'demos/index'
-  # get 'demos/new'
-  # get 'demos/edit'
-  # get 'demos/update'
   get 'demos/schedule'
   get 'demos/search'
   get 'demos/search_words'
@@ -44,9 +40,9 @@ Rails.application.routes.draw do
   resources :events do #管理画面用
     collection do
       get 'search_words'
+      get 'events/search' 
     end
   end 
-  get 'events/search' 
 
   resources :tops
   post 'products/add'

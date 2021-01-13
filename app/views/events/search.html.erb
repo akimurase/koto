@@ -1,20 +1,57 @@
-<h1>検索結果</h1>
-  <% if @results.length !=0 %>
-    <% @results.each do |result| %>
-      <%= link_to edit_event_path(result.id) do %>
-          <td>
-          <br>
-          <li>
-              <%= result.start_time %>
-              <%= result.product_name %>
-              <%= result.start_time %>
-              <%= result.plan.name %>
-              <%= result.name %>
-          </li>
+<%= render "shared/header" %>
+
+<!-----ヘッター----->
+<div class="header-wrap">
+  <div class="header-main">
+    <div class="header-logo-box">
+      <%= link_to image_tag("/assets/header-logo"), demos_path%>
+    </div>
+    <div class="header-menu">
+    </div>
+  </div>
+</div>
+
+<div class="edit-wrap">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">商品名</th>
+        <th scope="col">参加日</th>
+        <th scope="col">名前</th>
+        <th scope="col">カナ</th>
+        <th scope="col">人数</th>
+        <th scope="col">金額</th>
+        <th scope="col">Email</th>
+        <th scope="col">TEL</th>
+        <th scope="col">予約日</th>
+        <th scope="col">オプション</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <h1>検索結果</h1>
+      <% if @results.length !=0 %>
+        <% @results.each do |result| %>
+        <tr>
+          <td><%= result.id %></td>
+          <td><%= result.product_name %></td>
+          <td><%= result.start_time %></td>
+          <td><%= result.user_name %></td>
+          <td><%= result.user_kana %></td>
+          <td><%= result.num_id %></td>
+          <td><%= result.price %></td>
+          <td><%= result.user_email %></td>
+          <td><%= result.user_tel %></td>
+          <td><%= result.created_at %></td>
+          <td><%= button_to "編集", edit_event_path(result.id), method: :get, class:"search-edit-button" %></td>
       <% end %>
-    <% end %>
-  <% else %>
-    該当者はいません
-  <% end %>
-  <br>
-<%# <%= link_to '管理画面へ戻る', events_path %> %>
+      <% else %>
+        該当しません
+      <% end %>
+    </tr>
+    </tbody>
+    <br>
+  </table>
+  <%= link_to '管理画面へ戻る', events_path, class: 'a-back btn' %>
+</div>

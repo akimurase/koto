@@ -102,6 +102,6 @@ class EventsController < ApplicationController
   end
 
   def set_event_column #重複をなくす
-    @event_name = Event.select("start_time").distinct
+    @event_name = Event.select("product_name").distinct
   end
 end

@@ -26,6 +26,7 @@
         <th scope="col">Email</th>
         <th scope="col">TEL</th>
         <th scope="col">予約日</th>
+        <th scope="col">オプション</th>
       </tr>
     </thead>
     <tbody>
@@ -44,6 +45,7 @@
           <td><%= result.sample_email %></td>
           <td><%= result.sample_tel %></td>
           <td><%= result.created_at %></td>
+          <td><%= button_to "編集", edit_demo_path(result.id), method: :get, class:"search-edit-button" %></td>
       <% end %>
       <% else %>
         該当しません
