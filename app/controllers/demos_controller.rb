@@ -1,4 +1,6 @@
 class DemosController < ApplicationController
+  before_action :search_product, only: [:schedule, :search]
+
   def home
   end
 
@@ -27,11 +29,11 @@ class DemosController < ApplicationController
 
   def schedule
     @demos = Demo.all
+    set_demo_column
   end
 
   def edit
     @demo = Demo.find(params[:id])
-
   end
 
   def update
@@ -47,6 +49,7 @@ class DemosController < ApplicationController
   end
 
   def search
+    @results = @d.result
   end
 
   def search_words
@@ -61,6 +64,13 @@ class DemosController < ApplicationController
 
   def demo_create_params
     params.require(:demo).permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
+  end
+
+  def search_product
+    @d = Demo.ransack(params[:q])  # 検索オブジェクトを生成
+  end
+  def set_demo_column
+    @demo_date = Demo.select("sample_product_name").distinct  # 重複なくnameカラムのデータを取り出す
   end
 
 end

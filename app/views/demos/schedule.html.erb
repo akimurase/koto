@@ -14,12 +14,12 @@
 <div class="">
   <div class="search">
     <div class="search-data">
-      <%# <h3>日付検索</h3> %>
-      <%#= search_form_for @e, url: events_search_path do |f| %>
-        <%#= f.label :start_time_eq, '予約日' %>
-        <%#= f.collection_select :start_time_eq, @event_name, :start_time, :start_time,  include_blank: '指定なし' %>
-        <%#= f.submit '検索' %>
-      <%# end %>
+      <h3>日付検索</h3>
+      <%= search_form_for @d, url: demos_search_path do |f| %>
+        <%= f.label :sample_product_name_eq, '商品名検索' %>
+        <%= f.collection_select :sample_product_name_eq, @demo_date, :sample_product_name, :sample_product_name,  include_blank: '指定なし' %>
+        <%= f.submit '検索' %>
+      <% end %>
     </div>
     <div class="search-name">
       <%# <h3>名前検索</h1> %>

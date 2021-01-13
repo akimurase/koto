@@ -29,11 +29,10 @@ Rails.application.routes.draw do
   end
 
   # root to: 'kototabis#index'
-  root to: 'demos#home'
+  resources :demos, only: [:index, :new, :edit, :update, :create, :destroy]
   get 'demos/home'
   get 'demos/about'
   get 'demos/show'
-  resources :demos, only: [:index, :new, :edit, :update, :create, :destroy]
   # get 'demos/index'
   # get 'demos/new'
   # get 'demos/edit'
@@ -56,4 +55,6 @@ Rails.application.routes.draw do
     resources :itinerarys
     resources :events 
   end
+
+  root to: 'demos#home'
 end
