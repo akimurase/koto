@@ -1,0 +1,13 @@
+<p>tops#list</p>
+
+<h1>導入企業一覧</h1>
+
+<div class="list_wrap">
+  <div class="list">
+  <% @clients.each do |client| %>
+    <%= link_to top_path(client.id) do %>
+      <%= client.company_name %>
+    <% end %>
+  <% end %>
+  </div>
+</div>

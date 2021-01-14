@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     @points = Point.where(product_id: @product)#ポイントをproducts/indexに表示させる為に定義
     @itinerarys = Itinerary.where(product_id: @product) #旅程をproducts/indexに表示させる定義
     @event = Event.new
-    @client = Client.find(current_client.id)
+    # @client = Client.find(current_client.id)
   end
 
   def new

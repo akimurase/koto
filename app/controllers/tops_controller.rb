@@ -11,10 +11,9 @@ class TopsController < ApplicationController
   end
 
   def show
-    # @top = Top.find_by(params[:id]) 
-    # @products = Product.all #プロダクト画像
-    # @product = Product.find(params[:id]) #もしtop/showでプロダクトの編集をす場合は、idを特定するためfind(params[:id])が必要
-    @event = Event.all
+    @top = Top.find(params[:id]) 
+    @products =  Product.where(client_id: params[:id])
+    @product = Product.find(params[:id])
   end
 
   def create
@@ -46,6 +45,10 @@ class TopsController < ApplicationController
     @top = Top.find(params[:id])
     @top.destroy!
     redirect_to root_path
+  end
+
+  def list
+    @clients = Client.all
   end
 
   private

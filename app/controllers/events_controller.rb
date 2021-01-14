@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     @user = User.find(current_user.id)
     @event = Event.new(event_params)
     @product = Product.find(params[:product_id])
-    @client = Client.find(current_client.id) #footer条件分岐とカレントid取得のため
+    # @client = Client.find(current_client.id) #footer条件分岐とカレントid取得のため
     @top = Top.find_by(params[:id]) #footer条件分岐のため
   end
   
@@ -28,10 +28,8 @@ class EventsController < ApplicationController
     else
       render :new
     end
-    @client = Client.find(current_client.id)
+    # @client = Client.find(current_client.id)
     @top = Top.find_by(params[:id]) #footer条件分岐のため
-    # binding.pry
-
   end
 
   def show
@@ -76,13 +74,15 @@ class EventsController < ApplicationController
   
 
   def event_params
+    @product = Product.find(params[:product_id])
     params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id)
-          .merge(user_id: current_user.id, client_id: current_client.id)
+          .merge(user_id: current_user.id, client_id: @product.client_id)
   end
 
   def event_create_params
+    @product = Product.find(params[:product_id])
     params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id)
-          .merge(user_id: current_user.id, client_id: current_client.id, token: params[:token])
+          .merge(user_id: current_user.id, client_id: @product.client_id, token: params[:token])
   end
 
   def event_edit_params
