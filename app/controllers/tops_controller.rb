@@ -29,10 +29,8 @@ class TopsController < ApplicationController
 
   def edit
     @client = Client.find(current_client.id) #footer条件分岐のため
-    # @top = Top.find_by(client_id: @client.id)
-    @top = Top.find_by(params[:id]) #データ取得（トップ動画再生と編集データ取得）
+    @top = Top.find_by(client_id: @client.id)#データ取得（トップ動画再生と編集データ取得）
     @products = Product.where(client_id: @client.id) #top/indexでproductのデータを表示させる為。
-
   end
 
   def update

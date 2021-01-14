@@ -30,6 +30,10 @@
                   </li>
                 <% end %>
                   <li>
+                    <%#= link_to "戻る", tops_path(@top.id), class:"client-menu-li" %>
+                    <%= link_to "戻る", tops_path, class:"client-menu-li" %>
+                  </li>
+                  <li>
                     <%= link_to 'ログアウト', destroy_client_session_path, method: :delete, class:"client-menu-li" %>
                   </li>
               </ul>
@@ -77,7 +81,7 @@
                 </li>
                   <transition name="editor-side">
                     <div class="client-about-sign-up" v-show="ActiveBtn">
-                      <li><%= link_to 'ゲストログイン', clients_guest_sign_in_path, method: :post %></li>
+                      <li><%= link_to '試作する', clients_guest_sign_in_path, method: :post %></li>
                       <li><%= link_to "新規登録する", new_client_registration_path %></li>
                       <li><%= link_to "ログイン", new_client_session_path %></li>
                     </div>
