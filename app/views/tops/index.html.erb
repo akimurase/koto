@@ -1,55 +1,82 @@
 <h1>tops#index</h1>
 <div class="top">
   <!--------メニュー--------->
-  <div class="menu-wrap">
-    <div id="app1">
-      <!--メニューのボタン-->
-      <div class="hamburger_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-        <span class="line line_01" v-bind:class="{'btn_line01':ActiveBtn}"></span>
-        <span class="line line_02" v-bind:class="{'btn_line02':ActiveBtn}"></span>
-        <span class="line line_03" v-bind:class="{'btn_line03':ActiveBtn}"></span>
-      </div>
-      <!--サイドバー-->
-      <transition name="menu">
-        <div class="menu" v-show="ActiveBtn">
-          <div class='user-conf' >
-            <% if user_signed_in? %>
-              <div class="user-sin-login">
-                <p><%#= link_to current_user.name, edit_user_registration_path  %></p>
-                <p><%= link_to current_user.name  %></p>
-                <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
-                <%#= link_to '予約状況を見る', event_path, class: "#" %>
-              </div>
-              <% else %>
-              <div class="user-sin-login">
-                <p>
-                  <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
-                </p>
-                <p>
-                  <%= link_to "新規登録する", new_user_registration_path %>
-                </p>
-                <p>
-                  <%= link_to "ログイン", new_user_session_path %>
-                </p>
-              </div>
-            <% end %>
-          </div>
-          <!----サイドバー商品名----->
-          <div class="プロダクト">
-            <% @products.each do |product|  %>
-              <ul>
-                <li>
-                  <%= link_to products_path(product.id) do %>
-                    <%= product.name %>
-                  <% end %>
-                </li>
-              </ul>
-            <% end %>
-          </div>
+  <% if client_signed_in? %>
+        <div class="menu-wrap">
+      <div id="app1">
+        <!--メニューのボタン-->
+        <div class="hamburger_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+          <span class="line line_01" v-bind:class="{'btn_line01':ActiveBtn}"></span>
+          <span class="line line_02" v-bind:class="{'btn_line02':ActiveBtn}"></span>
+          <span class="line line_03" v-bind:class="{'btn_line03':ActiveBtn}"></span>
         </div>
-      </transition>
+        <!--サイドバー-->
+        <transition name="menu">
+          <div class="menu" v-show="ActiveBtn">
+            <div class='user-conf' >
+                <div class="user-sin-login">
+                  <p>
+                    <%#= link_to '作成中', top_path, method: :post %>
+                  </p>
+                  <p>作成中</p>
+                </div>
+            </div>
+          </div>
+        </transition>
+      </div>
     </div>
-  </div>
+
+  <% else %>
+    <div class="menu-wrap">
+      <div id="app1">
+        <!--メニューのボタン-->
+        <div class="hamburger_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+          <span class="line line_01" v-bind:class="{'btn_line01':ActiveBtn}"></span>
+          <span class="line line_02" v-bind:class="{'btn_line02':ActiveBtn}"></span>
+          <span class="line line_03" v-bind:class="{'btn_line03':ActiveBtn}"></span>
+        </div>
+        <!--サイドバー-->
+        <transition name="menu">
+          <div class="menu" v-show="ActiveBtn">
+            <div class='user-conf' >
+              <% if user_signed_in? %>
+                <div class="user-sin-login">
+                  <p><%#= link_to current_user.name, edit_user_registration_path  %></p>
+                  <p><%= link_to current_user.name  %></p>
+                  <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
+                  <%#= link_to '予約状況を見る', event_path, class: "#" %>
+                </div>
+                <% else %>
+                <div class="user-sin-login">
+                  <p>
+                    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+                  </p>
+                  <p>
+                    <%= link_to "新規登録する", new_user_registration_path %>
+                  </p>
+                  <p>
+                    <%= link_to "ログイン", new_user_session_path %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+            <!----サイドバー商品名----->
+            <div class="プロダクト">
+              <% @products.each do |product|  %>
+                <ul>
+                  <li>
+                    <%= link_to products_path(product.id) do %>
+                      <%= product.name %>
+                    <% end %>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </div>
+  <% end %>
   <!----動画----->
   <div class="top_video_content" >
     <% if @top == nil %>
