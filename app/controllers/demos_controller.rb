@@ -48,6 +48,11 @@ class DemosController < ApplicationController
     redirect_to demos_schedule_path(demo.id)
   end
 
+  def list
+    @clients = Client.all
+  end
+
+
   def search
     @results = @d.result
   end

@@ -1,0 +1,31 @@
+<!-----ヘッター------>
+<div class="header-wrap">
+  <div class="header-main">
+    <div class="header-left">
+      <div class="header-logo-box">
+        <%= link_to image_tag("/assets/header-logo"), root_path, class:"header-logo-img" %>
+      </div>
+      <div class="header-introduction">
+        <ul>
+          <li><%=link_to "機能紹介", demos_about_path  %></li>
+          <li><%=link_to "デモを使う", samples_guest_sign_in_path, method: :post %></li>
+          <li><%=link_to "導入企業一覧", demos_list_demos_path %></li>
+          <%# <li><%=link_to "デモを使う", demos_path %></li>
+          <li><%=link_to "sign_in", new_sample_registration_path%></li>
+          <%# <li><%=link_to "log_in", samples_guest_sign_in_path, method: :post %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-right-li">
+        <span><%= link_to '試作する', clients_guest_sign_in_path, method: :post %></span>
+      </div>
+      <div class="header-right-li">
+        <%= link_to "新規登録", new_client_registration_path %>
+      </div>
+      <div class="header-right-li">
+        <%= link_to "ログイン", new_client_session_path %>
+      </div>
+    </div>
+  </div>
+</div>
