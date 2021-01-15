@@ -30,12 +30,12 @@ Rails.application.routes.draw do
 
   # root to: 'kototabis#index'
   resources :demos, only: [:index, :new, :edit, :update, :create, :destroy]
-  get 'demos/home'
-  get 'demos/about'
-  get 'demos/show'
-  get 'demos/schedule'
-  get 'demos/search'
-  get 'demos/search_words'
+    get 'demos/home'
+    get 'demos/about'
+    get 'demos/show'
+    get 'demos/schedule'
+    get 'demos/search'
+    get 'demos/search_words'
 
   resources :events do #管理画面用
     collection do
@@ -44,8 +44,12 @@ Rails.application.routes.draw do
     end
   end 
 
-  resources :tops
-  post 'products/add'
+  resources :tops do
+    collection do
+      get 'tops/list'
+    end
+  end
+    post 'products/add'
   resources :products do
     resources :points
     resources :itinerarys

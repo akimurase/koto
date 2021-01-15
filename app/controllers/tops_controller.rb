@@ -11,10 +11,13 @@ class TopsController < ApplicationController
   end
 
   def show
-    # @top = Top.find_by(params[:id]) 
-    # @products = Product.all #プロダクト画像
-    # @product = Product.find(params[:id]) #もしtop/showでプロダクトの編集をす場合は、idを特定するためfind(params[:id])が必要
-    @event = Event.all
+    @top = Top.find(params[:id]) 
+    @products =  Product.where(client_id: params[:id])
+    @product = Product.find(params[:id])
+    @client_id = (params[:id])
+    session["current.client_id"] = {client: @client_id}
+    # binding.pry
+
   end
 
   def create
@@ -29,10 +32,10 @@ class TopsController < ApplicationController
 
   def edit
     @client = Client.find(current_client.id) #footer条件分岐のため
-    # @top = Top.find_by(client_id: @client.id)
-    @top = Top.find_by(params[:id]) #データ取得（トップ動画再生と編集データ取得）
+    # @top = Top.find_by(client_id: @client.id)#データ取得（トップ動画再生と編集データ取得）
+    @top = Top.last(client_id: @client.id)#データ取得（トップ動画再生と編集データ取得）
+    # @top = Top.find_by(client_id: @client.id)#データ取得（トップ動画再生と編集データ取得）
     @products = Product.where(client_id: @client.id) #top/indexでproductのデータを表示させる為。
-
   end
 
   def update
@@ -48,6 +51,10 @@ class TopsController < ApplicationController
     @top = Top.find(params[:id])
     @top.destroy!
     redirect_to root_path
+  end
+
+  def list
+    @clients = Client.all
   end
 
   private

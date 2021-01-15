@@ -1,73 +1,104 @@
 <h1>tops#show</h1>
 
-<!-----区切り------>
-  <div id="app1">
-    <div class="section">
-      <div class="section_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-        <img src="/assets/section-logo.png" alt="editor_logo" >
+<div class="top">
+  <!--------メニュー--------->
+  <div class="menu-wrap">
+    <div id="app1">
+      <!--メニューのボタン-->
+      <div class="hamburger_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+        <span class="line line_01" v-bind:class="{'btn_line01':ActiveBtn}"></span>
+        <span class="line line_02" v-bind:class="{'btn_line02':ActiveBtn}"></span>
+        <span class="line line_03" v-bind:class="{'btn_line03':ActiveBtn}"></span>
       </div>
-      <transition name="editor-side">
-        <div v-show="ActiveBtn">
-          <div class="container mt-5 mb-5">
-            <div class="row">
-              <div class="col-2">
-                <img src="/assets/logo.png">
+      <!--サイドバー-->
+      <transition name="menu">
+        <div class="menu" v-show="ActiveBtn">
+          <div class='user-conf' >
+            <% if user_signed_in? %>
+              <div class="user-sin-login">
+                <p><%#= link_to current_user.name, edit_user_registration_path  %></p>
+                <p><%= link_to current_user.name  %></p>
+                <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
+                <%#= link_to '予約状況を見る', event_path, class: "#" %>
               </div>
-              <div class="col-2">
-                <img src="/assets/logo (1).png">
+              <% else %>
+              <div class="user-sin-login">
+                <p>
+                  <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+                </p>
+                <p>
+                  <%= link_to "新規登録する", new_user_registration_path %>
+                </p>
+                <p>
+                  <%= link_to "ログイン", new_user_session_path %>
+                </p>
               </div>
-              <div class="col-2">
-                <img src="/assets/logo (5).png">
-              </div>
-              <div class="col-2">
-                <img src="/assets/logo (2).png">
-              </div>
-              <div class="col-2">
-                <img src="/assets/logo (3).png">
-              </div>
-              <div class="col-2">
-                <img src="/assets/logo ().png">
-              </div>
-            </div>
+            <% end %>
           </div>
-          <div class="container mb-5">
-            <div class="row">
-              <h2 class="section col-12">
-              <span class="section-name mb-5 border-bottom">products</span>
-              <small>プラン</small>
-              </h2>
-            </div>
+          <!----サイドバー商品名----->
+          <div class="product">
+            <% @products.each do |product|  %>
+              <ul>
+                <li>
+                  <%= link_to products_path(product.id) do %>
+                    <%= product.name %>
+                  <% end %>
+                </li>
+              </ul>
+            <% end %>
           </div>
         </div>
       </transition>
     </div>
   </div>
-
-
-
-  <div class="products-container container-fluid">
-    <div class="row row-cols-3">
-      <% if @product == nil %>
-        <div class="products_hero col">
-          <%= link_to new_top_path do %>
-            <%= image_tag "/assets/product_sample.png", class:"products_img" %>
-            <div class="products_info">
-              <p class="products_name">サイトを作成する</p>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <% @products.each do |product| %>
-          <div class="products_hero col">
-            <%= link_to products_path(product.id) do %>
-              <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
-              <div class="products_info">
-                <p class="products_name"><%= product.name %></p>
-                <p class="products_text"><%= product.title %></p>
+  <!----動画----->
+  <div class="top_video_content" >
+    <% if @top == nil %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <%= video_tag("/", class: "top_video", controls: true, alt:"ダミー") %> 
+            <%= link_to new_top_path do %>
+              <div class="top_ziza" >
+                <h3 class="top_title">サイトを作成する</h3>
               </div>
             <% end %>
           </div>
-        <% end %>
+        </div>
+      </div>
+    <% else %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <%= video_tag @top.video_top, class:"top_video", :loop => true, :autoplay => true, :muted => true %> 
+            <div class="top_hero" >
+              <%= image_tag @top.image, :size =>"230×270", class: "top_logo" if @top.image.attached? %>
+              <h3 class="top_title"><%= @top.title %></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!----商品----->
+  <div class="products-container container-fluid">
+    <div class="row row-cols-3">
+      <% @products.each do |product| %>
+        <div class="products_hero col">
+          <%= link_to products_path(product.id) do %>
+            <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
+            <div class="products_info">
+              <p class="products_name"><%= product.name %></p>
+              <p class="products_text"><%= product.title %></p>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
+
+  <!------フッター------>
+<%= render "shared/footer_user" %>
+</div>
+
+

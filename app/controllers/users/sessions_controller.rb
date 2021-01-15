@@ -3,20 +3,23 @@
 class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
-    tops_path # ログイン後に遷移するpathを設定
+    @client_id = (session["current.client_id"]["client"])
+    top_path(@client_id)# ログイン後に遷移するpathを設定
   end
 
   def after_sign_out_path_for(resource)
-    tops_path # ログアウト後に遷移するpathを設定
+    @client_id = (session["current.client_id"]["client"])
+    top_path(@client_id) # ログアウト後に遷移するpathを設定
   end
-
-
 
   def new_guest
     user = User.guest
     sign_in user
-    redirect_to tops_path #, notice: 'ゲストユーザーとしてログインしました'
+    @client_id = (session["current.client_id"]["client"])
+    redirect_to top_path(@client_id) #, notice: 'ゲストユーザーとしてログインしました'
   end
+
+
 
   # before_action :configure_sign_in_params, only: [:create]
 

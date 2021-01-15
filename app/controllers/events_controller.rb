@@ -3,33 +3,32 @@ class EventsController < ApplicationController
   before_action :search_event, only: [:index, :search, :show]
   
   def index
-    # @e = Event.ransack(params[:q])
-    @events = Event.all
-    set_event_column
-    @client = Client.find_by(params[:id]) #footer条件分岐のため
+    # @events = Event.all
+    # set_event_column
+    @events = Event.where(client_id: current_client.id) 
+    @event_name = @events.select("product_name").distinct #Eventではなく@eventsとする事でプルダウンでログイン中のクライアントのデータのみ取得
+    @client = Client.find(current_client.id) #footer条件分岐のため
     @top = Top.find_by(params[:id]) #footer条件分岐のため
-
   end
 
   def new
     @user = User.find(current_user.id)
     @event = Event.new(event_params)
     @product = Product.find(params[:product_id])
-    @client = Client.find_by(params[:id]) #footer条件分岐のため
+    # @client = Client.find(current_client.id) #footer条件分岐とカレントid取得のため
     @top = Top.find_by(params[:id]) #footer条件分岐のため
   end
   
   def create
     @product = Product.find(params[:product_id])
     @event = Event.new(event_create_params)
-    @client = Client.find_by(params[:id]) #footer条件分岐のため
     if @event.valid?
       pay_item
       @event.save
     else
       render :new
     end
-    @client = Client.find_by(params[:id]) #footer条件分岐のため
+    # @client = Client.find(current_client.id)
     @top = Top.find_by(params[:id]) #footer条件分岐のため
   end
 
@@ -75,15 +74,20 @@ class EventsController < ApplicationController
   
 
   def event_params
-    params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)
+    @product = Product.find(params[:product_id])
+    params.permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id)
+          .merge(user_id: current_user.id, client_id: @product.client_id)
   end
 
   def event_create_params
-    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id, token: params[:token])
+    @product = Product.find(params[:product_id])
+    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id)
+          .merge(user_id: current_user.id, client_id: @product.client_id, token: params[:token])
   end
 
   def event_edit_params
-    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id).merge(user_id: current_user.id, client_id: current_user.id)
+    params.require(:event).permit(:user_name, :user_kana, :user_email, :user_tel, :product_name, :price, :num_id, :start_time, :product_id)
+          .merge(user_id: current_user.id, client_id: current_client.id)
   end
 
   def pay_item
@@ -94,8 +98,6 @@ class EventsController < ApplicationController
       currency: 'jpy'                 # 通貨の種類(日本円)
     )
   end
-
-
 
   def search_event
     @e = Event.ransack(params[:q])
