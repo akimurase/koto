@@ -95,35 +95,5 @@
   </div>
 
 <!------フッター------>
-  <div class="footer">
-    <div class="footer-demo">
-      <div class="client-admin-if-login-box">
-        <div class="company-info">
-          <ul>
-            <li>会社名<span>:</span>◯◯◯◯株式会社</li>
-            <li>所在<span>:△△△県□□□市</span></li>
-            <li>メール<span>:xxxx@kototabi.com</span></li>
-            <li>TEL<span>:</span>0120-123-1234</li>
-          </ul>
-        </div>
-      </div>
-      <div class="client-menu">
-        <ul>
-          <li>
-            <p>Admin</p>
-          </li>
-          <li>
-            <%= link_to "予約管理", demos_schedule_path, class:"client-menu-li" %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_sample_session_path, method: :delete, class:"client-menu-li" %>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-logo-box">
-      <img src="/assets/sample_logo.png" alt="サンプルロゴ.png" class="footer-logo">
-    </div>
-  </div><!--footer-->
-
+<%= render "shared/footer_demo" %>
 </div>
