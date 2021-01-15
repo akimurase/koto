@@ -14,6 +14,10 @@ class TopsController < ApplicationController
     @top = Top.find(params[:id]) 
     @products =  Product.where(client_id: params[:id])
     @product = Product.find(params[:id])
+    @client_id = (params[:id])
+    session["current.client_id"] = {client: @client_id}
+    # binding.pry
+
   end
 
   def create
