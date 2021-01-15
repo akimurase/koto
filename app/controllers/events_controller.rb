@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     @top = Top.find_by(params[:id]) #footer条件分岐のため
   end
 
+
   def new
     @user = User.find(current_user.id)
     @event = Event.new(event_params)

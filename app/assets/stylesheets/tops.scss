@@ -116,18 +116,6 @@ small {
 
 
 
-
-// tops_edit
-.products-container {
-  margin-top: -6.7px;
-}
-
-.products_hero {
-  position: relative;
-}
-
-
-
 // top_new
 .top-contents-row  {
   width: 100%;
@@ -183,16 +171,35 @@ small {
 }
 
 
-// .products_items
 
-.products_info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
+
+
+
+
+
+
+// .products_items  // tops_edit
+
+.products-container {
+  margin-top: -6.7px;
 }
+
+.products_hero .products_info  {
+  width:			100%;
+	height:			50px;
+	position:		absolute;
+	bottom:			-50px;	/* 枠の上に置いて表示しない */
+	left:			0;
+	background-color:	rgba(0,0,0,0.4);
+	-webkit-transition:	all 0.4s ease;
+	transition:		all 0.4s ease;
+
+}
+
+.products_hero:hover .products_info {
+  border-bottom: 20px;
+}
+
 
 .products_name {
   text-align: center;
@@ -207,4 +214,40 @@ small {
 .products_img {
   width: 100%;
   height: 100%;
+}
+
+
+.hover-product {
+	width:			100%;
+	overflow:		hidden;
+	position:		relative;
+}
+
+.hover-product .products_info {
+	width:			100%;
+	height:			150px;
+	position:		absolute;
+	bottom:			-150px;
+	left:			0;
+	background-color:	rgba(0, 0, 0, 0.582);
+	-webkit-transition:	all 0.4s ease;
+	transition:		all 0.4s ease;
+}
+.hover-product:hover .products_info {
+	bottom:		0px;
+}
+
+.products_name {
+	font-size:		40px;
+	color:			#fff;
+	padding-top:		10px;
+	text-align: 		center;
+}
+
+.products_text {
+	font-size:		35px;
+	color:			#fff;
+	padding-top:		10px;
+	text-align: 		center;
+
 }

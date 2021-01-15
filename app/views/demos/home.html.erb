@@ -67,33 +67,39 @@
 <!----商品----->
   <div class="products-container container-fluid">
     <div class="row row-cols-3">
-        <div class="products_hero col">
+      <div class="products_hero col">
+        <div class="hover-product">
           <%= link_to demos_path do %>
             <%=image_tag "product_sample3", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name">sample</p>
-              <p class="products_text"></p>
+              <p class="products_text">title/title/title/title</p>
             </div>
           <% end %>
-        </div>
-        <div class="products_hero col">
+        </div><%#hover-product%>
+      </div>
+      <div class="products_hero col">
+        <div class="hover-product">
           <%= link_to demos_path do %>
             <%=image_tag "product_sample.png", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name">sample</p>
-              <p class="products_text"></p>
+              <p class="products_text">title/title/title/title</p>
             </div>
           <% end %>
-        </div>
-        <div class="products_hero col">
+        </div><%#hover-product%>
+      </div>
+      <div class="products_hero col">
+        <div class="hover-product">
           <%= link_to demos_path do %>
             <%=image_tag "puroduct_sample2", alt:"商品画像", class:"products_img" %>
             <div class="products_info">
               <p class="products_name">sample</p>
-              <p class="products_text"></p>
+              <p class="products_text">title/title/title/title</p>
             </div>
           <% end %>
-        </div>
+        </div><%#hover-product%>
+      </div>
     </div>
   </div>
   <%= render "shared/footer_client" %>
