@@ -16,8 +16,6 @@ class TopsController < ApplicationController
     @product = Product.find(params[:id])
     @client_id = (params[:id])
     session["current.client_id"] = {client: @client_id}
-    # binding.pry
-
   end
 
   def create
@@ -51,9 +49,6 @@ class TopsController < ApplicationController
     redirect_to root_path
   end
 
-  def list
-    @clients = Client.all
-  end
 
   private
 

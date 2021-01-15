@@ -29,7 +29,12 @@ Rails.application.routes.draw do
   end
 
   # root to: 'kototabis#index'
-  resources :demos, only: [:index, :new, :edit, :update, :create, :destroy]
+  resources :demos, only: [:index, :new, :edit, :update, :create, :destroy] do
+    collection do
+      get 'demos/list'
+    end
+  end
+
     get 'demos/home'
     get 'demos/about'
     get 'demos/show'
@@ -44,11 +49,7 @@ Rails.application.routes.draw do
     end
   end 
 
-  resources :tops do
-    collection do
-      get 'tops/list'
-    end
-  end
+  resources :tops
     post 'products/add'
   resources :products do
     resources :points

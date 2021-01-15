@@ -1,0 +1,27 @@
+<p>demos#list</p>
+
+<%= render "shared/header_demo" %>
+
+<div class="list_wrap">
+  <div class="list">
+    <h1>導入企業一覧</h1>
+    <div class="row">
+      <div class="list-main">
+        <p>KOTOTABIを導入してる企業様をご紹介します。</p>
+        <div class="list-name">
+          <% @clients.each do |client| %>
+            <li>
+              <%= link_to top_path(client.id) do %>
+                <%= client.company_name %>
+              <% end %>
+            </li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-logo-box">
+  <img src="/assets/footer-logo.png" alt="footer-logo.png" class="footer-logo">
+</div>
