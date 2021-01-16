@@ -85,13 +85,15 @@
     <div class="row row-cols-3">
       <% @products.each do |product| %>
         <div class="products_hero col">
-          <%= link_to products_path(product.id) do %>
-            <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
-            <div class="products_info">
-              <p class="products_name"><%= product.name %></p>
-              <p class="products_text"><%= product.title %></p>
-            </div>
-          <% end %>
+          <div class="hover-product">
+            <%= link_to products_path(product.id) do %>
+              <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
+              <div class="products_info">
+                <p class="products_name"><%= product.name %></p>
+                <p class="products_text"><%= product.title %></p>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>
