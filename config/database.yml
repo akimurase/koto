@@ -51,5 +51,10 @@ test:
 production:
   <<: *default
   database: koto_production
-  username: koto
-  password: <%= ENV['KOTO_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
+
+  # username: koto
+  # password: <%= ENV['KOTO_DATABASE_PASSWORD'] %>
+
