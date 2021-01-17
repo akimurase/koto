@@ -70,4 +70,4 @@ gem 'rails-i18n'
 gem 'payjp'
 gem 'faker'
 gem 'gimei'
-
+gem "aws-sdk-s3", require: false
