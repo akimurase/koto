@@ -29,6 +29,7 @@ class DemosController < ApplicationController
 
   def schedule
     @demos = Demo.all
+    # @demo_date = Demo.select("start_time_date").distinct
     set_demo_column
   end
 
@@ -75,7 +76,8 @@ class DemosController < ApplicationController
     @d = Demo.ransack(params[:q])  # 検索オブジェクトを生成
   end
   def set_demo_column
-    @demo_date = Demo.select("sample_product_name").distinct  # 重複なくnameカラムのデータを取り出す
+    @demo_name = Demo.select("sample_product_name").distinct
+    # @demo_date = Demo.select("start_time_name").distinct# 重複なくnameカラムのデータを取り出す
   end
 
 end

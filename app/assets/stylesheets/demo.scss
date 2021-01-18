@@ -33,7 +33,7 @@
   display: block;
 }
 
-.list {
+.company-list {
   text-align: center;
   margin-top: 80px;
   padding: 70px 30px 40px;
@@ -70,3 +70,6 @@
 .list-name a {
 }
 
+.top_video {
+  // background-image: url("<%= asset_path('kototabi_main.mp4') %>")
+}

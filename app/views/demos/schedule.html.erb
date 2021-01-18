@@ -13,15 +13,21 @@
 
 <div class="">
   <div class="search">
-    <div class="search-data">
-      <h3>日付検索</h3>
+    <div class="search-box">
+      <h3>商品で検索</h3>
       <%= search_form_for @d, url: demos_search_path do |f| %>
-        <%= f.label :sample_product_name_eq, '商品名検索' %>
-        <%= f.collection_select :sample_product_name_eq, @demo_date, :sample_product_name, :sample_product_name,  include_blank: '指定なし' %>
+        <%= f.collection_select :sample_product_name_eq, @demo_name, :sample_product_name, :sample_product_name,  include_blank: '指定なし' %>
         <%= f.submit '検索' %>
       <% end %>
     </div>
-    <div class="search-name">
+    <div class="search-box">
+      <h3>日付で検索</h3>
+      <%= search_form_for @d, url: demos_search_path do |f| %>
+        <%= f.collection_select :start_time_eq, @demos, :start_time, :start_time,  include_blank: '指定なし' %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
+    <div class="search-box">
       <%# <h3>名前検索</h1> %>
       <%#= form_with(url: search_words_events_path, local: true, method: :get, class: "#") do |form| %>
         <%# <label>名前</label> %>
