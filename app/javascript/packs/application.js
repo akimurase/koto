@@ -10,8 +10,7 @@ require("channels")
 require("../price")
 require("../card")
 require("../demo_card.js")
-require("../menu")
-// <%= javascript_pack_tag 'menu_vue' %>
+// require("../menu")
 // require('jquery')
 // require('jquery_ujs')
 // import "cocoon" 
