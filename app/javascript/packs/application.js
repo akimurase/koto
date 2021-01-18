@@ -11,6 +11,7 @@ require("../price")
 require("../card")
 require("../demo_card.js")
 // require("../menu")
+// <%= javascript_pack_tag 'menu_vue' %>
 // require('jquery')
 // require('jquery_ujs')
 // import "cocoon" 
