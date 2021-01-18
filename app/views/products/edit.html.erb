@@ -71,7 +71,7 @@
           <%# ここから旅程作成 表題もクライアントが作れる用にする %>
           <!-----旅程----->
           <div class="itinerary_content">
-            <h3>旅程</h3>
+            <h3>プラン</h3>
               <% @itinerarys.each do |itinerary|  %>
                 <%# 編集用のフォーム %>
                 <%= form_with model: @itinerary, url:product_itinerary_path(@product, itinerary.id), method: :PATCH, local: true do |f| %>
@@ -189,7 +189,7 @@
               <% end %>
           </div>
           <div class="itinerary-editor">
-            <h3>旅程追加 </h3>
+            <h3>プランの追加 </h3>
               <%= form_with url:product_itinerarys_path(@product.id), local: true do |f| %>
                 <div class="itinerary-editor-time-box">
                   <p class ="editor-time"><%= f.label :時間 %></p>
