@@ -11,10 +11,10 @@ require("../price")
 require("../card")
 require("../demo_card.js")
 require("../menu")
+// <%= javascript_pack_tag 'menu_vue' %>
 // require('jquery')
 // require('jquery_ujs')
 // import "cocoon" 
-
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
