@@ -11,10 +11,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <%= video_tag("ecmaker.mp4", class: "top_video", autoplay: true, loop: true, muted: true, alt:"ダミー画像") %>
+          <%= video_tag("kototabi_main.mp4", class: "top_video", autoplay: true, loop: true, muted: true, alt:"ダミー画像") %>
+          <%#= video_tag("", class: "top_video", autoplay: true, loop: true, muted: true, alt:"ダミー画像") %>
           <div class="top_hero">
             <%= image_tag "top-logo.png", class: "top_logo" %>
-            <h3 class="top_title">eコマースメイカー</h3>
+            <h3 class="top_title">ECサイト作成アプリ</h3>
           </div>
         </div>
       </div>
@@ -41,7 +42,6 @@
         <div class="hover-product">
           <%= link_to demos_path do %>
             <%=image_tag "product_sample3.png", alt:"商品画像", class:"products_img" %>
-            <%# <%=image_tag("product_sample3", alt:"商品画像", class:"products_img") %> %>
             <div class="products_info">
               <p class="products_name">sample</p>
               <p class="products_text">title/title/title/title</p>

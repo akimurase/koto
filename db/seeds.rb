@@ -1,4 +1,5 @@
 require 'faker'
+# require 'Gimei'
 
 200.times do |n|
   sample_name = Gimei.kanji

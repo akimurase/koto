@@ -9,6 +9,7 @@ class CreateDemos < ActiveRecord::Migration[6.0]
       t.string     :price
       t.integer    :num_id
       t.datetime   :start_time
+      # t.date       :start_time
       t.integer    :sample_id,                  null: false
 
       t.timestamps
