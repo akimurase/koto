@@ -29,6 +29,7 @@ class DemosController < ApplicationController
 
   def schedule
     @demos = Demo.all
+    # @demo_yaer = Demo.ransack(start_time_cont: [1]).result.to_sql
     # @demo_date = Demo.select("start_time_date").distinct
     set_demo_column
   end

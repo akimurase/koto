@@ -12,7 +12,7 @@ class User < ApplicationRecord
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
-      # <ワード検索時の処理>
+  # <ワード検索時の処理>
   def self.search(search)
     if search != ""
       User.where('name LIKE(?)', "%#{search}%")
