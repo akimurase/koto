@@ -34,7 +34,6 @@ Rails.application.routes.draw do
       get 'demos/list'
     end
   end
-
     get 'demos/home'
     get 'demos/about'
     get 'demos/show'
