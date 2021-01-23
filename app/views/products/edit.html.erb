@@ -164,7 +164,7 @@
   <div id="app2">
     <!--メニューのボタン-->
     <div class="product-editor_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-      <img src="/assets/editor_logo.png" alt="editor_logo" class="img">
+      <%= image_tag "editor_logo.png", alt:"editor_logo", class:"img" %>
     </div>
     <!--サイドバー-->
     <transition name="editor-side">
