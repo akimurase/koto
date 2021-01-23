@@ -11,16 +11,11 @@ class TopsController < ApplicationController
   end
 
   def show
-    if @top == nil
-      redirect_to new_top_path
-    else
-      @top = Top.find(params[:id]) 
-      @products =  Product.where(client_id: params[:id])
-      @product = Product.find(params[:id])
-      @client_id = (params[:id])
-      session["current.client_id"] = {client: @client_id}
-    end
-
+    @top = Top.find_by(client_id: params[:id])
+    @products =  Product.where(client_id: params[:id])
+    @product = Product.find(params[:id])
+    @client_id = (params[:id])
+    session["current.client_id"] = {client: @client_id}
   end
 
   def create
@@ -30,7 +25,6 @@ class TopsController < ApplicationController
     else
       render :new
     end
-    # @tops = Top.find_by(params[:id])
   end
 
   def edit

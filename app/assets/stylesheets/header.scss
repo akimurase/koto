@@ -10,7 +10,6 @@
 .header-main-1 {
   width: 100%;
   height: 80px;
-  // background: #f5f5f3;
   background: white;
   z-index: 1000;
   display: flex;
@@ -39,6 +38,7 @@
 .header-introduction ul {
   display: flex;
   margin-left: 25px;
+  z-index: 1000;
 }
 
 .header-introduction li {
@@ -107,10 +107,6 @@
   border: solid 0.1px white ;
   padding: 10px;
 }
-
-
-
-
 
 
 

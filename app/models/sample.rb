@@ -3,6 +3,8 @@ class Sample < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+        #  :recoverable, :rememberable, :validatable, :timeoutable
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |sample|
       sample.password = SecureRandom.urlsafe_base64

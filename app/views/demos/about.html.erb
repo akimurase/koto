@@ -9,9 +9,9 @@
       </div>
       <div class="header-introduction-1">
         <ul>
+          <li><%=link_to "無料デモを使う", samples_guest_sign_in_path, method: :post %></a></li>
           <li><%=link_to "機能紹介", demos_about_path  %></li>
-          <li><%=link_to "デモを使う", demos_path %></li>
-        </ul>
+          <li><%=link_to "導入企業一覧", demos_list_demos_path %></li>
       </div>
     </div>
     <div class="header-right">
@@ -38,9 +38,9 @@
           <p></p>
           <p>KOTOTABI の機能をご紹介します。</p>
         </div>
-          <%= link_to new_client_session_path do %>
+          <%= link_to samples_guest_sign_in_path, method: :post  do %>
             <div class="cover-create-button">
-              <h3>サイトを作成する</h3>
+              <h3>無料デモを使う</h3>
             </div>
           <% end %>
       </div>

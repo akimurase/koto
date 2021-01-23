@@ -7,13 +7,19 @@
           <%= image_tag "codeless-haeder-ogo.png", class:"header-logo-img" %>
         <% end %>
       </div>
+
       <div class="header-introduction">
         <ul>
+          <li><%=link_to "無料デモを使う", samples_guest_sign_in_path, method: :post %></a>
+            <%# <ul>
+              <li><a href="#">Sub-menu01</a></li>
+              <li><a href="#">Sub-menu02</a></li>
+              <li><a href="#">Sub-menu03</a></li>
+            </ul> %>
+          </li>
           <li><%=link_to "機能紹介", demos_about_path  %></li>
-          <li><%=link_to "無料デモを使う", samples_guest_sign_in_path, method: :post %></li>
           <li><%=link_to "導入企業一覧", demos_list_demos_path %></li>
-          <%# <li><%=link_to "sign_in", new_sample_registration_path%></li> 
-          <%# <li><%=link_to "log_in", samples_guest_sign_in_path, method: :post %></li>
+          <%# <li><%=link_to "sign_in", new_sample_registration_path%></li>
         </ul>
       </div>
     </div>
