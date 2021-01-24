@@ -4,15 +4,12 @@
   z-index: 1000;
 }
 
-.products-main {
-  display: flex;
-}
 
 .form-item {
   background-color: white;
   position: sticky;
-  top: 240px;
-  width: 350px;
+  top: 120px;
+  width: 300px;
   height: auto;
   border: 0.1px solid #E9EBF2;
 }
@@ -22,7 +19,7 @@
 }
 
 #one_price {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: #dd5a6f;
 }
 
@@ -37,7 +34,7 @@
 }
 
 #total_price {
-  font-size: 3.8rem;
+  font-size: 3rem;
   color: #dd5a6f;
 }
 
@@ -54,8 +51,8 @@
 }
 
 .form-num-select {
-  height: 30px;
-  width: 200px;
+  height: 25px;
+  width: 180px;
 }
 
 .form-plan-title {
@@ -63,15 +60,12 @@
 }
 
 select {
-  height: 30px;
-}
-select {
-  height: 30px;
+  height: 25px;
 }
 
 .form-submit-box {
   margin-top: 40px;
-  height: 50px;
+  height: 40px;
 }
 
 .form-submit {
@@ -153,7 +147,7 @@ select {
 }
 
 .input-expiration-date-box input {
-  width: 60px;
+  width: 35px;
 
 }
 
@@ -163,12 +157,10 @@ select {
 }
 
 .expiration-date {
-margin-left: 20px;
+margin-left: 5px;
+margin-right:20px;
 }
 
-.input-expiration-date-wrap span {
-  padding-right: 10px;
-}
 
 // 確認
 .conf-title-box {

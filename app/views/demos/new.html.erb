@@ -26,8 +26,8 @@
               <div class='input-expiration-date-wrap'>
                 <h4>有効期限</h4>
                 <div class="input-expiration-date-box">
-                  <li><span class="expiration-date">月</span><%= f.text_field :exp_month, value:"1", class:"input-expiration-date", id:"exp_month", placeholder:"例)1" %></li>
-                  <li><span class="expiration-date">年</span><%= f.text_field :exp_year, value:"24", class:"input-expiration-date", id:"exp_year", placeholder:"例)24" %></li>
+                  <li><%= f.text_field :exp_month, value:"1", class:"input-expiration-date", id:"exp_month", placeholder:"例)1" %><span class="expiration-date">月</span></li>
+                  <li><%= f.text_field :exp_year, value:"24", class:"input-expiration-date", id:"exp_year", placeholder:"例)24" %><span class="expiration-date">年</span></li>
                 </div>
               </div>
               <div class="input-expiration-s">
