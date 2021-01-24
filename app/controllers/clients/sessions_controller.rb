@@ -10,7 +10,7 @@ class Clients::SessionsController < Devise::SessionsController
   def new_guest
     client = Client.guest
     sign_in client
-    redirect_to new_top_path, notice: 'ゲストクライアントとしてログインしました。'
+    redirect_to edit_top_path(1), notice: 'ゲストクライアントとしてログインしました。'
   end
 
 

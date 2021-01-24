@@ -35,7 +35,9 @@
 
 
 /*サイドバー*/
+
 .editor-side {
+  overflow: scroll;
   position: fixed;
   background-color: #bdbbbbe0;
   z-index: 30;
