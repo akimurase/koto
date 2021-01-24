@@ -1,7 +1,7 @@
 require 'faker'
-require 'Gimei'
+require 'gimei'
 
-100.times do |n|
+150.times do |n|
   sample_name = Gimei.kanji
   sample_kana = Gimei.katakana
   sample_email = Faker::Internet.email
