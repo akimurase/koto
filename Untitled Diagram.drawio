@@ -1,4 +1,4 @@
-<mxfile modified="2021-01-25T07:45:46.752Z" host="app.diagrams.net" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36" etag="LCG2_xbyLLD-Rtqw10zi" version="14.2.7" type="github">
+<mxfile modified="2021-01-25T07:50:15.972Z" host="app.diagrams.net" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36" etag="KGL9wJdDqFmu0JxmsJHi" version="14.2.7" type="github">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
     <mxGraphModel dx="1581" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -71,7 +71,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="QjypgIDzSsSGN7FeSxY2-38" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn2.iconfinder.com/data/icons/competitive-strategy-and-corporate-training/512/194_Computer_desktop_hardware_workstation_System_app_development-128.png;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="900" y="610" width="128" height="128" as="geometry" />
+          <mxGeometry x="880" y="610" width="128" height="128" as="geometry" />
         </mxCell>
         <mxCell id="QjypgIDzSsSGN7FeSxY2-40" value="development" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
           <mxGeometry x="924" y="720" width="80" height="20" as="geometry" />
