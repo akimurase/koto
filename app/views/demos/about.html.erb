@@ -9,9 +9,10 @@
       </div>
       <div class="header-introduction-1">
         <ul>
-          <li><%=link_to "無料デモを使う", samples_guest_sign_in_path, method: :post %></a></li>
-          <li><%=link_to "機能紹介", demos_about_path  %></li>
-          <li><%=link_to "導入企業一覧", demos_list_demos_path %></li>
+          <li><%= link_to "無料デモを使う", samples_guest_sign_in_path, method: :post %></li>
+          <li><%= link_to 'デモを編集する', clients_guest_sign_in_path, method: :post %></li>
+          <li><%= link_to "機能紹介", demos_about_path  %></li>
+          <li><%= link_to "導入企業一覧", demos_list_demos_path %></li>
       </div>
     </div>
     <div class="header-right">
@@ -41,6 +42,11 @@
           <%= link_to samples_guest_sign_in_path, method: :post  do %>
             <div class="cover-create-button">
               <h3>無料デモを使う</h3>
+            </div>
+          <% end %>
+          <%= link_to clients_guest_sign_in_path, method: :post  do %>
+            <div class="cover-create-button">
+              <h3>デモを編集する</h3>
             </div>
           <% end %>
       </div>
