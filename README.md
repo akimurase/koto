@@ -105,8 +105,13 @@ https://github.com/akimurase/koto
 
 ・PAY.JP
 
-# インフラ構成図
+# 【インフラ構成図】
+
 <img src="https://user-images.githubusercontent.com/69699126/105904445-7c19e500-6064-11eb-80b5-5fb6c635b17f.png" width="750px">
+
+# 【ER図】
+
+<img src="https://user-images.githubusercontent.com/69699126/105826410-0da53a80-6004-11eb-9b2c-5c779acb3f29.png" width="750px">
 
 
 
@@ -135,9 +140,4 @@ https://github.com/akimurase/koto
 ### インフラ
 
 ・Docker導入
-
-
-
-【ER図】
-<img src="https://user-images.githubusercontent.com/69699126/105826410-0da53a80-6004-11eb-9b2c-5c779acb3f29.png" width="750px">
 
