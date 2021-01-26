@@ -44,7 +44,7 @@ class DemosController < ApplicationController
     demo.update!(demo_create_params)
     redirect_to edit_demo_path(demo.id)
   end
-  
+
   def destroy
     demo = Demo.find(params[:id])
     demo.destroy
@@ -54,7 +54,6 @@ class DemosController < ApplicationController
   def list
     @clients = Client.all
   end
-
 
   def search
     @results = @d.result
@@ -67,19 +66,23 @@ class DemosController < ApplicationController
 
   def demo_params
     # params.require(:demo).permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
-    params.permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
+    params.permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(
+      sample_id: current_sample.id, token: params[:token]
+    )
   end
 
   def demo_create_params
-    params.require(:demo).permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(sample_id: current_sample.id, token: params[:token])
+    params.require(:demo).permit(:sample_name, :sample_kana, :sample_email, :sample_tel, :sample_product_name, :price, :num_id, :start_time, :sample_id).merge(
+      sample_id: current_sample.id, token: params[:token]
+    )
   end
 
   def search_product
-    @d = Demo.ransack(params[:q])  # 検索オブジェクトを生成
-  end
-  def set_demo_column
-    @demo_name = Demo.select("sample_product_name").distinct
-    # @demo_date = Demo.select("start_time_name").distinct# 重複なくnameカラムのデータを取り出す
+    @d = Demo.ransack(params[:q]) # 検索オブジェクトを生成
   end
 
+  def set_demo_column
+    @demo_name = Demo.select('sample_product_name').distinct
+    # @demo_date = Demo.select("start_time_name").distinct# 重複なくnameカラムのデータを取り出す
+  end
 end

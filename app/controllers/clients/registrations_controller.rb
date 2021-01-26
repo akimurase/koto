@@ -7,10 +7,9 @@ class Clients::RegistrationsController < Devise::RegistrationsController
   #   redirect_to tops_path, notice: 'ゲストクライアントとしてログインしました。'
   # end
 
-  def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(_resource)
     new_top_path # ログイン後に遷移するpathを設定
   end
-
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

@@ -36,16 +36,16 @@
           <p>CODELESSの機能をご紹介します。</p>
         </div>
         <div class="cover-demo-box">
-          <div class="cover-demo-button">
-            <%= link_to samples_guest_sign_in_path, method: :post  do %>
+          <%= link_to samples_guest_sign_in_path, method: :post  do %>
+            <div class="cover-demo-button">
               <h3>無料デモを使う</h3>
-            <% end %>
-          </div>
-          <div class="cover-demo-button">
-            <%= link_to clients_guest_sign_in_path, method: :post  do %>
+            </div>
+          <% end %>
+          <%= link_to clients_guest_sign_in_path, method: :post  do %>
+            <div class="cover-demo-button">
               <h3>デモを編集する</h3>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="cover-br">

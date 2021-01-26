@@ -3,10 +3,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  
-  def after_sign_up_path_for(resource)
-    @client_id = (session["current.client_id"]["client"])
-    top_path(@client_id)# ログイン後に遷移するpathを設定
+
+  def after_sign_up_path_for(_resource)
+    @client_id = (session['current.client_id']['client'])
+    top_path(@client_id) # ログイン後に遷移するpathを設定
   end
 
   # GET /resource/sign_up

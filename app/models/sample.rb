@@ -3,7 +3,7 @@ class Sample < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-        #  :recoverable, :rememberable, :validatable, :timeoutable
+  #  :recoverable, :rememberable, :validatable, :timeoutable
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |sample|
@@ -17,5 +17,4 @@ class Sample < ApplicationRecord
   #     # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
   #   end
   # end
-
 end

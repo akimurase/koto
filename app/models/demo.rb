@@ -1,7 +1,8 @@
 class Demo < ApplicationRecord
   attr_accessor :token
+
   belongs_to :sample, optional: true
-  #モジュールを取り込む記述
+  # モジュールを取り込む記述
   extend ActiveHash::Associations::ActiveRecordExtensions
   # アクティブハッシュ用rアソシエーション
   belongs_to_active_hash :num

@@ -6,7 +6,6 @@
       <div class="pay-content">
         <%= form_with model: @event, url:product_events_path, id: 'charge-form', local: true do |f| %>
           <%= render 'shared/error_messages', model: f.object %>
-          <%#= render 'shared/error_messages', @event.object %>
           <%= f.hidden_field :user_name, value:current_user.name %>
           <%= f.hidden_field :user_kana, value:current_user.kana %>
           <%= f.hidden_field :user_email, value:current_user.email %>
@@ -54,7 +53,7 @@
       </div>
     </div>
   </div>
+  <%= render "shared/footer_user" %>
 </div>
 
-<%= render "shared/footer_user" %>
 

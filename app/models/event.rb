@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :client, optional: true
   belongs_to :product, optional: true
-  #モジュールを取り込む記述
+  # モジュールを取り込む記述
   extend ActiveHash::Associations::ActiveRecordExtensions
   # アクティブハッシュ用アソシエーション
   belongs_to_active_hash :num
@@ -17,7 +17,7 @@ class Event < ApplicationRecord
 
   # <ワード検索時の処理>
   def self.search(search)
-    if search != ""
+    if search != ''
       Event.where('price LIKE(?)', "%#{search}%")
     else
       Event.all
