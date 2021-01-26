@@ -17,9 +17,6 @@
     </div>
     <div class="header-right">
       <div class="header-right-li-1">
-        <span><%= link_to '試作する', clients_guest_sign_in_path, method: :post %></span>
-      </div>
-      <div class="header-right-li-1">
         <%= link_to "新規登録", new_client_registration_path %>
       </div>
       <div class="header-right-li-1">
@@ -28,7 +25,6 @@
     </div>
   </div>
 </div>
-
 <div class="about-wrap">
   <div class="cover">
     <div class="cover-introduction">
@@ -39,26 +35,28 @@
           <p></p>
           <p>CODELESSの機能をご紹介します。</p>
         </div>
-          <%= link_to samples_guest_sign_in_path, method: :post  do %>
-            <div class="cover-create-button">
+        <div class="cover-demo-box">
+          <div class="cover-demo-button">
+            <%= link_to samples_guest_sign_in_path, method: :post  do %>
               <h3>無料デモを使う</h3>
-            </div>
-          <% end %>
-          <%= link_to clients_guest_sign_in_path, method: :post  do %>
-            <div class="cover-create-button">
+            <% end %>
+          </div>
+          <div class="cover-demo-button">
+            <%= link_to clients_guest_sign_in_path, method: :post  do %>
               <h3>デモを編集する</h3>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
       <div class="cover-br">
       </div>
       <div class="cover-footer">
-        <%# <ul><a href=""></a>
+        <ul><a href=""></a>
           <li class="cover-footer-li-1"><a href="#sec1">Create</a></li>
           <li class="cover-footer-li"><a href="#sec2">Add</a></li>
           <li class="cover-footer-li"><a href="#sec3">Edit</a></li>
           <li class="cover-footer-li"><a href="#sec4">Admin</a></li>
-        </ul> %>
+        </ul>
       </div>
     </div><%#cover-introduction%>
   </div>
@@ -66,43 +64,55 @@
   <div class="about-container">
     <div class="row">
       <div class="about-main">
-        <div class="about-main-create">
-          <h1>Create 作成する</h1>
-            <div class="bout-main-create-text">
-              <p>簡単２ステップ。好きな動画や画像を選択するだけ。</p>
-              <p>タイトルや紹介文など、運営に必要内容を入力すると、</p>
-              <a name="#sec1">
-              <p>あなただけのWebサイト・ECサイトが完成ます。</p>
-              </a>
-            </div>
+        <div class="about-main-box">
+          <h1>How to use 操作方法</h1>
+          <div class="about-main-box-text">
+            <h5>〜デモを使った予約〜</h5>
+            <p>１、トップページより「無料デモを使う」をクリックして、次のページで商品を選択します。右の予約フォームで人数と日付をお選びください。</p>
+            <p>２、予めテストカード情報を入力しておりますので「予約する」をクリックしてください。</p>
+            <h5>〜デモを使った予約（顧客）管理〜</h5>
+            <p>１、トップページより「無料デモを使う」をクリックして、次のページで画面右下の「予約管理」をクリックしてください。</p>
+            <p>２、カレンダー上の予約者をクリックすると対象者の詳細ページへ遷移します。そこで予約情報の編集及び削除が行えます。</p>
+            <p>３、「予約管理」ページより検索が行えます。「商品で検索」で対象の商品を選択し「検索」をクリック対象の商品を選択してる対象者が表示されます。</p>
+            <h5>〜デモを使ったECサイト編集〜</h5>
+            <p>１、トップページより「デモを編集する」をクリックして、次のページで「Editor」ボタンを押します。</p>
+            <p>２、メニューバーが表示されますので、必要事項を入力して「編集する」もしくは「作成する」ボタンを押してください。</p>
+            <h5>〜クライアントとしてECサイトを作成する場合〜</h5>
+            <p>１、トップページより場面右上の新規登録ボタンをクリックしてください。</p>
+            <p>２、「トップ画面作成」ページへ遷移しますので動画や必要事項を入力して「作成する」をクリックしてください。</p>
+            <p>３、「商品の作成」ページへ遷移しますので画像や商品の詳細を入力して「作成する」をクリックしてください。</p>
+            <p>４、作成が完了すると自動的に編集ページに遷移してします。商品の追加を行うときは左上の「Editor」ボタンをクリックして追加または編集を行ってください。</p>
+          </div>
         </div>
-        <div class="about-main-add">
-          <h1>Add 追加</h1>
-            <div class="about-main-add-text">
-              <p>管理画面へ行き左上のEditerボタンを押すとメニューバーが現れます。</p>
-              <a name="sec2">
-              <p>増やしたい項目に入力するだけ。</p>
-              </a>
-            </div>
+        <div class="about-main-box">
+          <a name="sec1"><h1>Create 作成する</h1><a>
+          <div class="about-main-box-text">
+            <p>簡単２ステップ。好きな動画や画像を選択するだけ。</p>
+            <p>タイトルや紹介文など、運営に必要内容を入力すると、</p>
+            <p>あなただけのWebサイト・ECサイトが完成ます。</p>
+          </div>
         </div>
-        <div class="about-main-edit">
-          <h1>Edit 編集</h1>
-            <div class="about-main-edit-text">
-              <p>管理画面から商品のページに進みます。</p>
-              <a name="sec3">
-              <p>編集したい項目を書き換え、編集ボタンを押すと編集されます。</p>
-              </a>
-            </div>
+        <div class="about-main-box">
+          <a name="sec2"><h1>Add 追加</h1></a>
+          <div class="about-main-box-text">
+            <p>管理画面へ行き左上のEditerボタンを押すとメニューバーが現れます。</p>
+            <p>増やしたい項目に入力するだけ。</p>
+          </div>
         </div>
-        <div class="about-main-admin">
-          <h1>Admin 予約管理</h1>
-            <div class="about-admin-text">
-              <a name="sec4">
-              <p>予約管理ボタンを押すと、カレンダーの画面に遷移します。</p>
-              <p>予約があれば予定が入りクリックすると編集が可能です。</p>
-              <p>また、検索機能で絞り込む事も可能です。</p>
-              </a>
-            </div>
+        <div class="about-main-box">
+          <a name="sec3"><h1>Edit 編集</h1></a>
+          <div class="about-main-box-text">
+            <p>管理画面から商品のページに進みます。</p>
+            <p>編集したい項目を書き換え、編集ボタンを押すと編集されます。</p>
+          </div>
+        </div>
+        <div class="about-main-box">
+          <a name="sec4"><h1>Admin 予約管理</h1></a>
+          <div class="about-main-box-text">
+            <p>予約管理ボタンを押すと、カレンダーの画面に遷移します。</p>
+            <p>予約があれば予定が入りクリックすると編集が可能です。</p>
+            <p>また、検索機能で絞り込む事も可能です。</p>
+          </div>
         </div>
       </div>
     </div>

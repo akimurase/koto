@@ -13,9 +13,11 @@ class TopsController < ApplicationController
   def show
     @top = Top.find_by(client_id: params[:id])
     @products =  Product.where(client_id: params[:id])
-    @product = Product.find(params[:id])
+    # @product = Product.find_by(client_id: params[:id])
+    # @product = Product.find(params[:id])
     @client_id = (params[:id])
     session["current.client_id"] = {client: @client_id}
+    @client = Client.find(@client_id)
   end
 
   def create

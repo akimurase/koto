@@ -13,6 +13,7 @@ class DemosController < ApplicationController
 
   def new
     @demo = Demo.new(demo_params)
+    # binding.pry
   end
 
   def create

@@ -72,9 +72,6 @@
   
 }
 
-.top_video {
-}
-
 
 
 
@@ -89,7 +86,7 @@
 .cover-introduction {
   padding-top: 70px;
   padding-bottom: 40px;
-  margin-left: 30px;
+  margin-left: 100px;
 }
 
 .font_0 {
@@ -106,20 +103,24 @@
 
 .cover-center {
   color: aliceblue;
-
 }
 
-.cover-create-button {
+.cover-demo-box {
+  display: flex;
+}
+
+.cover-demo-button {
   position: relative;
   margin-top: 35px;
   margin-bottom: 50px;
+  margin-right: 20px;
   width: 300px;
   height: 70px;
   background-color: white;
   border-radius: 90px;
 }
 
-.cover-create-button h3 {
+.cover-demo-button h3 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -161,54 +162,37 @@
 
 .cover-footer a {
   color: white;
+  text-decoration: none;
 }
 
 
 .about-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1300px;
+  max-width: 1000px;
 }
 
 .about-main {
-  // width: 750px;;
   width: 100%;
   padding-top: 60px;
 }
 
-.about-main-create {
-  width: 750px;;
+.about-main-box {
+  width: 750px;
   margin-top: 50px;
   margin-bottom: 80px;
 }
 
-.about-main-add {
-  width: 750px;;
-  margin-top: 50px;
-  margin-bottom: 80px;
+
+.about-main-box h1 {
+  font-size: 40px;
 }
 
-.about-main-edit {
-  width: 750px;;
-  margin-top: 50px;
-  margin-bottom: 80px;
-}
-
-.about-admin{
-  width: 750px;;
-  margin-top: 50px;
-  margin-bottom: 80px;
-}
-
-.about-main-create h1 {
-  font-size: 48px;
-}
-
-.bout-main-create-text {
+.about-main-box-text {
   margin-top: 30px;
   margin-bottom: 40px;
   padding-bottom: 40px;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 200%;
   border-bottom: solid 0.1px;
 }
@@ -217,39 +201,13 @@
   font-size: 48px;
 }
 
-.about-main-add-text {
-  margin-top: 30px;
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  font-size: 17px;
-  line-height: 200%;
-  border-bottom: solid 0.1px;
+.about-main-box-text h5 {
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
-.about-main-edit h1 {
-  font-size: 48px;
-}
-
-.about-main-edit-text {
-  margin-top: 30px;
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  font-size: 17px;
-  line-height: 200%;
-  border-bottom: solid 0.1px;
-}
-
-.about-main-admin h1 {
-  font-size: 48px;
-}
-
-.about-admin-text {
-  margin-top: 30px;
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  font-size: 17px;
-  line-height: 200%;
-  border-bottom: solid 0.1px;
+.about-main-box-text p {
+  margin-top: 10px;
 }
 
 .user-sin-login h2 {
