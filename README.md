@@ -96,9 +96,13 @@ https://github.com/akimurase/koto
 
 ### インフラ
 
+・Docker / Docker-compose
+
 ・AWS / EC2,S3,Route53,ALB,SSL,ACM,Nginx
 
 ・Capistrano
+
+・MYSQL
 
 ### API
 
@@ -138,5 +142,5 @@ https://github.com/akimurase/koto
 
 ### インフラ
 
-・Docker導入
+・Docker本番環境に導入
 
