@@ -1,0 +1,28 @@
+version: '3'
+
+volumes:
+  db-data:
+
+services:
+  web:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - '.:/koto'
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=1'
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+    links:
+      - db
+
+  db:
+    image: mysql:8
+    volumes:
+      - 'db-data:/var/lib/mysql'
+    # このenvironmentはテスト環境でのみ使用可能
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
