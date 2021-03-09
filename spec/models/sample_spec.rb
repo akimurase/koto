@@ -31,17 +31,17 @@ RSpec.describe Sample, type: :model do
     it "emailが空では登録できない" do
       @sample.email = ""
       @sample.valid?
-      expect(@sample.errors.full_messages).to include()
+      expect(@sample.errors.full_messages).to include("Emailを入力してください")
     end
     it "passwordが空では登録できない" do
       @sample.password = ""
       @sample.valid?
-      expect(@sample.errors.full_messages).to include()
+      expect(@sample.errors.full_messages).to include("Passwordを入力してください")
     end
     it "password_confirmationが空では登録できない" do
       @sample.password_confirmation = ""
       @sample.valid?
-      expect(@sample.errors.full_messages).to include()
+      expect(@sample.errors.full_messages).to include("Password confirmationとPasswordの入力が一致しません")
     end
   end
 end
